@@ -6,15 +6,15 @@ package task_03;
  * Solve it at least by 4 methods.
  *
  * 30 May 2018
- * @author Arthur Lyup
+ * @author lovelyserafima
  */
 
 public class Letter {
     //admissible bodreds of letters in table ASCII
-    private final static char leftBig = 'A';
-    private final static char rightBig = 'Z';
-    private final static char leftSmall = 'a';
-    private final static char rightSmall = 'z';
+    private final static char LEFT_BIG = 'A';
+    private final static char RIGHT_BIG = 'Z';
+    private final static char LEFT_SMALL = 'a';
+    private final static char RIGHT_SMALL = 'z';
 
     //the empty constructor
     public Letter(){}
@@ -130,7 +130,7 @@ public class Letter {
 
     //check input
     private static void checkLetter(char symbol) throws Exception {
-        if (symbol < leftBig || (symbol > rightBig && symbol < leftSmall) || symbol > rightSmall)
+        if (symbol < LEFT_BIG  || (symbol > RIGHT_BIG && symbol < LEFT_SMALL) || symbol > RIGHT_SMALL)
             throw new Exception("\"" + symbol + "\" isn't a letter!");
     }
 }

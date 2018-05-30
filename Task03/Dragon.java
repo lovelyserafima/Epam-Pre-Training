@@ -7,16 +7,15 @@ package task_03;
  * The class calculates the number of heads and eyes.
  *
  * 29 May 2018
- * @author Arthur Lyup
+ * @author lovelyserafima
  */
 
 public class Dragon {
-    private static final int numberOfHeads = 3;
-    private static final int numberOfEyes = 2;
+    private static final int NUMBER_OF_HEADS = 3;
+    private static final int NUMBER_OF_EYES = 2;
     //our borders of growing heads
-    private static final int threeHeads = 0;
-    private static final int twoHeads = 200;
-    private static final int oneHead = 300;
+    private static final int TWO_HEADS = 200;
+    private static final int ONE_HEAD = 300;
 
     //the empty constructor
     public Dragon(){}
@@ -25,32 +24,32 @@ public class Dragon {
     public static int countHeads(double age) throws Exception {
         checkCorrectInput(age);
         int intAge = (int) age;//type cast because number of heads is integer type
-        if (intAge <= twoHeads){
+        if (intAge <= TWO_HEADS){
             return countHeadsFromZeroTo200(intAge);
-        } else if (intAge <= oneHead){
+        } else if (intAge <= ONE_HEAD){
             return countHeadsFrom200To300(intAge);
         } else return countHeadsFrom300ToN(intAge);
     }
 
     //method for calculating eyes
     public static int countEyes(double age) throws Exception {
-        return countHeads(age)*numberOfEyes;
+        return countHeads(age)*NUMBER_OF_EYES;
     }
 
     //0 <= n <= 200
     private static int countHeadsFromZeroTo200(int age){
-        return numberOfHeads*age + numberOfHeads;
+        return NUMBER_OF_HEADS*age + NUMBER_OF_HEADS;
     }
 
     //200 < n <= 300
     private static int countHeadsFrom200To300(int age){
-        return numberOfHeads*twoHeads + (numberOfHeads - 1)*(age - twoHeads) + numberOfHeads;
+        return NUMBER_OF_HEADS*TWO_HEADS + (NUMBER_OF_HEADS - 1)*(age - TWO_HEADS) + NUMBER_OF_HEADS;
     }
 
     //300 < n
     private static int countHeadsFrom300ToN(int age){
-        return numberOfHeads*twoHeads + (numberOfHeads - 1)*(oneHead - twoHeads) + (numberOfHeads - 2)*(age - oneHead)
-                + numberOfHeads;
+        return NUMBER_OF_HEADS*TWO_HEADS + (NUMBER_OF_HEADS - 1)*(ONE_HEAD - TWO_HEADS) + (NUMBER_OF_HEADS - 2)*(age - ONE_HEAD)
+                + NUMBER_OF_HEADS;
     }
 
     private static void checkCorrectInput(double age) throws Exception {

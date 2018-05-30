@@ -5,16 +5,16 @@ package task_03;
  * Generate random number which corresponds to any smile.
  *
  * 30 May 2018
- * @author Arthur Lyup
+ * @author lovelyserafima
  */
 
 import java.util.Random;
 
 public class MoodSensor {
     //smiles
-    private static final String badSmile = ":(";
-    private static final String sosoSmile = ":|";
-    private static final String excellentSmile = ":)";
+    private static final String BAD_SMILE = ":(";
+    private static final String SOSO_SMILE = ":|";
+    private static final String EXCELLENT_SMILE = ":)";
 
     //the empty constructor
     public MoodSensor(){}
@@ -26,9 +26,9 @@ public class MoodSensor {
         final int rightBorder = 10;
         int number = random.nextInt(rightBorder - leftBorder + 1) + leftBorder;
         if (number < 4){
-            return ":(";
+            return BAD_SMILE;
         } else if (number < 8){
-            return ":|";
-        } else return ":)";
+            return SOSO_SMILE;
+        } else return EXCELLENT_SMILE;
     }
 }

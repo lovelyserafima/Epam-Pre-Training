@@ -5,30 +5,30 @@ package task_03;
  * Returns the next day of entered date.
  *
  * 30 May 2018
- * @author Arthur Lyup
+ * @author lovelyserafima
  */
 
 public class Calendar {
     //months
-    private static final int january = 1;
-    private static final int february = 2;
-    private static final int march = 3;
-    private static final int april = 4;
-    private static final int may = 5;
-    private static final int june = 6;
-    private static final int july = 7;
-    private static final int august = 8;
-    private static final int september = 9;
-    private static final int october = 10;
-    private static final int november = 11;
-    private static final int december = 12;
+    private static final int JANUARY = 1;
+    private static final int FEBRUARY = 2;
+    private static final int MARCH = 3;
+    private static final int APRIL = 4;
+    private static final int MAY = 5;
+    private static final int JUNE = 6;
+    private static final int JULY = 7;
+    private static final int AUGUST = 8;
+    private static final int SEPTEMBER = 9;
+    private static final int OCTOBER = 10;
+    private static final int NOVEMBER = 11;
+    private static final int DECEMBER = 12;
 
     //days
-    private static final int firstDay = 1;
-    private static final int lastDayOfFebruaryLeapYear =  29;
-    private static final int lastDayOfFebruary = 28;
-    private static final int lastDayOf31Month = 31;
-    private static final int lastDayOf30Month = 30;
+    private static final int FIRST_DAY = 1;
+    private static final int LAST_DAY_OF_FEBRUARY_LEAP_YEAR =  29;
+    private static final int LAST_DAY_OF_FEBRUARY = 28;
+    private static final int LAST_DAY_31_MONTH = 31;
+    private static final int LAST_DAY_30_MONTH = 30;
 
     //the empty constructor
     public Calendar(){}
@@ -38,10 +38,10 @@ public class Calendar {
         checkDate(day, month, year);//check input
 
         //February
-        if (month == february){
-            if (day == lastDayOfFebruaryLeapYear){
+        if (month == FEBRUARY){
+            if (day == LAST_DAY_OF_FEBRUARY_LEAP_YEAR){
                 return identifyNewMonth(day, month, year);
-            } else if (day == lastDayOfFebruary){
+            } else if (day == LAST_DAY_OF_FEBRUARY){
                 if (checkLeapYear(year)){
                     return identifyTypicalDay(day, month, year);
                 } else return identifyNewMonth(day, month, year);
@@ -49,22 +49,22 @@ public class Calendar {
         }
 
         //January, March, May, July, August, October
-        if (month == january || month == march || month == may || month == july || month == august || month == october){
-            if (day == lastDayOf31Month){
+        if (month == JANUARY || month == MARCH|| month == MAY || month == JULY || month == AUGUST || month == OCTOBER){
+            if (day == LAST_DAY_31_MONTH){
                 return identifyNewMonth(day, month, year);
             }
             return identifyTypicalDay(day, month, year);
         }
 
         //April, June, September, November
-        if (month == april || month == june || month == september || month == november){
-            if (day == lastDayOf30Month){
+        if (month == APRIL || month == JUNE || month == SEPTEMBER || month == NOVEMBER){
+            if (day == LAST_DAY_30_MONTH){
                 return identifyNewMonth(day, month, year);
             }
             return identifyTypicalDay(day, month, year);
         }
 
-        if (day == lastDayOf31Month){
+        if (day == LAST_DAY_31_MONTH){
             return identifyNewYear(day, month, year);
         }
         return identifyTypicalDay(day, month, year);
@@ -76,21 +76,21 @@ public class Calendar {
     }
 
     private static String identifyNewMonth(int day, int month, int year){
-        return "Next day is " + firstDay + "." + ++month + "." + year;
+        return "Next day is " + FIRST_DAY + "." + ++month + "." + year;
     }
 
     private static String identifyNewYear(int day, int month, int year){
-        return "Next day is " + firstDay + "." + january + "." + ++year;
+        return "Next day is " + FIRST_DAY + "." + JANUARY + "." + ++year;
     }
 
     //
 
     private static void checkDate(int day, int month, int year) throws Exception {
-        if (day < firstDay || day > lastDayOf31Month){
+        if (day < FIRST_DAY || day > LAST_DAY_31_MONTH){
             throw new Exception("Wrong input! Day belongs to [1, 31]");
         }
 
-        if (month < january || month > december){
+        if (month < JANUARY || month > DECEMBER){
             throw new Exception("Wrong input! Month belongs to [1, 12]");
         }
 
@@ -98,29 +98,29 @@ public class Calendar {
             throw new Exception("Wrong input! Year > 0");
         }
 
-        if (month == february && day > lastDayOfFebruaryLeapYear){
+        if (month == FEBRUARY && day > LAST_DAY_OF_FEBRUARY_LEAP_YEAR){
             throw new Exception("Wrong input! February has 28-29 days");
         }
 
-        if (month == february && day == lastDayOfFebruaryLeapYear){
+        if (month == FEBRUARY && day == LAST_DAY_OF_FEBRUARY_LEAP_YEAR){
             if (!checkLeapYear(year)){
                 throw new Exception("Wrong input! " + year + " isn't a leap year!");
             }
         }
 
-        if (month == april && day > lastDayOf30Month){
+        if (month == APRIL && day > LAST_DAY_30_MONTH){
             throw new Exception("Wrong input! April has 30 days");
         }
 
-        if (month == june && day > lastDayOf30Month){
+        if (month == JUNE && day > LAST_DAY_30_MONTH){
             throw new Exception("Wrong input! June has 30 days");
         }
 
-        if (month == september && day > lastDayOf30Month){
+        if (month == SEPTEMBER && day > LAST_DAY_30_MONTH){
             throw new Exception("Wrong input! September has 30 days");
         }
 
-        if (month == november && day > lastDayOf30Month){
+        if (month == NOVEMBER && day > LAST_DAY_30_MONTH){
             throw new Exception("Wrong input! November has 30 days");
         }
     }
