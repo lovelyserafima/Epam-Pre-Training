@@ -7,7 +7,7 @@ package task_03;
  * The class calculates the number of heads and eyes.
  *
  * 29 May 2018
- * @author lovelyserafima
+ * @author Arthur Lyup
  */
 
 public class Dragon {

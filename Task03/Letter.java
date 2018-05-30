@@ -6,7 +6,7 @@ package task_03;
  * Solve it at least by 4 methods.
  *
  * 30 May 2018
- * @author lovelyserafima
+ * @author Arthur Lyup
  */
 
 public class Letter {

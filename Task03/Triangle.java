@@ -6,7 +6,7 @@ package task_03;
  * If it is true, check if this triangle is rectangular.
  *
  * 29 May 2018
- * @author lovelyserafima
+ * @author Arthur Lyup
  */
 
 public class Triangle {

@@ -5,7 +5,7 @@ package task_03;
  * Generate random number which corresponds to any smile.
  *
  * 30 May 2018
- * @author lovelyserafima
+ * @author Arthur Lyup
  */
 
 import java.util.Random;

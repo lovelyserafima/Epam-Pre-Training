@@ -4,7 +4,7 @@ package task_03;
  * Task03 is the class with the method main(String[]args)
  *
  * 29 May 2018
- * @author lovelyserafima
+ * @author Arthur Lyup
  */
 public class Task_03 {
     public static void main(String[] args) throws Exception {

@@ -5,7 +5,7 @@ package task_03;
  * Returns the next day of entered date.
  *
  * 30 May 2018
- * @author lovelyserafima
+ * @author Arthur Lyup
  */
 
 public class Calendar {
