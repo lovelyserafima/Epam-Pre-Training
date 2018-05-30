@@ -5,7 +5,7 @@ package task_02;
  * Find the area of the ring whose outer radius is
  * R1, and the inner radius is R2.
  *
- * 26 May 2018
+ * 30 May 2018
  * @author Arthur Lyup
  */
 
@@ -20,7 +20,7 @@ public class Ring {
     public static double findSquare(double R1, double R2) {
         double inSquare = findSquareOfCircle(R2);//Square of small circle
         double outSquare = findSquareOfCircle(R1);//Square of big circle
-        return (outSquare - inSquare);
+        return outSquare - inSquare;
     }
 
     private static double findSquareOfCircle(double R1){

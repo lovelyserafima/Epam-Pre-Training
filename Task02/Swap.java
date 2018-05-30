@@ -8,11 +8,10 @@ package task_02;
 public class Swap {
     public Swap(){}
 
-    public static void swapNumbers(int a, int b){
-        System.out.println("\nBefore swap:\n a = " + a + ", b = " + b);
+    public static String swapNumbers(int a, int b){
         a += b;
         b = a - b;
         a -= b;
-        System.out.println("After swap:\n a = " + a + ", b = " + b);
+        return "a = " + a + ", b = " + b;
     }
 }

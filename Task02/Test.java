@@ -3,7 +3,7 @@ package task_02;
 /**
  * Test is the class with the main method main(String[]).
  *
- * 26 May 2018
+ * 30 May 2018
  * @author Arthur Lyup
  */
 
@@ -23,7 +23,7 @@ public class Test {
 
         //task2
         double weight = 50;
-        Dinosaur.convertWeight(weight);
+        System.out.println("\n" + Dinosaur.convertWeight(weight));
 
         //task3
         double R1 = 10;
@@ -40,13 +40,16 @@ public class Test {
         //task5
         number = 123456;
         System.out.println("\nAverage arithmetic of digits of " + number + " = " + SixDigitNumber.findAvrArthm(number));
-        System.out.println("Average geometric of digits of " + number + " = " + SixDigitNumber.findAvrGeom(number) + "\n");
+        System.out.println("Average geometric of digits of " + number + " = " + SixDigitNumber.findAvrGeom(number));
 
         //task6
         number = 1234567;
-        SevenDigitNumber.makeReverse(number);
+        System.out.println("\nReverse of " + number + " is " + SevenDigitNumber.makeReverse(number));
 
         //task7
-        Swap.swapNumbers(number, a);
+        a = 25;
+        b = 50;
+        System.out.println("\nBefore swap: a = " + a + ", b = " + b);
+        System.out.println("After swap: " + Swap.swapNumbers(a, b));
     }
 }
