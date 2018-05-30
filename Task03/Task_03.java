@@ -4,7 +4,7 @@ package task_03;
  * Task03 is the class with the method main(String[]args)
  *
  * 29 May 2018
- * @author Arthur Lyup
+ * @author lovelyserafima
  */
 public class Task_03 {
     public static void main(String[] args) throws Exception {
@@ -42,16 +42,16 @@ public class Task_03 {
         System.out.println("Is letter \"" + letter + "\" a vowel? -> " + Letter.checkVowelBy7thMethod(letter));
 
         //task4
-        System.out.println("\n" + MoodSensor.getMood());
-        System.out.println(MoodSensor.getMood());
+        System.out.println("\n Current mood is " + MoodSensor.getMood());
+        System.out.println("Cureent mood is " + MoodSensor.getMood());
 
         //task5
         int day = 31;
         int month = 12;
         int year = 2000;
         System.out.println("\n" + day + "." + month + "." + year + ": " + Calendar.identifyNextDay(day, month, year));
-
-
-
+        day = 28;
+        month = 2;
+        System.out.println(day + "." + month + "." + year + ": " + Calendar.identifyNextDay(day, month, year));
     }
 }
