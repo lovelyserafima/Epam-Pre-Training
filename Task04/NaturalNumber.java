@@ -77,14 +77,12 @@ public class NaturalNumber {
         if (number == 1){
             return "false";
         }
-        boolean flag = false;//if there aren't simple dividers
         String dividers = "";//our simple dividers
         if (checkSimplicity(number) == "false") {//if number isn't simple
             for (int i = ONE; i <= number / 2; i++) {
                 if (number % i == 0) {
                     if (checkSimplicity(i) == "true") {
                         dividers += i + " ";
-                        flag = true;
                     }
                 }
             }
