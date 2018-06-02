@@ -1,7 +1,5 @@
 package task_04;
 
-import javax.naming.Name;
-
 /**
  * NaturalNumber is the class which has the following methods:
  * 1)find max digit in the natural number
