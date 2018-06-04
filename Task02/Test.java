@@ -3,7 +3,7 @@ package task_02;
 /**
  * Test is the class with the main method main(String[]).
  *
- * 30 May 2018
+ * 4 June 2018
  * @author Arthur Lyup
  */
 
@@ -23,19 +23,18 @@ public class Test {
 
         //task2
         double weight = 50;
-        System.out.println("\n" + Dinosaur.convertWeight(weight));
+        System.out.println("\n" + weight + "kg = "+ Dinosaur.convertWeightToMilligramms(weight) + "mg = "
+        + Dinosaur.convertWeightToGrams(weight) + "g = " + Dinosaur.convertWeightToTones(weight) + " tones");
 
         //task3
         double R1 = 10;
         double R2 = 5;
-        System.out.println("\nSquare of the ring = " + Ring.findSquare(R1, R2));
+        System.out.println("\nSquare of the ring = " + Ring.findSquareOfRing(R1, R2));
 
         //task4
         int number = 1234;
-        System.out.println("\n" + number + " makes increase sequence -> " +
-                FourDigitNumber.checkIncSequnce(number));
-        System.out.println(number + " makes decrease sequence -> " +
-                FourDigitNumber.checkDecSequnce(number));
+        System.out.println("\n" + number + " makes increase sequence -> " + FourDigitNumber.checkIncSequnce(number));
+        System.out.println(number + " makes decrease sequence -> " + FourDigitNumber.checkDecSequnce(number));
 
         //task5
         number = 123456;
