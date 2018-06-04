@@ -15,11 +15,11 @@ public class Ring {
     To find the square of ring we need to calculate squares of circles with
     outer radius and inner radius. Big square - Small square = answer.
      */
-    public static double findSquareOfRing(double R1, double R2) {
-        return findSquareOfCircle(R1) - findSquareOfCircle(R2);
+    public static double findSquareOfRing(double r1, double r2) {
+        return findSquareOfCircle(r1) - findSquareOfCircle(r2);
     }
 
-    private static double findSquareOfCircle(double R1){
-        return Math.PI*R1*R1;
+    private static double findSquareOfCircle(double r1){
+        return Math.PI*r1*r1;
     }
 }
