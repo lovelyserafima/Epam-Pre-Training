@@ -10,7 +10,7 @@ package task_02;
 
 public class SevenDigitNumber {
     private static final int MAKE_MILLIONS = 1000000;
-    private static final int MAKE_HUNDRED_THOUSANDs = 100000;
+    private static final int MAKE_HUNDRED_THOUSANDS = 100000;
     private static final int MAKE_TEN_THOUSANDS = 10000;
     private static final int MAKE_THOUSANDS = 1000;
     private static final int MAKE_HUNDREDS = 100;
@@ -31,7 +31,7 @@ public class SevenDigitNumber {
         number /= GET_LAST_DIGIT;
         int g = number;
 
-        return a*MAKE_MILLIONS + b*MAKE_HUNDRED_THOUSANDs + c*MAKE_TEN_THOUSANDS + d*MAKE_THOUSANDS
+        return a*MAKE_MILLIONS + b*MAKE_HUNDRED_THOUSANDS + c*MAKE_TEN_THOUSANDS + d*MAKE_THOUSANDS
                 + e*MAKE_HUNDREDS + f*GET_LAST_DIGIT + g;
     }
 }
