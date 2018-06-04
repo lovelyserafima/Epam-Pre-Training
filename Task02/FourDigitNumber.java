@@ -2,7 +2,7 @@ package task_02;
 
 /**
  * FourDigitNumber is the class which solves following task:
- *Check whether the digits of the number make increase(decrease) sequence.
+ * Check whether the digits of the number make increase(decrease) sequence.
  *
  * 4 June 2018
  * @author Arthur Lyup
