@@ -3,8 +3,8 @@ package task_03;
 /**
  * Task03 is the class with the method main(String[]args)
  *
- * 29 May 2018
- * @author lovelyserafima
+ * 4 June 2018
+ * @author Arthur Lyup
  */
 public class Task_03 {
     public static void main(String[] args) throws Exception {
@@ -18,12 +18,11 @@ public class Task_03 {
         double x3 = 0.0;
         double y3 = 0.0;
 
-        System.out.println("(" + x1 + "," + y1 + ")," + "(" + x2 + "," + y2 + ")," + "(" + x3 + "," + y3 + ")");
-        System.out.println(Triangle.makeTriangle(x1, y1, x2, y2, x3, y3));
-        x1 = 0.0;
-        y1 = 0.0;
-        System.out.println("(" + x1 + "," + y1 + ")," + "(" + x2 + "," + y2 + ")," + "(" + x3 + "," + y3 + ")");
-        System.out.println(Triangle.makeTriangle(x1, y1, x2, y2, x3, y3));
+        System.out.println("Coordinates: (" + x1 + "," + y1 + ")," + "(" + x2 + "," + y2 + ")," + "(" + x3 + "," + y3
+                + ")");
+        System.out.println("Can they make a triangle? -> " + Triangle.checkTriangle(x1, y1, x2, y2, x3, y3));
+        System.out.println("Can they make a rectangular triangle? -> "
+                + Triangle.checkRectangularTriangle(x1, y1, x2, y2, x3, y3));
 
         //task2
         double age = 250;
