@@ -1,13 +1,13 @@
 package task_05;
 
-import java.util.Random;
-
 /**
  * ArrayInitializer is the class which initialize array by randoming numbers.
  *
  * 5 June 2018
  * @author Arthur Lyup
  */
+
+import java.util.Random;
 
 public class ArrayInitializer {
     //initialize array by randoming
