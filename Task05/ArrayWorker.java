@@ -18,7 +18,7 @@ public class ArrayWorker {
     private static final int FIRST_INDEX_OF_ARRAY = 1;//for array[1]
     private static final double PRIMARY_VALUE = 1.0;//for 1.0/array,length
     private static final int IF_NOT_FOUND = -1;//error constant
-    private static final int MIDDLE = 2;
+    private static final int GET_MIDDLE = 2;//for array.length/2
 
     //find max element in array
     public static double findMaxElement(double[] array) throws Exception {
@@ -128,7 +128,7 @@ public class ArrayWorker {
 
     public static void reverseArray(double[] array) throws Exception {
         checkArray(array);//check correct input
-        for (int i = ZERO_INDEX_OF_ARRAY; i < array.length/MIDDLE; i++){
+        for (int i = ZERO_INDEX_OF_ARRAY; i < array.length/GET_MIDDLE; i++){
             double tmp = array[i];
             array[i] = array[array.length - i - FIRST_INDEX_OF_ARRAY];
             array[array.length - i - FIRST_INDEX_OF_ARRAY] = tmp;
