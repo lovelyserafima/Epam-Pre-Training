@@ -85,7 +85,7 @@ public class NaturalNumber {
         }
         String dividers = "";//our simple dividers
         if (checkSimplicity(number) == "false") {//if number isn't simple
-            for (int i = EXCEPTION_OF_SIMPLICITY; i <= number / 2; i++) {
+            for (int i = EXCEPTION_OF_SIMPLICITY; i <= number / GET_MIDDLE; i++) {
                 if (number % i == 0) {
                     if (checkSimplicity(i) == "true") {
                         dividers += i + " ";
