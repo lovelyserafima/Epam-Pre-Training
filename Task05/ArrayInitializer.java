@@ -12,8 +12,9 @@ import java.util.Random;
 public class ArrayInitializer {
     //initialize array by randoming
     public static void initializeArray(double[] array, double leftBorder, double rightBorder){
+        Random random = new Random();
         for (int i = 0; i < array.length; i++){
-            array[i] = new Random().nextDouble()*(rightBorder - leftBorder) + leftBorder;
+            array[i] = random.nextDouble()*(rightBorder - leftBorder) + leftBorder;
         }
     }
 
