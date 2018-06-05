@@ -12,7 +12,7 @@ public class Task05 {
         int n = 10;//n elements in array
         double[] array = new double[n];
         //our borders of randoming
-        double leftBorder = 0.0;
+        double leftBorder = -10.0;
         double rightBorder = 10.0;
         ArrayInitializer.initializeArray(array, leftBorder, rightBorder);
         System.out.println("Source array:\n" + java.util.Arrays.toString(array));

@@ -17,7 +17,7 @@ public class ArrayWorker {
     private static final int ZERO_INDEX_OF_ARRAY = 0;//for array[0]
     private static final int FIRST_INDEX_OF_ARRAY = 1;//for array[1]
     private static final double PRIMARY_VALUE = 1.0;//for 1.0/array,length
-    private static final int IF_NOT_FOUND = -1;//error constant
+    private static final int ERROR_CASE = -1;//error constant
     private static final int GET_MIDDLE = 2;//for array.length/2
 
     //find max element in array
@@ -57,21 +57,25 @@ public class ArrayWorker {
     //find average geometric of elements of array
     public static double findAverageGeometric(double[] array) throws Exception {
         checkArray(array);//check correct input
-        checkPositiveElementsOfArray(array);//elements must be > 0
-        double composition = PRIMARY_VALUE;//= 1 (default for start value)
-        for (double element : array){//multiplication
-            composition *= element;
+        if (checkPositiveElementsOfArray(array)) {//elements must be > 0
+            double composition = PRIMARY_VALUE;//= 1 (default for start value)
+            for (double element : array) {//multiplication
+                composition *= element;
+            }
+            return Math.pow(composition, PRIMARY_VALUE / array.length);
+        } else {
+            return ERROR_CASE;
         }
-        return Math.pow(composition, PRIMARY_VALUE / array.length);
     }
 
     //elements for average geometric must be > 0
-    private static void checkPositiveElementsOfArray(double[] array) throws Exception {
+    private static boolean checkPositiveElementsOfArray(double[] array) {
         for (double element : array){
             if (element <= 0.0){
-                throw new Exception("Elements of array must be > 0");
+                return false;
             }
         }
+        return true;
     }
 
     //check whether elements of array are sorted in ascending order
@@ -103,7 +107,7 @@ public class ArrayWorker {
     //find local minimum of array
     public static int findIndexOfLocalMin(double[] array) throws Exception {
         checkArray(array);//check correct input
-        int index = IF_NOT_FOUND;//if we won't find, we return -1
+        int index = ERROR_CASE;//if we won't find, we return -1
         for (int i = FIRST_INDEX_OF_ARRAY; i < array.length - FIRST_INDEX_OF_ARRAY; i++){//searc local min
             if (array[i] < array[i - FIRST_INDEX_OF_ARRAY] && array[i] < array[i + FIRST_INDEX_OF_ARRAY]){
                 index = i;
@@ -116,7 +120,7 @@ public class ArrayWorker {
     //find local maximim of array
     public static int findIndexOfLocalMax(double[] array) throws Exception {
         checkArray(array);//check correct input
-        int index = IF_NOT_FOUND;//if we won't find, we return -1
+        int index = ERROR_CASE;//if we won't find, we return -1
         for (int i = FIRST_INDEX_OF_ARRAY; i < array.length - FIRST_INDEX_OF_ARRAY; i++){//searc local max
             if (array[i] > array[i - FIRST_INDEX_OF_ARRAY] && array[i] > array[i + FIRST_INDEX_OF_ARRAY]){
                 index = i;
@@ -126,6 +130,7 @@ public class ArrayWorker {
         return index;
     }
 
+    //reverses array
     public static void reverseArray(double[] array) throws Exception {
         checkArray(array);//check correct input
         for (int i = ZERO_INDEX_OF_ARRAY; i < array.length/GET_MIDDLE; i++){
