@@ -4,7 +4,7 @@ package task_03;
  * Calendar is the class which solves the following task:
  * Returns the next day of entered date.
  *
- * 30 May 2018
+ * 7 June 2018
  * @author lovelyserafima
  */
 
@@ -30,8 +30,10 @@ public class Calendar {
     private static final int LAST_DAY_31_MONTH = 31;
     private static final int LAST_DAY_30_MONTH = 30;
 
-    //the empty constructor
-    public Calendar(){}
+    //checking leap year
+    private static final int CHECK1 = 4;
+    private static final int CHECK2 = 100;
+    private static final int CHECK3 = 400;
 
     //the main method
     public static String identifyNextDay(int day, int month, int year) throws Exception {
@@ -83,8 +85,7 @@ public class Calendar {
         return "Next day is " + FIRST_DAY + "." + JANUARY + "." + ++year;
     }
 
-    //
-
+    //check input
     private static void checkDate(int day, int month, int year) throws Exception {
         if (day < FIRST_DAY || day > LAST_DAY_31_MONTH){
             throw new Exception("Wrong input! Day belongs to [1, 31]");
@@ -125,12 +126,8 @@ public class Calendar {
         }
     }
 
-    //check correct input
+    //check whether the year is leap
     private static boolean checkLeapYear(int year){
-        int four = 4;
-        int oneHundred = 100;
-        int fourHundred = 400;
-        return (year % four == 0 && year % oneHundred != 0 && year % fourHundred != 0) || (year % four == 0
-                && year % oneHundred == 0 && year % fourHundred == 0);
+        return year % CHECK1 == 0 && year % CHECK2 != 0 && year % CHECK3 != 0 || year % CHECK2 == 0 && year % CHECK3 == 0;
     }
 }
