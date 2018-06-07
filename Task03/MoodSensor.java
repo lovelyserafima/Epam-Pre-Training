@@ -4,8 +4,8 @@ package task_03;
  * MoodSensor is the class which solves the following task:
  * Generate random number which corresponds to any smile.
  *
- * 30 May 2018
- * @author lovelyserafima
+ * 7 June 2018
+ * @author Arthur Lyup
  */
 
 import java.util.Random;
@@ -16,18 +16,19 @@ public class MoodSensor {
     private static final String SOSO_SMILE = ":|";
     private static final String EXCELLENT_SMILE = ":)";
 
-    //the empty constructor
-    public MoodSensor(){}
+    //borders of randoming
+    private static final int leftBorder = 0;
+    private static final int rightBorder = 0;
+    private static final int VALUE_FOR_FORMULA = 1;
+    private static final int BAD_BORDER = 4;
+    private static final int SOSO_BORDER = 8;
 
     //the main method
     public static String getMood(){
-        Random random = new Random();
-        final int leftBorder = 0;
-        final int rightBorder = 10;
-        int number = random.nextInt(rightBorder - leftBorder + 1) + leftBorder;
-        if (number < 4){
+        int number = new Random().nextInt(rightBorder - leftBorder + VALUE_FOR_FORMULA) + leftBorder;
+        if (number < BAD_BORDER){
             return BAD_SMILE;
-        } else if (number < 8){
+        } else if (number < SOSO_BORDER){
             return SOSO_SMILE;
         } else return EXCELLENT_SMILE;
     }

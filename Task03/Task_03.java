@@ -3,7 +3,7 @@ package task_03;
 /**
  * Task03 is the class with the method main(String[]args)
  *
- * 4 June 2018
+ * 7 June 2018
  * @author Arthur Lyup
  */
 public class Task_03 {
@@ -30,15 +30,12 @@ public class Task_03 {
         + " and " + Dragon.countEyes(age) + " eyes");
 
         //task3
-        char letter = 'a';
+        char letter = 'A';
         //different methods
         System.out.println("\nIs letter \"" + letter + "\" a vowel? -> " + Letter.checkVowelBy1stMethod(letter));
         System.out.println("Is letter \"" + letter + "\" a vowel? -> " + Letter.checkVowelBy2ndMethod(letter));
         System.out.println("Is letter \"" + letter + "\" a vowel? -> " + Letter.checkVowelBy3rdMethod(letter));
         System.out.println("Is letter \"" + letter + "\" a vowel? -> " + Letter.checkVowelBy4thMethod(letter));
-        System.out.println("Is letter \"" + letter + "\" a vowel? -> " + Letter.checkVowelBy5thMethod(letter));
-        System.out.println("Is letter \"" + letter + "\" a vowel? -> " + Letter.checkVowelBy6thMethod(letter));
-        System.out.println("Is letter \"" + letter + "\" a vowel? -> " + Letter.checkVowelBy7thMethod(letter));
 
         //task4
         System.out.println("\n Current mood is " + MoodSensor.getMood());
