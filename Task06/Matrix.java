@@ -257,7 +257,7 @@ public class Matrix {
 
     //check input
     private static void checkSizesOfArray(double[][] matr) throws Exception {
-        if (matr.length == 0 || matr[ZERO_LINE].length == 0){
+        if (matr.length == ZERO_LINE || matr[ZERO_LINE].length == ZERO_COLUMN){
             throw new Exception("Worng input! Irregular sizes of array");
         }
     }
