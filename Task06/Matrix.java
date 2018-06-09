@@ -99,7 +99,7 @@ public class Matrix {
                         if(checkRightLess(matr,i,j) && checkDownLess(matr, i, j)){
                             return answer;
                         }
-                    } else if (j > ZERO_LINE && j < matr[i].length - FIRST_INDEX_OF_ARRAY){//if matr[0][1...m-2]
+                    } else if (j < matr[i].length - FIRST_INDEX_OF_ARRAY){//if matr[0][1...m-2]
                         if (checkRightLess(matr, i, j) && checkDownLess(matr, i, j) && checkLeftLess(matr, i, j)){
                             return answer;
                         }
@@ -111,7 +111,7 @@ public class Matrix {
                         if (checkUpLess(matr, i, j) && checkRightLess(matr, i, j) && checkDownLess(matr, i, j)){
                             return answer;
                         }
-                    } else if (j > ZERO_COLUMN && j < matr[i].length - FIRST_INDEX_OF_ARRAY){//if matr[1...n-2][1...m-2]
+                    } else if (j < matr[i].length - FIRST_INDEX_OF_ARRAY){//if matr[1...n-2][1...m-2]
                         if (checkUpLess(matr, i, j) && checkRightLess(matr, i, j) && checkDownLess(matr, i, j)
                                 && checkLeftLess(matr, i, j)){
                             return answer;
@@ -124,7 +124,7 @@ public class Matrix {
                         if (checkUpLess(matr, i, j) && checkRightLess(matr, i, j)){
                             return answer;
                         }
-                    } else if (j > ZERO_COLUMN && j < matr[i].length - FIRST_INDEX_OF_ARRAY){//if matr[n-1][1...m-2]
+                    } else if (j < matr[i].length - FIRST_INDEX_OF_ARRAY){//if matr[n-1][1...m-2]
                         if (checkUpLess(matr, i, j) && checkRightLess(matr, i, j)&& checkLeftLess(matr, i, j)){
                             return answer;
                         }
@@ -148,7 +148,7 @@ public class Matrix {
                         if(checkRightMore(matr,i,j) && checkDownMore(matr, i, j)){
                             return answer;
                         }
-                    } else if (j > ZERO_LINE && j < matr[i].length - FIRST_INDEX_OF_ARRAY){//if matr[0][1...m-2]
+                    } else if (j < matr[i].length - FIRST_INDEX_OF_ARRAY){//if matr[0][1...m-2]
                         if (checkRightMore(matr, i, j) && checkDownMore(matr, i, j) && checkLeftMore(matr, i, j)){
                             return answer;
                         }
@@ -160,7 +160,7 @@ public class Matrix {
                         if (checkUpMore(matr, i, j) && checkRightMore(matr, i, j) && checkDownMore(matr, i, j)){
                             return answer;
                         }
-                    } else if (j > ZERO_COLUMN && j < matr[i].length - FIRST_INDEX_OF_ARRAY){//if matr[1...n-2][1...m-2]
+                    } else if (j < matr[i].length - FIRST_INDEX_OF_ARRAY){//if matr[1...n-2][1...m-2]
                         if (checkUpMore(matr, i, j) && checkRightMore(matr, i, j) && checkDownMore(matr, i, j)
                                 && checkLeftMore(matr, i, j)){
                             return answer;
@@ -173,7 +173,7 @@ public class Matrix {
                         if (checkUpMore(matr, i, j) && checkRightMore(matr, i, j)){
                             return answer;
                         }
-                    } else if (j > ZERO_COLUMN && j < matr[i].length - FIRST_INDEX_OF_ARRAY){//if matr[n-1][1...m-2]
+                    } else if (j < matr[i].length - FIRST_INDEX_OF_ARRAY){//if matr[n-1][1...m-2]
                         if (checkUpMore(matr, i, j) && checkRightMore(matr, i, j) && checkLeftMore(matr, i, j)){
                             return answer;
                         }
