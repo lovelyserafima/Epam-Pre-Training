@@ -92,94 +92,117 @@ public class Matrix {
     public static String findPositionOfLocalMin(double[][] matr) throws Exception {
         checkSizesOfArray(matr);//check input
         for (int i = ZERO_LINE; i < matr.length; i++){
-            for (int j = ZERO_COLUMN; j < matr[i].length; j++){
-                String answer = "i = " + i + ", j = " + j;//answer with indexex
-                if (i == ZERO_LINE){//if we check zero line
-                    if (j == ZERO_COLUMN){//if we check matr[0][0]
-                        if(checkRightLess(matr,i,j) && checkDownLess(matr, i, j)){
-                            return answer;
-                        }
-                    } else if (j < matr[i].length - FIRST_INDEX_OF_ARRAY){//if matr[0][1...m-2]
-                        if (checkRightLess(matr, i, j) && checkDownLess(matr, i, j) && checkLeftLess(matr, i, j)){
-                            return answer;
-                        }
-                    } else if (checkLeftLess(matr, i, j) && checkDownLess(matr, i, j)){//if matr[0][m-1]
-                        return answer;
+            int j = ZERO_COLUMN;//our moving on the line
+            //if matr[0][0]
+            if (i == ZERO_LINE){
+                if(checkRightLess(matr,i,j) && checkDownLess(matr, i, j)){
+                    return getAnswer(i, j);
+                }
+                //if matr[0][1...m-2]
+                for (j = FIRST_INDEX_OF_ARRAY; j < matr[i].length - FIRST_INDEX_OF_ARRAY; j++) {
+                    if (checkRightLess(matr, i, j) && checkDownLess(matr, i, j) && checkLeftLess(matr, i, j)) {
+                        return getAnswer(i, j);
                     }
-                } else if (i < matr.length - FIRST_INDEX_OF_ARRAY){//if matr[1...n-2]
-                    if (j == ZERO_COLUMN){//if matr[1...n-2][0]
-                        if (checkUpLess(matr, i, j) && checkRightLess(matr, i, j) && checkDownLess(matr, i, j)){
-                            return answer;
-                        }
-                    } else if (j < matr[i].length - FIRST_INDEX_OF_ARRAY){//if matr[1...n-2][1...m-2]
-                        if (checkUpLess(matr, i, j) && checkRightLess(matr, i, j) && checkDownLess(matr, i, j)
-                                && checkLeftLess(matr, i, j)){
-                            return answer;
-                        }
-                    } else if (checkUpLess(matr, i, j) && checkLeftLess(matr, i, j) && checkDownLess(matr, i, j)){
-                        return answer;//if matr[1...n-2][m-1]
+                }
+                //if matr[0][m-1]
+                if (checkLeftLess(matr, i, j) && checkDownLess(matr, i, j)){
+                    return getAnswer(i, j);
+                }
+                //if matr[1...n-2]
+            } else if (i < matr.length - FIRST_INDEX_OF_ARRAY){
+                //if matr[1...n-2][0]
+                if (checkUpLess(matr, i, j) && checkRightLess(matr, i, j) && checkDownLess(matr, i, j)){
+                    return getAnswer(i, j);
+                }
+                //if matr[1...n-2][1...m-2]
+                for (j = FIRST_INDEX_OF_ARRAY; j < matr[i].length - FIRST_INDEX_OF_ARRAY; j++) {
+                    if (checkUpLess(matr, i, j) && checkRightLess(matr, i, j) && checkDownLess(matr, i, j)
+                            && checkLeftLess(matr, i, j)) {
+                        return getAnswer(i, j);
                     }
-                } else {//if matr[n-1][0]
-                    if (j == ZERO_COLUMN){
-                        if (checkUpLess(matr, i, j) && checkRightLess(matr, i, j)){
-                            return answer;
-                        }
-                    } else if (j < matr[i].length - FIRST_INDEX_OF_ARRAY){//if matr[n-1][1...m-2]
-                        if (checkUpLess(matr, i, j) && checkRightLess(matr, i, j)&& checkLeftLess(matr, i, j)){
-                            return answer;
-                        }
-                    } else if (checkUpLess(matr, i, j) && checkLeftLess(matr, i, j)) {//if matr[n-1][m-1]
-                        return answer;
+                }
+                //if matr[1...n-2][m-1]
+                if (checkUpLess(matr, i, j) && checkLeftLess(matr, i, j) && checkDownLess(matr, i, j)){
+                    return getAnswer(i, j);
+                }
+                //if matr[n-1]
+            } else {
+                //if matr[n-1][0]
+                if (checkUpLess(matr, i, j) && checkRightLess(matr, i, j)){
+                    return getAnswer(i, j);
+                }
+                //if matr[n-1][1...m-2]
+                for (j = FIRST_INDEX_OF_ARRAY; j < matr[i].length - FIRST_INDEX_OF_ARRAY; j++) {
+                    if (checkUpLess(matr, i, j) && checkRightLess(matr, i, j) && checkLeftLess(matr, i, j)) {
+                        return getAnswer(i, j);
                     }
+                }
+                //if matr[n-1][m-1]
+                if (checkUpLess(matr, i, j) && checkLeftLess(matr, i, j)) {
+                    return getAnswer(i, j);
                 }
             }
         }
         return "" + ERROR_CASE;//if we won't find
     }
 
+    //returns the answer for local min and max
+    private static String getAnswer(int i, int j) {
+        return "i = " + i + ", j = " + j;
+    }
+
     //find local max of matrix
     public static String findPositionOfLocalMax(double[][] matr) throws Exception {
         checkSizesOfArray(matr);//check input
         for (int i = ZERO_LINE; i < matr.length; i++){
-            for (int j = ZERO_COLUMN; j < matr[i].length; j++){
-                String answer = "i = " + i + ", j = " + j;//answer with indexex
-                if (i == ZERO_LINE){//if we check zero line
-                    if (j == ZERO_COLUMN){//if we check matr[0][0]
-                        if(checkRightMore(matr,i,j) && checkDownMore(matr, i, j)){
-                            return answer;
-                        }
-                    } else if (j < matr[i].length - FIRST_INDEX_OF_ARRAY){//if matr[0][1...m-2]
-                        if (checkRightMore(matr, i, j) && checkDownMore(matr, i, j) && checkLeftMore(matr, i, j)){
-                            return answer;
-                        }
-                    } else if (checkLeftMore(matr, i, j) && checkDownMore(matr, i, j)){//if matr[0][m-1]
-                        return answer;
+            int j = ZERO_COLUMN;//our moving on the line
+            //if matr[0][0]
+            if (i == ZERO_LINE){
+                if(checkRightMore(matr,i,j) && checkDownMore(matr, i, j)){
+                    return getAnswer(i, j);
+                }
+                //if matr[0][1...m-2]
+                for (j = FIRST_INDEX_OF_ARRAY; j < matr[i].length - FIRST_INDEX_OF_ARRAY; j++) {
+                    if (checkRightMore(matr, i, j) && checkDownMore(matr, i, j) && checkLeftMore(matr, i, j)) {
+                        return getAnswer(i, j);
                     }
-                } else if (i < matr.length - FIRST_INDEX_OF_ARRAY){//if matr[1...n-2]
-                    if (j == ZERO_COLUMN){//if matr[1...n-2][0]
-                        if (checkUpMore(matr, i, j) && checkRightMore(matr, i, j) && checkDownMore(matr, i, j)){
-                            return answer;
-                        }
-                    } else if (j < matr[i].length - FIRST_INDEX_OF_ARRAY){//if matr[1...n-2][1...m-2]
-                        if (checkUpMore(matr, i, j) && checkRightMore(matr, i, j) && checkDownMore(matr, i, j)
-                                && checkLeftMore(matr, i, j)){
-                            return answer;
-                        }
-                    } else if (checkUpMore(matr, i, j) && checkLeftMore(matr, i, j) && checkDownMore(matr, i, j)){
-                        return answer;//if matr[1...n-2][m-1]
+                }
+                //if matr[0][m-1]
+                if (checkLeftMore(matr, i, j) && checkDownMore(matr, i, j)){
+                    return getAnswer(i, j);
+                }
+                //if matr[1...n-2]
+            } else if (i < matr.length - FIRST_INDEX_OF_ARRAY){
+                //if matr[1...n-2][0]
+                if (checkUpMore(matr, i, j) && checkRightMore(matr, i, j) && checkDownMore(matr, i, j)){
+                    return getAnswer(i, j);
+                }
+                //if matr[1...n-2][1...m-2]
+                for (j = FIRST_INDEX_OF_ARRAY; j < matr[i].length - FIRST_INDEX_OF_ARRAY; j++) {
+                    if (checkUpMore(matr, i, j) && checkRightMore(matr, i, j) && checkDownMore(matr, i, j)
+                            && checkLeftMore(matr, i, j)) {
+                        return getAnswer(i, j);
                     }
-                } else {//if matr[n-1][0]
-                    if (j == ZERO_COLUMN){
-                        if (checkUpMore(matr, i, j) && checkRightMore(matr, i, j)){
-                            return answer;
-                        }
-                    } else if (j < matr[i].length - FIRST_INDEX_OF_ARRAY){//if matr[n-1][1...m-2]
-                        if (checkUpMore(matr, i, j) && checkRightMore(matr, i, j) && checkLeftMore(matr, i, j)){
-                            return answer;
-                        }
-                    } else if (checkUpMore(matr, i, j) && checkLeftMore(matr, i, j)) {//if matr[n-1][m-1]
-                        return answer;
+                }
+                //if matr[1...n-2][m-1]
+                if (checkUpMore(matr, i, j) && checkLeftMore(matr, i, j) && checkDownMore(matr, i, j)){
+                    return getAnswer(i, j);
+                }
+                //if matr[n-1]
+            } else {
+                //if matr[n-1][0]
+                if (checkUpMore(matr, i, j) && checkRightMore(matr, i, j)){
+                    return getAnswer(i, j);
+                }
+                //if matr[n-1][1...m-2]
+                for (j = FIRST_INDEX_OF_ARRAY; j < matr[i].length - FIRST_INDEX_OF_ARRAY; j++) {
+                    if (checkUpMore(matr, i, j) && checkRightMore(matr, i, j) && checkLeftMore(matr, i, j)) {
+                        return getAnswer(i, j);
                     }
+                }
+                //if matr[n-1][m-1]
+                if (checkUpMore(matr, i, j) && checkLeftMore(matr, i, j)) {
+                    return getAnswer(i, j);
                 }
             }
         }
