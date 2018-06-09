@@ -23,7 +23,7 @@ public class MatrInitializer {
     }
 
     public static void checkSizeOfMatrix(int n, int m) throws Exception {
-        if (n <= 0 || m <= 0){
+        if (n <= ZERO_LINE || m <= ZERO_COLUMN){
             throw new Exception("The attempt to initialize array with wrong sizes");
         }
     }
