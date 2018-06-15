@@ -8,7 +8,6 @@ package by.epam.preTraining.ArthurLyup.tasks.task07.container;
  */
 
 import by.epam.preTraining.ArthurLyup.tasks.task07.entities.Plane;
-
 import java.util.Arrays;
 import java.util.Objects;
 

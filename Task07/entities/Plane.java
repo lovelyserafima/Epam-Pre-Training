@@ -1,7 +1,5 @@
 package by.epam.preTraining.ArthurLyup.tasks.task07.entities;
 
-import java.util.Objects;
-
 /**
  * Plane is the entity class which has information about plane:
  * 1)name
@@ -15,6 +13,8 @@ import java.util.Objects;
  * @author Arthur Lyup
  */
 
+import java.util.Objects;
+
 public class Plane {
     //fields of plane
     private String name;
@@ -24,23 +24,8 @@ public class Plane {
     private double weight;
     private double fuelConsumption;
 
-    //constant values
-    private static String DEFAULT_NAME = "Undefined";
-    private static int DEFAULT_PASSENGER_CAPACITY = 500;
-    private static double DEFAULT_CARRYING_CAPACITY = 1000.0;
-    private static String DEFAULT_COUNTRY_OF_PRODUCTION = "Undefined";
-    private static double DEFAULT_WEIGHT = 10000.0;
-    private static double DEFAULT_FUEL_CONSUMPTION = 500.0;
-
     //constructor with no args
-    public Plane(){
-        name = DEFAULT_NAME;
-        passengerCapacity = DEFAULT_PASSENGER_CAPACITY;
-        carryingCapacity = DEFAULT_CARRYING_CAPACITY;
-        countryOfProduction = DEFAULT_COUNTRY_OF_PRODUCTION;
-        weight = DEFAULT_WEIGHT;
-        fuelConsumption = DEFAULT_FUEL_CONSUMPTION;
-    }
+    public Plane(){}
 
     //constructor with args
     public Plane(String name, int passengerCapacity, double carryingCapacity, String countryOfProduction, double weight,

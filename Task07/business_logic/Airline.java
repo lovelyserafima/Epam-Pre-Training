@@ -12,7 +12,6 @@ package by.epam.preTraining.ArthurLyup.tasks.task07.business_logic;
 
 import by.epam.preTraining.ArthurLyup.tasks.task07.container.PlaneListWithFixedMemory;
 import by.epam.preTraining.ArthurLyup.tasks.task07.entities.Plane;
-
 import java.util.Objects;
 
 public class Airline {
@@ -22,7 +21,7 @@ public class Airline {
     //constant values
     private static int DEFAULT_MEMORY = 10;
     private static int GET_FIRST_ELEMENT = 1;
-    //constructor with no args\
+    //constructor with no args
     public Airline(){
         planes = new PlaneListWithFixedMemory(DEFAULT_MEMORY);
     }
@@ -79,6 +78,13 @@ public class Airline {
             }
         }
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Airline{" +
+                "planes=" + planes +
+                '}';
     }
 
     @Override

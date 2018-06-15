@@ -1,15 +1,15 @@
 package by.epam.preTraining.ArthurLyup.tasks.task07.testing;
 
-import by.epam.preTraining.ArthurLyup.tasks.task07.business_logic.Airline;
-import by.epam.preTraining.ArthurLyup.tasks.task07.container.PlaneListWithFixedMemory;
-import by.epam.preTraining.ArthurLyup.tasks.task07.entities.Plane;
-
 /**
  * Task07 is the class with the main method (String[] args)
  *
  * 15 June 2018
  * @author Arthur Lyup
  */
+
+import by.epam.preTraining.ArthurLyup.tasks.task07.business_logic.Airline;
+import by.epam.preTraining.ArthurLyup.tasks.task07.container.PlaneListWithFixedMemory;
+import by.epam.preTraining.ArthurLyup.tasks.task07.entities.Plane;
 
 public class Task07 {
     public static void main (String[] args) throws Exception {
@@ -96,6 +96,7 @@ public class Task07 {
         System.out.println(b + "" + d);
         System.out.println(planes.findPlanes(b, d));
 
+        //business-logic
         Airline airline = new Airline(planes);
         System.out.println("Total passenger capacity = " + airline.countTotalPassengerCapacity());
         System.out.println("Plane with max passenger capacity: " + airline.getPlaneWithMaxPassengerCapacity());
