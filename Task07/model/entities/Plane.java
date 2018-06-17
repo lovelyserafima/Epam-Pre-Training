@@ -3,7 +3,7 @@ package by.epam.preTraining.ArthurLyup.tasks.task07.model.entities;
 /**
  * Plane is the class-entity which has information about plane.
  *
- * 16 June 2018
+ * 17 June 2018
  * @author Arthur Lyup
  */
 

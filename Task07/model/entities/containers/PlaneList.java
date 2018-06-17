@@ -3,7 +3,7 @@ package by.epam.preTraining.ArthurLyup.tasks.task07.model.entities.containers;
 /**
  * PlaneListWithFixedMemory is the class-container of planes builded on arrays with fixed memory.
  *
- * 16 June 2018
+ * 17 June 2018
  * @author Arthur Lyup
  */
 
@@ -61,11 +61,11 @@ public class PlaneList {
         this.numberOfPlanes = numberOfPlanes;
     }
 
-    /////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////
 
     //add planes
     public void addPlanes(Plane... planes) throws Exception {
-        checkMemory(this, planes);
+        checkMemory(this, planes);//enough memory
         for (int i = 0; i < planes.length; i++){
             this.planes[numberOfPlanes + i] = planes[i];
         }
@@ -87,25 +87,28 @@ public class PlaneList {
     //get plane by index
     public Plane getPlaneByIndex(int index) throws Exception {
         checkEmpty(this);
-        checkContainerIndexOutOfBounds(this, index);
+        checkContainerIndexOutOfBounds(this, index);//legal indexes
         return planes[index];
     }
 
+    //delete plane by index
     public void deletePlaneByIndex(int index) throws Exception {
         checkEmpty(this);
-        checkContainerIndexOutOfBounds(this, index);
+        checkContainerIndexOutOfBounds(this, index);//legal indexes
         int length = numberOfPlanes - GET_NEXT_OR_PREVIOUS_PLANE;
         for (int i = index; i < length; i++){
             planes[i] = planes[i + GET_NEXT_OR_PREVIOUS_PLANE];
         }
     }
 
+    //clears all planes
     public void clearAll() throws Exception {
         checkEmpty(this);
         planes = null;
         numberOfPlanes = 0;
     }
 
+    //find whether planes entered are in planelist
     public String findPlanes(Plane... planes) throws Exception {
         checkEmpty(this);
         String indexesResultsOfSearching = "";

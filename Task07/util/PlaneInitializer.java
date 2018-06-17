@@ -1,7 +1,7 @@
 package by.epam.preTraining.ArthurLyup.tasks.task07.util;
 
 /**
- * PlaneInitializer is the class which initializer objects of class Plane.
+ * PlaneInitializer is the class which initialize objects of class Plane.
  *
  * 17 June 2018
  * @author Arthur Lyup

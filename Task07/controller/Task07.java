@@ -25,7 +25,7 @@ public class Task07 {
 
         //testing container with fixed memory
 
-        int size = 5;
+        int size = 3;
         PlaneList planeList = new PlaneList(size);
         planeList.addPlanes(plane1, plane2, plane3);
         ConsolePrinter.printPlaneList(planeList);
@@ -36,8 +36,8 @@ public class Task07 {
         ConsolePrinter.printPlaneWithMinPassengerCapacity(planeList);
 
         //////////////////////////////////////////////////////////////
-
         //testing container with dynamic memory
+
         //initializations of planes
         Plane plane4 = PlaneInitializer.initPlane();
         Plane plane5 = PlaneInitializer.initPlane();
