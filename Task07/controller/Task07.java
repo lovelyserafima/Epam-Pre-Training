@@ -3,7 +3,7 @@ package by.epam.preTraining.ArthurLyup.tasks.task07.controller;
 /**
  * Task07 is the class-controller which tests class of business logic.
  *
- * 17 June 2018
+ * 18 June 2018
  * @author Arthur Lyup
  */
 
@@ -62,5 +62,32 @@ public class Task07 {
         ConsolePrinter.printTotalPassengerCapacityOfPlanes(planeListWithDynamicMemory);
         ConsolePrinter.printPlaneWithMaxPassengerCapacity(planeListWithDynamicMemory);
         ConsolePrinter.printPlaneWithMinPassengerCapacity(planeListWithDynamicMemory);
+
+        //testing special events
+
+        //test1
+        int badValue = -50;
+        plane1.setPassengerCapacity(badValue); //there will be an exception
+
+        //test2
+        planeList.addPlanes(plane4);//there will be an exception because size of planeList is 3
+
+        //test3
+        int badIndex = 3;
+        planeList.getPlaneByIndex(badIndex);//there will be an exception because planeList has only [0, 1, 2]
+
+        //test4
+        planeList.deletePlaneByIndex(badIndex);//there will be an exception because planeList has only [0, 1, 2]
+
+        //test5
+        PlaneList planeList1 = new PlaneList();
+        planeList1.clearAll();//there will be an exception because it is empty already
+
+        //test6
+        ConsolePrinter.printPlaneList(planeList1);//there will be an exception because it is empty
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //testing findPlanes
+        ConsolePrinter.printIndexesOfPlanesWhichWereFound(planeList, plane2, plane1, plane10);
     }
 }

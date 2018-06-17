@@ -3,7 +3,7 @@ package by.epam.preTraining.ArthurLyup.tasks.task07.view;
 /**
  * ConsolePrinter is the class which prints all results to console.
  *
- * 17 June 2018
+ * 18 June 2018
  * @author Arthur Lyup
  */
 
@@ -28,8 +28,16 @@ public class ConsolePrinter {
     }
 
     //print planeList
-    public static void printPlaneList(PlaneList planeList){
+    public static void printPlaneList(PlaneList planeList) throws Exception {
+        checkEmpty(planeList);
         System.out.println(planeList);
+    }
+
+    //check whether the container is empty
+    private static void checkEmpty(PlaneList planeList) throws Exception {
+        if (planeList.isEmpty()){
+            throw new Exception("Nothing to print!");
+        }
     }
 
     //print total passenger capacity
@@ -48,4 +56,9 @@ public class ConsolePrinter {
         System.out.println("Plane with min passenger capacity: "
                 + Airline.findPlaneWithMinPassengerCapacity(planeList));
     }
+
+    public static void printIndexesOfPlanesWhichWereFound(PlaneList planeList, Plane... planes) throws Exception {
+        System.out.println("\nIndexes of this planes are = " + planeList.findPlanes(planes));
+    }
+
 }

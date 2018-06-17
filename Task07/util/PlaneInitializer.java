@@ -23,7 +23,7 @@ public class PlaneInitializer {
     private static final int MAX_PASSENGER_CAPACITY = 1000;
     private static final double MAX_CARRYING_CAPACITY = 150.0;
 
-    public static Plane initPlane(){
+    public static Plane initPlane() throws Exception {
         Plane plane = new Plane();
         plane.setName(namesOfPlanes[getRandomInt(0, namesOfPlanes.length - CALCULATE_RANDOM)]);
         plane.setPassengerCapacity(getRandomInt(0, MAX_PASSENGER_CAPACITY));

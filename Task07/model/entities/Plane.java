@@ -52,7 +52,10 @@ public class Plane {
         return passengerCapacity;
     }
 
-    public void setPassengerCapacity(int passengerCapacity) {
+    public void setPassengerCapacity(int passengerCapacity) throws Exception {
+        if (passengerCapacity < 0){
+            throw new Exception("Passenger capacity must be >= 0");
+        }
         this.passengerCapacity = passengerCapacity;
     }
 
@@ -60,7 +63,10 @@ public class Plane {
         return carryingCapacity;
     }
 
-    public void setCarryingCapacity(double carryingCapacity) {
+    public void setCarryingCapacity(double carryingCapacity) throws Exception {
+        if (carryingCapacity <= 0){
+            throw new Exception("Carrying capacity must be >= 0");
+        }
         this.carryingCapacity = carryingCapacity;
     }
 
@@ -102,12 +108,28 @@ public class Plane {
 
     @Override
     public String toString() {
-        return "Plane{" +
+        /*return "Plane{" +
                 "name='" + name + '\'' +
                 ", passengerCapacity=" + passengerCapacity +
                 ", carryingCapacity=" + carryingCapacity +
                 ", countryOfProduction='" + countryOfProduction + '\'' +
                 ", inWorkingCondition=" + inWorkingCondition +
-                '}';
+                '}';*/
+        StringBuilder sb = new StringBuilder();
+        sb.append("Plane{");
+        sb.append("name='");
+        sb.append(name);
+        sb.append('\'');
+        sb.append(", passengerCapacity=");
+        sb.append(passengerCapacity);
+        sb.append(", carryingCapacity=");
+        sb.append(carryingCapacity);
+        sb.append(", countryOfProduction='");
+        sb.append(countryOfProduction);
+        sb.append('\'');
+        sb.append(", inWorkingCondition=");
+        sb.append(inWorkingCondition);
+        sb.append('}');
+        return String.valueOf(sb);
     }
 }

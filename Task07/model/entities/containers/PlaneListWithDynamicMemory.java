@@ -92,12 +92,23 @@ public class PlaneListWithDynamicMemory extends PlaneList {
 
     @Override
     public String toString() {
-        String result = "\nPlaneList:\n";
+        /*String result = "\nPlaneList:\n";
         for (int i = 0; i < numberOfPlanes - GET_NEXT_OR_PREVIOUS_PLANE; i++){
             result += planes[i] + ",\n";
         }
         result += planes[numberOfPlanes - GET_NEXT_OR_PREVIOUS_PLANE] + ",\nnumber of planes = " + numberOfPlanes + ","
         + " capacity = " + capacity;
-        return result;
+        return result;*/
+        StringBuilder sb = new StringBuilder();
+        sb.append("\nPlaneList:\n");
+        for (int i = 0; i < numberOfPlanes - GET_NEXT_OR_PREVIOUS_PLANE; i++){
+            sb.append(planes[i]);
+            sb.append(",\n");
+        }
+        sb.append(planes[numberOfPlanes - GET_NEXT_OR_PREVIOUS_PLANE]);
+        sb.append(",\nnumber of planes = ");
+        sb.append(numberOfPlanes);
+        sb.append(".");
+        return String.valueOf(sb);
     }
 }
