@@ -1,9 +1,9 @@
 package by.epam.preTraining.ArthurLyup.tasks.task07.model.entities.containers;
 
 /**
- * PlaneListWithFixedMemory is the class-container of planes builded on arrays with fixed memory.
+ * PlaneList is the class-container of planes builded on arrays with fixed memory.
  *
- * 17 June 2018
+ * 18 June 2018
  * @author Arthur Lyup
  */
 
@@ -57,7 +57,11 @@ public class PlaneList {
         return numberOfPlanes;
     }
 
-    public void setNumberOfPlanes(int numberOfPlanes) {
+    public void setNumberOfPlanes(int numberOfPlanes) throws Exception {
+
+        if (numberOfPlanes < 0){
+            throw new Exception("Number of planes can't be < 0!");
+        }
         this.numberOfPlanes = numberOfPlanes;
     }
 

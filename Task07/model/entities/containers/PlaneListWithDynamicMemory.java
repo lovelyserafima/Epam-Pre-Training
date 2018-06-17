@@ -2,9 +2,9 @@ package by.epam.preTraining.ArthurLyup.tasks.task07.model.entities.containers;
 
 /**
  * PlaneListWithDynamicMemory is the class-container of planes builded on arrays with dynamic memory and heir of
- * the class PlaneListWithFixedMemory.
+ * the class PlaneList.
  *
- * 17 June 2018
+ * 18 June 2018
  * @author Arthur Lyup
  */
 
@@ -58,7 +58,10 @@ public class PlaneListWithDynamicMemory extends PlaneList {
         return capacity;
     }
 
-    public void setCapacity(int capacity) {
+    public void setCapacity(int capacity) throws Exception {
+        if (capacity < 0){
+            throw new Exception("Capacity can't be < 0!");
+        }
         this.capacity = capacity;
     }
 

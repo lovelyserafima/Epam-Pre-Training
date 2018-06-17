@@ -1,12 +1,13 @@
 package by.epam.preTraining.ArthurLyup.tasks.task07.controller;
 
 /**
- * Task07 is the class-controller which tests class of business logic.
+ * Task07 is the class-tester which tests class of business logic and different events.
  *
  * 18 June 2018
  * @author Arthur Lyup
  */
 
+//import statements
 import by.epam.preTraining.ArthurLyup.tasks.task07.model.entities.Plane;
 import by.epam.preTraining.ArthurLyup.tasks.task07.model.entities.containers.PlaneList;
 import by.epam.preTraining.ArthurLyup.tasks.task07.model.entities.containers.PlaneListWithDynamicMemory;
