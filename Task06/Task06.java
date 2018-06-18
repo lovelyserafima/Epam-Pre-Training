@@ -29,8 +29,8 @@ public class Task06 {
         System.out.println("2)Min element -> " + Matrix.findMinElement(matr));
         System.out.println("3)Average arithmetic -> " + Matrix.findAverageArithmetic(matr));
         System.out.println("4)Average geometric -> " + Matrix.findAverageGeometric(matr));
-        System.out.println("5)Indexex of local min-> " + Matrix.findPositionOfLocalMin(matr));
-        System.out.println("6)Indexex of local max-> " + Matrix.findPositionOfLocalMax(matr));
+        System.out.println("5)Indexes of local min-> " + Matrix.findPositionOfLocalMin(matr));
+        System.out.println("6)Indexes of local max-> " + Matrix.findPositionOfLocalMax(matr));
         System.out.println("7)Transponse matrix:");
         if (Matrix.checkRectangularity(matr)){
             double [][] transMatr = Matrix.transponseRectangularMatrix(matr);
