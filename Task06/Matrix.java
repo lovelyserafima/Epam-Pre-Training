@@ -8,7 +8,7 @@ package task_06;
  * 4)transponse matrix
  * 5)check whether matrix is rectangular or not
  *
- * 9 June 2018
+ * 18 June 2018
  * @author Arthur Lyup
  */
 
@@ -91,57 +91,62 @@ public class Matrix {
     //find local min of matrix
     public static String findPositionOfLocalMin(double[][] matr) throws Exception {
         checkSizesOfArray(matr);//check input
-        for (int i = ZERO_LINE; i < matr.length; i++){
-            int j = ZERO_COLUMN;//our moving on the line
-            //if matr[0][0]
-            if (i == ZERO_LINE){
-                if(checkRightLess(matr,i,j) && checkDownLess(matr, i, j)){
-                    return getAnswer(i, j);
-                }
-                //if matr[0][1...m-2]
-                for (j = FIRST_INDEX_OF_ARRAY; j < matr[i].length - FIRST_INDEX_OF_ARRAY; j++) {
-                    if (checkRightLess(matr, i, j) && checkDownLess(matr, i, j) && checkLeftLess(matr, i, j)) {
-                        return getAnswer(i, j);
-                    }
-                }
-                //if matr[0][m-1]
-                if (checkLeftLess(matr, i, j) && checkDownLess(matr, i, j)){
-                    return getAnswer(i, j);
-                }
-                //if matr[1...n-2]
-            } else if (i < matr.length - FIRST_INDEX_OF_ARRAY){
-                //if matr[1...n-2][0]
-                if (checkUpLess(matr, i, j) && checkRightLess(matr, i, j) && checkDownLess(matr, i, j)){
-                    return getAnswer(i, j);
-                }
-                //if matr[1...n-2][1...m-2]
-                for (j = FIRST_INDEX_OF_ARRAY; j < matr[i].length - FIRST_INDEX_OF_ARRAY; j++) {
-                    if (checkUpLess(matr, i, j) && checkRightLess(matr, i, j) && checkDownLess(matr, i, j)
-                            && checkLeftLess(matr, i, j)) {
-                        return getAnswer(i, j);
-                    }
-                }
-                //if matr[1...n-2][m-1]
-                if (checkUpLess(matr, i, j) && checkLeftLess(matr, i, j) && checkDownLess(matr, i, j)){
-                    return getAnswer(i, j);
-                }
-                //if matr[n-1]
-            } else {
-                //if matr[n-1][0]
-                if (checkUpLess(matr, i, j) && checkRightLess(matr, i, j)){
-                    return getAnswer(i, j);
-                }
-                //if matr[n-1][1...m-2]
-                for (j = FIRST_INDEX_OF_ARRAY; j < matr[i].length - FIRST_INDEX_OF_ARRAY; j++) {
-                    if (checkUpLess(matr, i, j) && checkRightLess(matr, i, j) && checkLeftLess(matr, i, j)) {
-                        return getAnswer(i, j);
-                    }
-                }
-                //if matr[n-1][m-1]
-                if (checkUpLess(matr, i, j) && checkLeftLess(matr, i, j)) {
+        int i = ZERO_LINE;//our moving on the column
+        int j = ZERO_COLUMN;//our moving on the line
+
+        //if matr[0][0]
+        if(checkRightLess(matr,i,j) && checkDownLess(matr, i, j)){
+            return getAnswer(i, j);
+        }
+        //if matr[0][1...m-2]
+        int lengthOfColumns = matr[i].length - FIRST_INDEX_OF_ARRAY;
+        for (j = FIRST_INDEX_OF_ARRAY; j < lengthOfColumns; j++) {
+            if (checkRightLess(matr, i, j) && checkDownLess(matr, i, j) && checkLeftLess(matr, i, j)) {
+                return getAnswer(i, j);
+            }
+        }
+        //if matr[0][m-1]
+        if (checkLeftLess(matr, i, j) && checkDownLess(matr, i, j)){
+            return getAnswer(i, j);
+        }
+
+        //if matr[1...n-2]
+        int lengthOfLines = matr.length - FIRST_INDEX_OF_ARRAY;
+        for (i = FIRST_INDEX_OF_ARRAY; i < lengthOfLines; i++) {
+            //if matr[1...n-2][0]
+            if (checkUpLess(matr, i, j) && checkRightLess(matr, i, j) && checkDownLess(matr, i, j)) {
+                return getAnswer(i, j);
+            }
+            //if matr[1...n-2][1...m-2]
+            lengthOfColumns = matr[i].length - FIRST_INDEX_OF_ARRAY;
+            for (j = FIRST_INDEX_OF_ARRAY; j < lengthOfColumns; j++) {
+                if (checkUpLess(matr, i, j) && checkRightLess(matr, i, j) && checkDownLess(matr, i, j)
+                        && checkLeftLess(matr, i, j)) {
                     return getAnswer(i, j);
                 }
             }
+            //if matr[1...n-2][m-1]
+            if (checkUpLess(matr, i, j) && checkLeftLess(matr, i, j) && checkDownLess(matr, i, j)) {
+                return getAnswer(i, j);
+            }
+        }
+
+        //if matr[n-1]
+
+        //if matr[n-1][0]
+        if (checkUpLess(matr, i, j) && checkRightLess(matr, i, j)){
+            return getAnswer(i, j);
+        }
+        //if matr[n-1][1...m-2]
+        lengthOfColumns = matr[i].length - FIRST_INDEX_OF_ARRAY;
+        if (checkUpLess(matr, i, j) && checkRightLess(matr, i, j) && checkLeftLess(matr, i, j)) {
+            for (j = FIRST_INDEX_OF_ARRAY; j < lengthOfColumns; j++) {
+                return getAnswer(i, j);
+            }
+        }
+        //if matr[n-1][m-1]
+        if (checkUpLess(matr, i, j) && checkLeftLess(matr, i, j)) {
+            return getAnswer(i, j);
         }
         return "" + ERROR_CASE;//if we won't find
     }
@@ -154,57 +159,62 @@ public class Matrix {
     //find local max of matrix
     public static String findPositionOfLocalMax(double[][] matr) throws Exception {
         checkSizesOfArray(matr);//check input
-        for (int i = ZERO_LINE; i < matr.length; i++){
-            int j = ZERO_COLUMN;//our moving on the line
-            //if matr[0][0]
-            if (i == ZERO_LINE){
-                if(checkRightMore(matr,i,j) && checkDownMore(matr, i, j)){
-                    return getAnswer(i, j);
-                }
-                //if matr[0][1...m-2]
-                for (j = FIRST_INDEX_OF_ARRAY; j < matr[i].length - FIRST_INDEX_OF_ARRAY; j++) {
-                    if (checkRightMore(matr, i, j) && checkDownMore(matr, i, j) && checkLeftMore(matr, i, j)) {
-                        return getAnswer(i, j);
-                    }
-                }
-                //if matr[0][m-1]
-                if (checkLeftMore(matr, i, j) && checkDownMore(matr, i, j)){
-                    return getAnswer(i, j);
-                }
-                //if matr[1...n-2]
-            } else if (i < matr.length - FIRST_INDEX_OF_ARRAY){
-                //if matr[1...n-2][0]
-                if (checkUpMore(matr, i, j) && checkRightMore(matr, i, j) && checkDownMore(matr, i, j)){
-                    return getAnswer(i, j);
-                }
-                //if matr[1...n-2][1...m-2]
-                for (j = FIRST_INDEX_OF_ARRAY; j < matr[i].length - FIRST_INDEX_OF_ARRAY; j++) {
-                    if (checkUpMore(matr, i, j) && checkRightMore(matr, i, j) && checkDownMore(matr, i, j)
-                            && checkLeftMore(matr, i, j)) {
-                        return getAnswer(i, j);
-                    }
-                }
-                //if matr[1...n-2][m-1]
-                if (checkUpMore(matr, i, j) && checkLeftMore(matr, i, j) && checkDownMore(matr, i, j)){
-                    return getAnswer(i, j);
-                }
-                //if matr[n-1]
-            } else {
-                //if matr[n-1][0]
-                if (checkUpMore(matr, i, j) && checkRightMore(matr, i, j)){
-                    return getAnswer(i, j);
-                }
-                //if matr[n-1][1...m-2]
-                for (j = FIRST_INDEX_OF_ARRAY; j < matr[i].length - FIRST_INDEX_OF_ARRAY; j++) {
-                    if (checkUpMore(matr, i, j) && checkRightMore(matr, i, j) && checkLeftMore(matr, i, j)) {
-                        return getAnswer(i, j);
-                    }
-                }
-                //if matr[n-1][m-1]
-                if (checkUpMore(matr, i, j) && checkLeftMore(matr, i, j)) {
+        int i = ZERO_LINE;//our moving on the column
+        int j = ZERO_COLUMN;//our moving on the line
+
+        //if matr[0][0]
+        if(checkRightMore(matr,i,j) && checkDownMore(matr, i, j)){
+            return getAnswer(i, j);
+        }
+        //if matr[0][1...m-2]
+        int lengthOfColumns = matr[i].length - FIRST_INDEX_OF_ARRAY;
+        for (j = FIRST_INDEX_OF_ARRAY; j < lengthOfColumns; j++) {
+            if (checkRightMore(matr, i, j) && checkDownMore(matr, i, j) && checkLeftMore(matr, i, j)) {
+                return getAnswer(i, j);
+            }
+        }
+        //if matr[0][m-1]
+        if (checkLeftMore(matr, i, j) && checkDownMore(matr, i, j)){
+            return getAnswer(i, j);
+        }
+
+        //if matr[1...n-2]
+        int lengthOfLines = matr.length - FIRST_INDEX_OF_ARRAY;
+        for (i = FIRST_INDEX_OF_ARRAY; i < lengthOfLines; i++) {
+            //if matr[1...n-2][0]
+            if (checkUpMore(matr, i, j) && checkRightMore(matr, i, j) && checkDownMore(matr, i, j)) {
+                return getAnswer(i, j);
+            }
+            //if matr[1...n-2][1...m-2]
+            lengthOfColumns = matr[i].length - FIRST_INDEX_OF_ARRAY;
+            for (j = FIRST_INDEX_OF_ARRAY; j < lengthOfColumns; j++) {
+                if (checkUpMore(matr, i, j) && checkRightMore(matr, i, j) && checkDownMore(matr, i, j)
+                        && checkLeftMore(matr, i, j)) {
                     return getAnswer(i, j);
                 }
             }
+            //if matr[1...n-2][m-1]
+            if (checkUpMore(matr, i, j) && checkLeftMore(matr, i, j) && checkDownMore(matr, i, j)) {
+                return getAnswer(i, j);
+            }
+        }
+
+        //if matr[n-1]
+
+        //if matr[n-1][0]
+        if (checkUpMore(matr, i, j) && checkRightMore(matr, i, j)){
+            return getAnswer(i, j);
+        }
+        //if matr[n-1][1...m-2]
+        lengthOfColumns = matr[i].length - FIRST_INDEX_OF_ARRAY;
+        if (checkUpMore(matr, i, j) && checkRightMore(matr, i, j) && checkLeftMore(matr, i, j)) {
+            for (j = FIRST_INDEX_OF_ARRAY; j < lengthOfColumns; j++) {
+                return getAnswer(i, j);
+            }
+        }
+        //if matr[n-1][m-1]
+        if (checkUpMore(matr, i, j) && checkLeftMore(matr, i, j)) {
+            return getAnswer(i, j);
         }
         return "" + ERROR_CASE;//if we won't find
     }
@@ -280,8 +290,14 @@ public class Matrix {
 
     //check input
     private static void checkSizesOfArray(double[][] matr) throws Exception {
-        if (matr.length == ZERO_LINE || matr[ZERO_LINE].length == ZERO_COLUMN){
-            throw new Exception("Worng input! Irregular sizes of array");
+        if (matr.length == ZERO_LINE){
+            throw new Exception("Wrong input! Irregular size of array");
+        } else {
+            for (int i = ZERO_LINE; i < matr.length; i++){
+                if (matr[i].length == 0){
+                    throw new Exception("Wrong input! Irregular size of array");
+                }
+            }
         }
     }
 }

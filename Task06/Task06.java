@@ -44,7 +44,7 @@ public class Task06 {
             }
         }
 
-        //special tests1 with hardcode (transponsing rectangular matrix)
+        //special test1 with hardcode (transponsing rectangular matrix)
         System.out.println("\nSpecial test1:");
         double [][] matr1 = {{2.5, 3.4, 1.75},
                             {4.6, 6.7, 2.28},
