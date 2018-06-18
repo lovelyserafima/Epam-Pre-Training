@@ -108,7 +108,8 @@ public class ArrayWorker {
     public static int findIndexOfLocalMin(double[] array) throws Exception {
         checkArray(array);//check correct input
         int index = ERROR_CASE;//if we won't find, we return -1
-        for (int i = FIRST_INDEX_OF_ARRAY; i < array.length - FIRST_INDEX_OF_ARRAY; i++){//searc local min
+        int length = array.length - FIRST_INDEX_OF_ARRAY;
+        for (int i = FIRST_INDEX_OF_ARRAY; i < length; i++){//searc local min
             if (array[i] < array[i - FIRST_INDEX_OF_ARRAY] && array[i] < array[i + FIRST_INDEX_OF_ARRAY]){
                 index = i;
                 break;
@@ -121,7 +122,8 @@ public class ArrayWorker {
     public static int findIndexOfLocalMax(double[] array) throws Exception {
         checkArray(array);//check correct input
         int index = ERROR_CASE;//if we won't find, we return -1
-        for (int i = FIRST_INDEX_OF_ARRAY; i < array.length - FIRST_INDEX_OF_ARRAY; i++){//searc local max
+        int length = array.length - FIRST_INDEX_OF_ARRAY;
+        for (int i = FIRST_INDEX_OF_ARRAY; i < length; i++){//searc local max
             if (array[i] > array[i - FIRST_INDEX_OF_ARRAY] && array[i] > array[i + FIRST_INDEX_OF_ARRAY]){
                 index = i;
                 break;
@@ -133,7 +135,8 @@ public class ArrayWorker {
     //reverses array
     public static void reverseArray(double[] array) throws Exception {
         checkArray(array);//check correct input
-        for (int i = ZERO_INDEX_OF_ARRAY; i < array.length/GET_MIDDLE; i++){
+        int middleOfArray = array.length/GET_MIDDLE;
+        for (int i = ZERO_INDEX_OF_ARRAY; i < middleOfArray; i++){
             double tmp = array[i];
             array[i] = array[array.length - i - FIRST_INDEX_OF_ARRAY];
             array[array.length - i - FIRST_INDEX_OF_ARRAY] = tmp;
