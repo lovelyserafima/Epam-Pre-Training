@@ -57,7 +57,7 @@ public class Matrix {
                 sum += element;
             }
         }
-        return sum/(matr.length + matr[ZERO_LINE].length);
+        return sum/(countNumberOfElemtsInMatrix(matr));
     }
 
     //calculate average geometric
@@ -70,10 +70,19 @@ public class Matrix {
                     composition *= element;
                 }
             }
-            return Math.pow(composition, DEFAULT_FOR_COMPOSITION/(matr.length + matr[ZERO_LINE].length));
+            return Math.pow(composition, DEFAULT_FOR_COMPOSITION/(countNumberOfElemtsInMatrix(matr)));
         } else {
             return ERROR_CASE;//if there are any negative elements
         }
+    }
+
+    private static int countNumberOfElemtsInMatrix(double[][] matr) throws Exception {
+        checkSizesOfArray(matr);
+        int numberOfElementsInMatrix = 0;
+        for (int i = ZERO_LINE; i < matr.length; i++){
+            numberOfElementsInMatrix += matr[i].length;
+        }
+        return numberOfElementsInMatrix;
     }
 
     //check whether all elements of matrix are positive
