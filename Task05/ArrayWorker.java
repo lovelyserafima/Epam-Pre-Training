@@ -8,7 +8,7 @@ package task_05;
  * 4)find indexes of local min and max of array elements
  * 5)reverse array
  *
- * 5 June 2018
+ * 18 June 2018
  * @author Arthur Lyup
  */
 
