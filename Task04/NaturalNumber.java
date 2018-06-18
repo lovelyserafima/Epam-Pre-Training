@@ -10,16 +10,16 @@ package task_04;
  * 6)find the number of different digits in the natural number
  * 7)check whether the natural number is perfect
  *
- * 6 June 2018
+ * 18 June 2018
  * @author Arthur Lyup
  */
 
 public class NaturalNumber {
     //static final values for operations
-    private static final int EXCEPTION_OF_SIMPLICITY = 1;//1 isn't a simple and composite number
     private static final int NUMBER_OF_DIFFERENT_DIGITS_IN_SINGLE_VALUED_NUMBER = 1;//1, 2, 3, ... , 9 has 1 digit
     private static final int FIRST_DIVIDER_OF_ALL_NUMBERS = 1;//all numbers are divided by 1
     private static final int MIN_NATURAL_NUMBER = 1;//natural number = [1, + inf)
+    private static final int FIRST_INDEX_OF_ARRAY = 1;
     private static final int CHECK_PARITY = 2;//by division on 2 we check even number
     private static final int GET_MIDDLE = 2;//by division on 2 we get the middle of number
     private static final int UNIQUE_SIMPLE_EVEN_NUMBER = 2;//2 is the only simple even number
@@ -48,46 +48,47 @@ public class NaturalNumber {
         if (number < MIN_DOUBLEVALUED_NUMBER){//1,2,3...9 are palindromes
             return true;
         }
-        int reverse = 0;
-        int memory = number;//because we destroy number
-        while (memory > 0){
-            reverse = reverse*GET_DIGIT + memory % GET_DIGIT;
-            memory /= GET_DIGIT;
+        String s = "" + number;
+        boolean flag = true;
+        int middleOfNumber = s.length()/GET_MIDDLE;
+        int length = s.length();
+        for (int i = 0; i < middleOfNumber; i++){
+            if (s.indexOf(i) != s.indexOf(length - i - FIRST_INDEX_OF_ARRAY)){
+                flag = false;
+                break;
+            }
         }
-        return number == reverse;
+        return flag;
     }
 
     //check whether the number is simple
-    public static String checkSimplicity(int number) throws Exception {
+    public static boolean checkSimplicity(int number) throws Exception {
         checkNumber(number);//check input
-        if (number == EXCEPTION_OF_SIMPLICITY){//number 1 is an exception
-            return "It isn't a simple number and composite number.";
-        }
-        if (number == UNIQUE_SIMPLE_EVEN_NUMBER){//2 is the only even simple number
-            return "true";
-        }
-        if (number % CHECK_PARITY == 0){//even numbers aren't simple except 2
-            return "false";
-        }
-        for (int i = FIRST_SIMPLE_ODD_NUMBER; i < number/GET_MIDDLE; i+=CHECK_PARITY){
-            if (number % i == 0){
-                return "false";
+        if (number < UNIQUE_SIMPLE_EVEN_NUMBER){
+            return false;
+        } else if (number == UNIQUE_SIMPLE_EVEN_NUMBER){//2 is the only even simple number
+            return true;
+        } else if (number % CHECK_PARITY == 0){//even numbers aren't simple except 2
+            return false;
+        } else {
+            int sqrrOfNumber = (int)Math.sqrt(number);
+            for (int i = FIRST_SIMPLE_ODD_NUMBER; i <= sqrrOfNumber; i+=CHECK_PARITY){
+                if (number % i == 0){
+                    return false;
+                }
             }
         }
-        return "true";
+        return true;
     }
 
     //find simple dividers of number
     public static String findSimpleDividers(int number) throws Exception {
         checkNumber(number);//check input
-        if (number == EXCEPTION_OF_SIMPLICITY){//1 isn't a simple and composite number
-            return "false";
-        }
         String dividers = "";//our simple dividers
-        if (checkSimplicity(number) == "false") {//if number isn't simple
-            for (int i = EXCEPTION_OF_SIMPLICITY; i <= number / GET_MIDDLE; i++) {
+        if (checkSimplicity(number) == false) {//if number isn't simple
+            for (int i = FIRST_INDEX_OF_ARRAY; i <= number / GET_MIDDLE; i++) {
                 if (number % i == 0) {
-                    if (checkSimplicity(i) == "true") {
+                    if (checkSimplicity(i) == true) {
                         dividers += i + " ";
                     }
                 }
@@ -143,7 +144,7 @@ public class NaturalNumber {
     //check whether is the number if perfect
     public static boolean checkPerfection(int number) throws Exception {
         checkNumber(number);//check input
-        if (number < MIN_PERFECT_NUMBER || checkSimplicity(number) == "true"){
+        if (number < MIN_PERFECT_NUMBER || checkSimplicity(number) == true){
             return false;
         }
         int sum = FIRST_DIVIDER_OF_ALL_NUMBERS;
