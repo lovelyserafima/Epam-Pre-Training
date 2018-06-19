@@ -4,18 +4,16 @@ package task_06;
  * Matrix is the class which solves the following tasks:
  * 1)find max and min elements in the matrix
  * 2)find average arithmetic and geometric of elements of matrix
- * 3)find indexex of local min and max
+ * 3)find indexes of local min and max
  * 4)transponse matrix
  * 5)check whether matrix is rectangular or not
  *
- * 18 June 2018
+ * 19 June 2018
  * @author Arthur Lyup
  */
 
 public class Matrix {
     //our constant values
-    private static final int ZERO_LINE = 0;//matr[0][]
-    private static final int ZERO_COLUMN = 0;//matr[][0]
     private static final int FIRST_INDEX_OF_ARRAY = 1;
     private static final double DEFAULT_FOR_COMPOSITION = 1.0;//start value for composition
     private static final double ERROR_CASE = -1.0;//error case
@@ -23,7 +21,7 @@ public class Matrix {
     //max element in matrix
     public static double findMaxElement(double[][] matr) throws Exception {
         checkSizesOfArray(matr);//check input
-        double max = matr[ZERO_LINE][ZERO_COLUMN];
+        double max = matr[0][0];
         for (double[] line : matr){
             for (double element : line){
                 if (max < element){
@@ -37,7 +35,7 @@ public class Matrix {
     //min element in matrix
     public static double findMinElement(double[][] matr) throws Exception {
         checkSizesOfArray(matr);//check input
-        double min = matr[ZERO_LINE][ZERO_COLUMN];
+        double min = matr[0][0];
         for (double[] line : matr){
             for (double element : line){
                 if (min > element){
@@ -76,10 +74,11 @@ public class Matrix {
         }
     }
 
+    //count number of elements in matrix
     private static int countNumberOfElemtsInMatrix(double[][] matr) throws Exception {
         checkSizesOfArray(matr);
         int numberOfElementsInMatrix = 0;
-        for (int i = ZERO_LINE; i < matr.length; i++){
+        for (int i = 0; i < matr.length; i++){
             numberOfElementsInMatrix += matr[i].length;
         }
         return numberOfElementsInMatrix;
@@ -100,23 +99,23 @@ public class Matrix {
     //find local min of matrix
     public static String findPositionOfLocalMin(double[][] matr) throws Exception {
         checkSizesOfArray(matr);//check input
-        int i = ZERO_LINE;//our moving on the column
-        int j = ZERO_COLUMN;//our moving on the line
+        int i = 0;//our moving on the column
+        int j = 0;//our moving on the line
 
         //if matr[0][0]
         if(checkRightLess(matr,i,j) && checkDownLess(matr, i, j)){
-            return getAnswer(i, j);
+            return makeAnswer(i, j);
         }
         //if matr[0][1...m-2]
         int lengthOfColumns = matr[i].length - FIRST_INDEX_OF_ARRAY;
         for (j = FIRST_INDEX_OF_ARRAY; j < lengthOfColumns; j++) {
             if (checkRightLess(matr, i, j) && checkDownLess(matr, i, j) && checkLeftLess(matr, i, j)) {
-                return getAnswer(i, j);
+                return makeAnswer(i, j);
             }
         }
         //if matr[0][m-1]
         if (checkLeftLess(matr, i, j) && checkDownLess(matr, i, j)){
-            return getAnswer(i, j);
+            return makeAnswer(i, j);
         }
 
         //if matr[1...n-2]
@@ -124,19 +123,19 @@ public class Matrix {
         for (i = FIRST_INDEX_OF_ARRAY; i < lengthOfLines; i++) {
             //if matr[1...n-2][0]
             if (checkUpLess(matr, i, j) && checkRightLess(matr, i, j) && checkDownLess(matr, i, j)) {
-                return getAnswer(i, j);
+                return makeAnswer(i, j);
             }
             //if matr[1...n-2][1...m-2]
             lengthOfColumns = matr[i].length - FIRST_INDEX_OF_ARRAY;
             for (j = FIRST_INDEX_OF_ARRAY; j < lengthOfColumns; j++) {
                 if (checkUpLess(matr, i, j) && checkRightLess(matr, i, j) && checkDownLess(matr, i, j)
                         && checkLeftLess(matr, i, j)) {
-                    return getAnswer(i, j);
+                    return makeAnswer(i, j);
                 }
             }
             //if matr[1...n-2][m-1]
             if (checkUpLess(matr, i, j) && checkLeftLess(matr, i, j) && checkDownLess(matr, i, j)) {
-                return getAnswer(i, j);
+                return makeAnswer(i, j);
             }
         }
 
@@ -144,47 +143,47 @@ public class Matrix {
 
         //if matr[n-1][0]
         if (checkUpLess(matr, i, j) && checkRightLess(matr, i, j)){
-            return getAnswer(i, j);
+            return makeAnswer(i, j);
         }
         //if matr[n-1][1...m-2]
         lengthOfColumns = matr[i].length - FIRST_INDEX_OF_ARRAY;
         if (checkUpLess(matr, i, j) && checkRightLess(matr, i, j) && checkLeftLess(matr, i, j)) {
             for (j = FIRST_INDEX_OF_ARRAY; j < lengthOfColumns; j++) {
-                return getAnswer(i, j);
+                return makeAnswer(i, j);
             }
         }
         //if matr[n-1][m-1]
         if (checkUpLess(matr, i, j) && checkLeftLess(matr, i, j)) {
-            return getAnswer(i, j);
+            return makeAnswer(i, j);
         }
         return "" + ERROR_CASE;//if we won't find
     }
 
     //returns the answer for local min and max
-    private static String getAnswer(int i, int j) {
+    private static String makeAnswer(int i, int j) {
         return "i = " + i + ", j = " + j;
     }
 
     //find local max of matrix
     public static String findPositionOfLocalMax(double[][] matr) throws Exception {
         checkSizesOfArray(matr);//check input
-        int i = ZERO_LINE;//our moving on the column
-        int j = ZERO_COLUMN;//our moving on the line
+        int i = 0;//our moving on the column
+        int j = 0;//our moving on the line
 
         //if matr[0][0]
         if(checkRightMore(matr,i,j) && checkDownMore(matr, i, j)){
-            return getAnswer(i, j);
+            return makeAnswer(i, j);
         }
         //if matr[0][1...m-2]
         int lengthOfColumns = matr[i].length - FIRST_INDEX_OF_ARRAY;
         for (j = FIRST_INDEX_OF_ARRAY; j < lengthOfColumns; j++) {
             if (checkRightMore(matr, i, j) && checkDownMore(matr, i, j) && checkLeftMore(matr, i, j)) {
-                return getAnswer(i, j);
+                return makeAnswer(i, j);
             }
         }
         //if matr[0][m-1]
         if (checkLeftMore(matr, i, j) && checkDownMore(matr, i, j)){
-            return getAnswer(i, j);
+            return makeAnswer(i, j);
         }
 
         //if matr[1...n-2]
@@ -192,19 +191,19 @@ public class Matrix {
         for (i = FIRST_INDEX_OF_ARRAY; i < lengthOfLines; i++) {
             //if matr[1...n-2][0]
             if (checkUpMore(matr, i, j) && checkRightMore(matr, i, j) && checkDownMore(matr, i, j)) {
-                return getAnswer(i, j);
+                return makeAnswer(i, j);
             }
             //if matr[1...n-2][1...m-2]
             lengthOfColumns = matr[i].length - FIRST_INDEX_OF_ARRAY;
             for (j = FIRST_INDEX_OF_ARRAY; j < lengthOfColumns; j++) {
                 if (checkUpMore(matr, i, j) && checkRightMore(matr, i, j) && checkDownMore(matr, i, j)
                         && checkLeftMore(matr, i, j)) {
-                    return getAnswer(i, j);
+                    return makeAnswer(i, j);
                 }
             }
             //if matr[1...n-2][m-1]
             if (checkUpMore(matr, i, j) && checkLeftMore(matr, i, j) && checkDownMore(matr, i, j)) {
-                return getAnswer(i, j);
+                return makeAnswer(i, j);
             }
         }
 
@@ -212,18 +211,18 @@ public class Matrix {
 
         //if matr[n-1][0]
         if (checkUpMore(matr, i, j) && checkRightMore(matr, i, j)){
-            return getAnswer(i, j);
+            return makeAnswer(i, j);
         }
         //if matr[n-1][1...m-2]
         lengthOfColumns = matr[i].length - FIRST_INDEX_OF_ARRAY;
         if (checkUpMore(matr, i, j) && checkRightMore(matr, i, j) && checkLeftMore(matr, i, j)) {
             for (j = FIRST_INDEX_OF_ARRAY; j < lengthOfColumns; j++) {
-                return getAnswer(i, j);
+                return makeAnswer(i, j);
             }
         }
         //if matr[n-1][m-1]
         if (checkUpMore(matr, i, j) && checkLeftMore(matr, i, j)) {
-            return getAnswer(i, j);
+            return makeAnswer(i, j);
         }
         return "" + ERROR_CASE;//if we won't find
     }
@@ -271,7 +270,7 @@ public class Matrix {
     //transponse square matrix
     public static void transponseSquareMatrix(double [][] matr) throws Exception {
         checkSizesOfArray(matr);//check input
-        for (int i = ZERO_LINE; i < matr.length; i++) {
+        for (int i = 0; i < matr.length; i++) {
             for (int j = i + FIRST_INDEX_OF_ARRAY; j < matr[i].length; j++) {
                 double tmp = matr[i][j];
                 matr[i][j] = matr[j][i];
@@ -283,9 +282,9 @@ public class Matrix {
     //transponing rectangular matrix
     public static double[][] transponseRectangularMatrix(double[][] matr) throws Exception {
         checkSizesOfArray(matr);//check input
-        double [][] transMatr = new double[matr[ZERO_LINE].length][matr.length];
-        for (int i = ZERO_LINE; i < matr[ZERO_LINE].length; i++){
-            for (int j = ZERO_COLUMN; j < matr.length; j++){
+        double [][] transMatr = new double[matr[0].length][matr.length];
+        for (int i = 0; i < matr[0].length; i++){
+            for (int j = 0; j < matr.length; j++){
                 transMatr[i][j] = matr[j][i];
             }
         }
@@ -294,15 +293,15 @@ public class Matrix {
 
     //check whether matrix is rectangular or not
     public static boolean checkRectangularity (double [][] matr){
-        return matr.length != matr[ZERO_LINE].length;
+        return matr.length != matr[0].length;
     }
 
     //check input
     private static void checkSizesOfArray(double[][] matr) throws Exception {
-        if (matr.length == ZERO_LINE){
+        if (matr.length == 0){
             throw new Exception("Wrong input! Irregular size of array");
         } else {
-            for (int i = ZERO_LINE; i < matr.length; i++){
+            for (int i = 0; i < matr.length; i++){
                 if (matr[i].length == 0){
                     throw new Exception("Wrong input! Irregular size of array");
                 }
