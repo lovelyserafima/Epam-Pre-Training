@@ -3,11 +3,13 @@ package by.epam.preTraining.ArthurLyup.tasks.task07.util;
 /**
  * PlaneInitializer is the class which initialize objects of class Plane.
  *
- * 17 June 2018
+ * 19 June 2018
  * @author Arthur Lyup
  */
 
-import by.epam.preTraining.ArthurLyup.tasks.task07.model.entities.Plane;
+import by.epam.preTraining.ArthurLyup.tasks.task07.model.entity.plane.Plane;
+import by.epam.preTraining.ArthurLyup.tasks.task07.model.entity.plane.subclasses.CargoPlane;
+import by.epam.preTraining.ArthurLyup.tasks.task07.model.entity.plane.subclasses.PassengerPlane;
 import java.util.Random;
 
 public class PlaneInitializer {
@@ -21,17 +23,33 @@ public class PlaneInitializer {
 
     private static final int CALCULATE_RANDOM = 1;
     private static final int MAX_PASSENGER_CAPACITY = 1000;
+    private static final double MAX_PRIСE_PER_BUSINESS_CLASS = 1000.0;
+    private static final double MAX_PRIСE_PER_ECONOMY_CLASS = 500.0;
     private static final double MAX_CARRYING_CAPACITY = 150.0;
+    private static final double MAX_PRICE_PER_TONE = 100.0;
 
-    public static Plane initPlane() throws Exception {
-        Plane plane = new Plane();
-        plane.setName(namesOfPlanes[getRandomInt(0, namesOfPlanes.length - CALCULATE_RANDOM)]);
-        plane.setPassengerCapacity(getRandomInt(0, MAX_PASSENGER_CAPACITY));
-        plane.setCarryingCapacity(getRandomDouble(0, MAX_CARRYING_CAPACITY));
+    public static PassengerPlane initPassengerPlane() throws Exception {
+        PassengerPlane passengerPlane = new PassengerPlane();
+        initCommonPart(passengerPlane);
+        passengerPlane.setPassengerCapacity(getRandomInt(0, MAX_PASSENGER_CAPACITY));
+        passengerPlane.setPrisePerBusinessClass(getRandomDouble(0, MAX_PRIСE_PER_BUSINESS_CLASS));
+        passengerPlane.setPrisePerEconomyClass(getRandomDouble(0, MAX_PRIСE_PER_ECONOMY_CLASS));
+        return passengerPlane;
+    }
+
+    public static CargoPlane initCargoPlane() throws Exception {
+        CargoPlane cargoPlane = new CargoPlane();
+        initCommonPart(cargoPlane);
+        cargoPlane.setCarryingCapacity(getRandomDouble(0, MAX_CARRYING_CAPACITY));
+        cargoPlane.setPrisePerTone(getRandomDouble(0, MAX_PRICE_PER_TONE));
+        return cargoPlane;
+    }
+
+    private static void initCommonPart (Plane plane){
+        plane.setName(namesOfPlanes[getRandomInt(0 , namesOfPlanes.length - CALCULATE_RANDOM)]);
         plane.setCountryOfProduction(countries[getRandomInt(0,
                 countries.length - CALCULATE_RANDOM)]);
         plane.setInWorkingCondition(new Random().nextBoolean());
-        return plane;
     }
 
     private static int getRandomInt(int leftBorder, int rightBorder){
