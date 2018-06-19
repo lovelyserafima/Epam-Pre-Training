@@ -5,18 +5,23 @@ package by.epam.preTraining.ArthurLyup.tasks.task07.model.logic;
  * 1)count total passenger and carrying capacity
  * 2)find planes with max and min passenger and carrying capacities
  *
- * 19 June 2018
+ * 20 June 2018
  * @author Arthur Lyup
  */
 
+//import statements
+import by.epam.preTraining.ArthurLyup.tasks.task07.exception.ContainerIndexOutOfBoundsException;
+import by.epam.preTraining.ArthurLyup.tasks.task07.exception.EmptyContainerException;
 import by.epam.preTraining.ArthurLyup.tasks.task07.model.entity.containers.PlaneList;
 import by.epam.preTraining.ArthurLyup.tasks.task07.model.entity.plane.subclasses.CargoPlane;
 import by.epam.preTraining.ArthurLyup.tasks.task07.model.entity.plane.subclasses.PassengerPlane;
 
 public class Airline {
     private static final int ERROR_CASE = -1;
+
     //count total passenger capacity
-    public static int countTotalPassengerCapacity(PlaneList planeList) throws Exception {
+    public static int countTotalPassengerCapacity(PlaneList planeList) throws EmptyContainerException,
+            ContainerIndexOutOfBoundsException {
         checkEmpty(planeList);
         int totalPassengerCapacity = 0;
         int numberOfPlanes = planeList.getNumberOfPlanes();
@@ -29,7 +34,8 @@ public class Airline {
     }
 
     //count total carrying capacity
-    public static double countTotalCarryingCapacity(PlaneList planeList) throws Exception {
+    public static double countTotalCarryingCapacity(PlaneList planeList) throws EmptyContainerException,
+            ContainerIndexOutOfBoundsException {
         checkEmpty(planeList);
         double totalCarryingCapacity = 0.0;
         int numberOfPlanes = planeList.getNumberOfPlanes();
@@ -41,7 +47,9 @@ public class Airline {
         return totalCarryingCapacity;
     }
 
-    public static PassengerPlane findPlaneWithMaxPassengerCapacity(PlaneList planeList) throws Exception {
+    //find plane with max passenger capacity
+    public static PassengerPlane findPlaneWithMaxPassengerCapacity(PlaneList planeList) throws EmptyContainerException,
+            ContainerIndexOutOfBoundsException {
         checkEmpty(planeList);
         int indexOfPlaneWithMaxPassengerCapacity = ERROR_CASE;
         int maxPassengerCapacity = 0;
@@ -62,7 +70,8 @@ public class Airline {
     }
 
     //find plane with min passenger capacity
-    public static PassengerPlane findPlaneWithMinPassengerCapacity(PlaneList planeList) throws Exception {
+    public static PassengerPlane findPlaneWithMinPassengerCapacity(PlaneList planeList) throws EmptyContainerException,
+            ContainerIndexOutOfBoundsException {
         checkEmpty(planeList);
         int indexOfPlaneWithMinPassengerCapacity = ERROR_CASE;
         int minPassengerCapacity = Integer.MAX_VALUE;
@@ -82,8 +91,9 @@ public class Airline {
         }
     }
 
-    //find plane with min passenger capacity
-    public static CargoPlane findPlaneWithMaxCarryingCapacity(PlaneList planeList) throws Exception {
+    //find plane with max carrying capacity
+    public static CargoPlane findPlaneWithMaxCarryingCapacity(PlaneList planeList) throws EmptyContainerException,
+            ContainerIndexOutOfBoundsException {
         checkEmpty(planeList);
         int indexOfPlaneWithMaxCarryingCapacity = ERROR_CASE;
         double maxCarryingCapacity = 0.0;
@@ -104,7 +114,8 @@ public class Airline {
     }
 
     //find plane with min passenger capacity
-    public static CargoPlane findPlaneWithMinCarryingCapacity(PlaneList planeList) throws Exception {
+    public static CargoPlane findPlaneWithMinCarryingCapacity(PlaneList planeList) throws EmptyContainerException,
+            ContainerIndexOutOfBoundsException {
         checkEmpty(planeList);
         int indexOfPlaneWithMinCarryingCapacity = ERROR_CASE;
         double minCarryingCapacity = Double.MAX_VALUE;
@@ -125,9 +136,9 @@ public class Airline {
     }
 
     //check whether container is empty
-    private static void checkEmpty(PlaneList planeList) throws Exception {
+    private static void checkEmpty(PlaneList planeList) throws EmptyContainerException {
         if (planeList.isEmpty()){
-            throw new Exception("Container is empty!");
+            throw new EmptyContainerException("Container is empty!");
         }
     }
 }

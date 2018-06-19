@@ -1,14 +1,17 @@
 package by.epam.preTraining.ArthurLyup.tasks.task07.model.entity.plane.subclasses;
 
 /**
- * CargoPlane is the subclass of Plane with additional parametres.
+ * CargoPlane is the subclass of Plane with additional parameters:
+ * double carryingCapacity
+ * double prisePerTone
  *
- * 19 June 2018
+ * 20 June 2018
  * @author Arthur Lyup
  */
 
+//import statements
+import by.epam.preTraining.ArthurLyup.tasks.task07.exception.NegativeNumberException;
 import by.epam.preTraining.ArthurLyup.tasks.task07.model.entity.plane.Plane;
-
 import java.util.Objects;
 
 public class CargoPlane extends Plane {
@@ -36,12 +39,15 @@ public class CargoPlane extends Plane {
         prisePerTone = cargoPlane.prisePerTone;
     }
 
-    //getters and setters
+    //getters and setters////////////////////////////////////////////////////////////////////////////////////////
     public double getCarryingCapacity() {
         return carryingCapacity;
     }
 
-    public void setCarryingCapacity(double carryingCapacity) {
+    public void setCarryingCapacity(double carryingCapacity) throws NegativeNumberException {
+        if (carryingCapacity < 0){
+            throw new NegativeNumberException("Illegal carrying capacity! It can't be < 0: ", carryingCapacity);
+        }
         this.carryingCapacity = carryingCapacity;
     }
 
@@ -49,10 +55,13 @@ public class CargoPlane extends Plane {
         return prisePerTone;
     }
 
-    public void setPrisePerTone(double prisePerTone) {
+    public void setPrisePerTone(double prisePerTone) throws NegativeNumberException {
+        if (prisePerTone < 0){
+            throw new NegativeNumberException("Illegal prisePerTone! It can't be < 0: ", prisePerTone);
+        }
         this.prisePerTone = prisePerTone;
     }
-    /////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public boolean equals(Object o) {

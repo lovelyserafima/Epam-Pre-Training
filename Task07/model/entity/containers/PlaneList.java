@@ -1,14 +1,25 @@
 package by.epam.preTraining.ArthurLyup.tasks.task07.model.entity.containers;
 
 /**
- * PlaneListWithFixedMemory is the class-container builded on arrays with fixed memory which implements interface
- * Editable.
+ * PlaneList is the class-container builded on arrays with fixed memory and implements interface Editable. It has
+ * following functional:
+ * 1)add planes
+ * 2)get current number of planes
+ * 3)check whether planelist is empty
+ * 4)get plane by index
+ * 5)delete plane by index
+ * 6)delete all planes
+ * 7)find planes in planelist
  *
- * 19 June 2018
+ * 20 June 2018
  * @author Arthur Lyup
  */
 
 //import statements
+import by.epam.preTraining.ArthurLyup.tasks.task07.exception.ContainerIndexOutOfBoundsException;
+import by.epam.preTraining.ArthurLyup.tasks.task07.exception.EmptyContainerException;
+import by.epam.preTraining.ArthurLyup.tasks.task07.exception.NegativeNumberException;
+import by.epam.preTraining.ArthurLyup.tasks.task07.exception.NoMemoryException;
 import by.epam.preTraining.ArthurLyup.tasks.task07.model.entity.plane.Plane;
 import java.util.Arrays;
 import java.util.Objects;
@@ -55,9 +66,9 @@ public class PlaneList implements Editable {
         return numberOfPlanes;
     }
 
-    public void setNumberOfPlanes(int numberOfPlanes) throws Exception {
+    public void setNumberOfPlanes(int numberOfPlanes) throws NegativeNumberException {
         if (numberOfPlanes < 0){
-            throw new Exception("Number of planes can't be < 0!");
+            throw new NegativeNumberException("Number of planes can't be < 0!: ", numberOfPlanes);
         }
         this.numberOfPlanes = numberOfPlanes;
     }
@@ -66,7 +77,7 @@ public class PlaneList implements Editable {
 
     @Override
     //add planes
-    public void addPlanes(Plane... planes) throws Exception {
+    public void addPlanes(Plane... planes) throws NoMemoryException {
         checkMemory(this, planes);//enough memory
         for (int i = 0; i < planes.length; i++){
             this.planes[numberOfPlanes + i] = planes[i];
@@ -75,10 +86,10 @@ public class PlaneList implements Editable {
     }
 
     //exception method: check whether is enough memory to add planes
-    private static void checkMemory(PlaneList planeList, Plane... planes)
-            throws Exception {
+    private static void checkMemory(PlaneList planeList, Plane... planes) throws NoMemoryException {
         if (planeList.planes.length - planeList.numberOfPlanes < planes.length){
-            throw new Exception("Not enough memory to add planes! Select more memory");
+            throw new NoMemoryException("Not enough memory to add planes! ", planeList.planes.length
+                    - planeList.numberOfPlanes, planes.length);
         }
     }
 
@@ -88,14 +99,14 @@ public class PlaneList implements Editable {
     }
 
     //get plane by index
-    public Plane getPlaneByIndex(int index) throws Exception {
+    public Plane getPlaneByIndex(int index) throws EmptyContainerException, ContainerIndexOutOfBoundsException {
         checkEmpty(this);
         checkContainerIndexOutOfBounds(this, index);//legal indexes
         return planes[index];
     }
 
     //delete plane by index
-    public void deletePlaneByIndex(int index) throws Exception {
+    public void deletePlaneByIndex(int index) throws EmptyContainerException, ContainerIndexOutOfBoundsException {
         checkEmpty(this);
         checkContainerIndexOutOfBounds(this, index);//legal indexes
         int length = numberOfPlanes - GET_NEXT_OR_PREVIOUS_PLANE;
@@ -105,14 +116,14 @@ public class PlaneList implements Editable {
     }
 
     //clears all planes
-    public void clearAll() throws Exception {
+    public void clearAll() throws EmptyContainerException {
         checkEmpty(this);
         planes = null;
         numberOfPlanes = 0;
     }
 
     //find whether planes entered are in planelist
-    public String findPlanes(Plane... planes) throws Exception {
+    public String findPlanes(Plane... planes) throws EmptyContainerException {
         checkEmpty(this);
         String indexesResultsOfSearching = "";
         for (int i = 0; i < planes.length; i++){
@@ -159,17 +170,17 @@ public class PlaneList implements Editable {
     }
 
     //exception method: check whether the container is empty
-    protected static void checkEmpty(PlaneList planeListWithFixedMemory) throws Exception {
+    protected static void checkEmpty(PlaneList planeListWithFixedMemory) throws EmptyContainerException {
         if (planeListWithFixedMemory.isEmpty()){
-            throw new Exception("The container is empty!");
+            throw new EmptyContainerException("The container is empty!");
         }
     }
 
     //exception method: checks whether index out of bounds
     protected static void checkContainerIndexOutOfBounds(PlaneList planeListWithFixedMemory, int index)
-            throws Exception {
+            throws ContainerIndexOutOfBoundsException {
         if (index < 0 || index > planeListWithFixedMemory.numberOfPlanes - GET_NEXT_OR_PREVIOUS_PLANE){
-            throw new Exception("Container index out of bounds!");
+            throw new ContainerIndexOutOfBoundsException("Container index out of bounds!: ", index);
         }
     }
 }

@@ -1,12 +1,14 @@
 package by.epam.preTraining.ArthurLyup.tasks.task07.util;
 
 /**
- * PlaneInitializer is the class which initialize objects of class Plane.
+ * PlaneInitializer is the class which initialize objects of class Plane (PassengerPlane and CargoPlane)
  *
- * 19 June 2018
+ * 20 June 2018
  * @author Arthur Lyup
  */
 
+//import statements
+import by.epam.preTraining.ArthurLyup.tasks.task07.exception.NegativeNumberException;
 import by.epam.preTraining.ArthurLyup.tasks.task07.model.entity.plane.Plane;
 import by.epam.preTraining.ArthurLyup.tasks.task07.model.entity.plane.subclasses.CargoPlane;
 import by.epam.preTraining.ArthurLyup.tasks.task07.model.entity.plane.subclasses.PassengerPlane;
@@ -28,7 +30,8 @@ public class PlaneInitializer {
     private static final double MAX_CARRYING_CAPACITY = 150.0;
     private static final double MAX_PRICE_PER_TONE = 100.0;
 
-    public static PassengerPlane initPassengerPlane() throws Exception {
+    //initialization of passenger plane
+    public static PassengerPlane initPassengerPlane() throws NegativeNumberException {
         PassengerPlane passengerPlane = new PassengerPlane();
         initCommonPart(passengerPlane);
         passengerPlane.setPassengerCapacity(getRandomInt(0, MAX_PASSENGER_CAPACITY));
@@ -37,7 +40,8 @@ public class PlaneInitializer {
         return passengerPlane;
     }
 
-    public static CargoPlane initCargoPlane() throws Exception {
+    //initialization of carrying plane
+    public static CargoPlane initCargoPlane() throws NegativeNumberException {
         CargoPlane cargoPlane = new CargoPlane();
         initCommonPart(cargoPlane);
         cargoPlane.setCarryingCapacity(getRandomDouble(0, MAX_CARRYING_CAPACITY));
@@ -45,6 +49,7 @@ public class PlaneInitializer {
         return cargoPlane;
     }
 
+    //it is method for initialization common fields of both classes PassengerPlane and CargoPlane
     private static void initCommonPart (Plane plane){
         plane.setName(namesOfPlanes[getRandomInt(0 , namesOfPlanes.length - CALCULATE_RANDOM)]);
         plane.setCountryOfProduction(countries[getRandomInt(0,
@@ -52,10 +57,12 @@ public class PlaneInitializer {
         plane.setInWorkingCondition(new Random().nextBoolean());
     }
 
+    //it is method for random initialization
     private static int getRandomInt(int leftBorder, int rightBorder){
         return new Random().nextInt(rightBorder - leftBorder + CALCULATE_RANDOM);
     }
 
+    //it is method for random initialization
     private static double getRandomDouble(double leftBorder, double rightBorder){
         return new Random().nextDouble()*(rightBorder - leftBorder);
     }

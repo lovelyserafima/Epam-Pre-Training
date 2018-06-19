@@ -1,12 +1,16 @@
 package by.epam.preTraining.ArthurLyup.tasks.task07.model.entity.containers;
 
 /**
- * Editable is interface which has methods for add planes to different containers.
+ * Editable is interface which has method for adding planes to different types of containers and clearing all
+ * information in planelists. Also it has some constants for some events.
  *
- * 19 June 2018
+ * 20 June 2018
  * @author Arthur Lyup
  */
 
+//import statements
+import by.epam.preTraining.ArthurLyup.tasks.task07.exception.EmptyContainerException;
+import by.epam.preTraining.ArthurLyup.tasks.task07.exception.NoMemoryException;
 import by.epam.preTraining.ArthurLyup.tasks.task07.model.entity.plane.Plane;
 
 public interface Editable {
@@ -15,6 +19,6 @@ public interface Editable {
     int GET_NEXT_OR_PREVIOUS_PLANE = 1;
     String ERROR_CASE = "-1 ";
     //methods
-    void addPlanes(Plane... planes) throws Exception;
-    void clearAll() throws Exception;
+    void addPlanes(Plane... planes) throws NoMemoryException;
+    void clearAll() throws EmptyContainerException;
 }

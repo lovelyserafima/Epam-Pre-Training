@@ -1,17 +1,20 @@
 package by.epam.preTraining.ArthurLyup.tasks.task07.model.entity.containers;
 
-import by.epam.preTraining.ArthurLyup.tasks.task07.model.entity.plane.Plane;
-
-import java.util.Arrays;
-import java.util.Objects;
-
 /**
  * PlaneListWithDynamicMemory is the class-container of planes builded on arrays with dynamic memory and implements
- * interface editable.
+ * interface Editable. It is the child of the class PlaneList, so it has the same functional as PlaneList with some
+ * changes: add planes and delete all planes.
  *
- * 19 June 2018
+ * 20 June 2018
  * @author Arthur Lyup
  */
+
+//import statements
+import by.epam.preTraining.ArthurLyup.tasks.task07.exception.EmptyContainerException;
+import by.epam.preTraining.ArthurLyup.tasks.task07.exception.NegativeNumberException;
+import by.epam.preTraining.ArthurLyup.tasks.task07.model.entity.plane.Plane;
+import java.util.Arrays;
+import java.util.Objects;
 
 
 public class PlaneListWithDynamicMemory extends PlaneList implements Editable {
@@ -53,20 +56,20 @@ public class PlaneListWithDynamicMemory extends PlaneList implements Editable {
         this.capacity = planeListWithDynamicMemory.capacity;
     }
 
-    //getters and setters
+    //getters and setters/////////////////////////////////////////////////////////////
 
     public int getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(int capacity) throws Exception {
+    public void setCapacity(int capacity) throws NegativeNumberException {
         if (capacity < 0){
-            throw new Exception("Capacity can't be < 0!");
+            throw new NegativeNumberException("Capacity can't be < 0!: ", capacity);
         }
         this.capacity = capacity;
     }
 
-    ////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////
 
     @Override
     //add planes
@@ -83,7 +86,7 @@ public class PlaneListWithDynamicMemory extends PlaneList implements Editable {
 
     @Override
     //clears all planes
-    public void clearAll() throws Exception {
+    public void clearAll() throws EmptyContainerException {
         checkEmpty(this);
         planes = null;
         numberOfPlanes = 0;
@@ -108,18 +111,8 @@ public class PlaneListWithDynamicMemory extends PlaneList implements Editable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(super.toString());
-        /*for (int i = 0; i < numberOfPlanes - GET_NEXT_OR_PREVIOUS_PLANE; i++){
-            sb.append(planes[i]);
-            sb.append(",\n");
-        }
-        sb.append(planes[numberOfPlanes - GET_NEXT_OR_PREVIOUS_PLANE]);
-        sb.append(",\nnumber of planes = ");
-        sb.append(numberOfPlanes);
-        sb.append(".");*/
         sb.append(",\ncapacity = ");
         sb.append(capacity);
         return sb.toString();
     }
-
-
 }

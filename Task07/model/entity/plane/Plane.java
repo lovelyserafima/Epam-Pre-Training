@@ -3,9 +3,10 @@ package by.epam.preTraining.ArthurLyup.tasks.task07.model.entity.plane;
 import java.util.Objects;
 
 /**
- * Plane is the class-entity which has information about plane.
+ * Plane is the class-entity which has information about plane. It is the superclass for it's children PassengerPlane
+ * and CargoPlane.
  *
- * 19 June 2018
+ * 20 June 2018
  * @author Arthur Lyup
  */
 
@@ -31,7 +32,7 @@ public class Plane {
         inWorkingCondition = plane.inWorkingCondition;
     }
 
-    //getters and setters
+    //getters and setters///////////////////////////////////////////////
 
     public String getName() {
         return name;
@@ -57,7 +58,7 @@ public class Plane {
         this.inWorkingCondition = inWorkingCondition;
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////
 
     @Override
     public boolean equals(Object o) {

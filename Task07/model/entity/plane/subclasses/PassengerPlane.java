@@ -1,15 +1,18 @@
 package by.epam.preTraining.ArthurLyup.tasks.task07.model.entity.plane.subclasses;
 
 /**
- * PassengerPlane is the subclass of Plane with additional parameters.
+ * PassengerPlane is the subclass of Plane with additional parameters:
+ * int passengerCapacity
+ * double prisePerBusinessClass
+ * double prisePerEconomyClass
  *
- * 19 June 2018
+ * 20 June 2018
  * @author Arthur Lyup
  */
 
-
+//import statements
+import by.epam.preTraining.ArthurLyup.tasks.task07.exception.NegativeNumberException;
 import by.epam.preTraining.ArthurLyup.tasks.task07.model.entity.plane.Plane;
-
 import java.util.Objects;
 
 public class PassengerPlane extends Plane {
@@ -40,13 +43,16 @@ public class PassengerPlane extends Plane {
         prisePerEconomyClass = passengerPlane.prisePerEconomyClass;
     }
 
-    //getters and setters
+    //getters and setters///////////////////////////////////////////////////////////////////////////////////////////////
 
     public int getPassengerCapacity() {
         return passengerCapacity;
     }
 
-    public void setPassengerCapacity(int passengerCapacity) {
+    public void setPassengerCapacity(int passengerCapacity) throws NegativeNumberException {
+        if (passengerCapacity < 0){
+            throw new NegativeNumberException("Illegal passenger capacity! It can't be < 0: ", passengerCapacity);
+        }
         this.passengerCapacity = passengerCapacity;
     }
 
@@ -54,7 +60,11 @@ public class PassengerPlane extends Plane {
         return prisePerBusinessClass;
     }
 
-    public void setPrisePerBusinessClass(double prisePerBusinessClass) {
+    public void setPrisePerBusinessClass(double prisePerBusinessClass) throws NegativeNumberException {
+        if (prisePerBusinessClass < 0){
+            throw new NegativeNumberException("Illegal prisePerBusinessClass! It can't be < 0: ",
+                    prisePerBusinessClass);
+        }
         this.prisePerBusinessClass = prisePerBusinessClass;
     }
 
@@ -62,11 +72,14 @@ public class PassengerPlane extends Plane {
         return prisePerEconomyClass;
     }
 
-    public void setPrisePerEconomyClass(double prisePerEconomyClass) {
+    public void setPrisePerEconomyClass(double prisePerEconomyClass) throws NegativeNumberException {
+        if (prisePerEconomyClass < 0){
+            throw new NegativeNumberException("Illegal prisePerEconomyClass! It can't be < 0: ", prisePerEconomyClass);
+        }
         this.prisePerEconomyClass = prisePerEconomyClass;
     }
 
-    //////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public boolean equals(Object o) {

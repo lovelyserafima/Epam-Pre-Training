@@ -1,12 +1,15 @@
 package by.epam.preTraining.ArthurLyup.tasks.task07.view;
 
 /**
- * ConsoleWriter is the class which prints information to console.
+ * ConsoleWriter is the class which prints results to console.
  *
- * 19 June 2018
+ * 20 June 2018
  * @author Arthur Lyup
  */
 
+//import statements
+import by.epam.preTraining.ArthurLyup.tasks.task07.exception.ContainerIndexOutOfBoundsException;
+import by.epam.preTraining.ArthurLyup.tasks.task07.exception.EmptyContainerException;
 import by.epam.preTraining.ArthurLyup.tasks.task07.model.entity.containers.PlaneList;
 import by.epam.preTraining.ArthurLyup.tasks.task07.model.entity.plane.Plane;
 import by.epam.preTraining.ArthurLyup.tasks.task07.model.logic.Airline;
@@ -14,6 +17,7 @@ import by.epam.preTraining.ArthurLyup.tasks.task07.model.logic.Airline;
 public class ConsoleWriter {
     //fields
     private static final int GET_PREV_ELEMENT = 1;
+
     //print planes
     public static void printPlanes(Plane... planes){
         int length = planes.length - GET_PREV_ELEMENT;
@@ -34,7 +38,8 @@ public class ConsoleWriter {
     }
 
     //print total passenger capacity
-    public static void printTotalPassengerCapacity(PlaneList planeList) throws Exception {
+    public static void printTotalPassengerCapacity(PlaneList planeList) throws EmptyContainerException,
+            ContainerIndexOutOfBoundsException {
         if (!planeList.isEmpty()){
             System.out.println("\nTotal passenger capacity = " + Airline.countTotalPassengerCapacity(planeList));
         } else {
@@ -43,7 +48,8 @@ public class ConsoleWriter {
     }
 
     //print total carrying capacity
-    public static void printTotalCarryingCapacity(PlaneList planeList) throws Exception {
+    public static void printTotalCarryingCapacity(PlaneList planeList) throws EmptyContainerException,
+            ContainerIndexOutOfBoundsException {
         if (!planeList.isEmpty()){
             System.out.println("Total carrying capacity = " + Airline.countTotalCarryingCapacity(planeList));
         } else {
@@ -52,7 +58,8 @@ public class ConsoleWriter {
     }
 
     //print plane with max passenger capacity
-    public static void printPlaneWithMaxPassengerCapacity(PlaneList planeList) throws Exception {
+    public static void printPlaneWithMaxPassengerCapacity(PlaneList planeList) throws EmptyContainerException,
+            ContainerIndexOutOfBoundsException {
         if (!planeList.isEmpty()){
             System.out.println("Plane with max passenger capacity: "
                     + Airline.findPlaneWithMaxPassengerCapacity(planeList));
@@ -62,7 +69,8 @@ public class ConsoleWriter {
     }
 
     //print plane with min passenger capacity
-    public static void printPlaneWithMinPassengerCapacity(PlaneList planeList) throws Exception {
+    public static void printPlaneWithMinPassengerCapacity(PlaneList planeList) throws EmptyContainerException,
+            ContainerIndexOutOfBoundsException {
         if (!planeList.isEmpty()){
             System.out.println("Plane with min passenger capacity: "
                     + Airline.findPlaneWithMinPassengerCapacity(planeList));
@@ -72,7 +80,8 @@ public class ConsoleWriter {
     }
 
     //print plane with max carrying capacity
-    public static void printPlaneWithMaxCarryingCapacity(PlaneList planeList) throws Exception {
+    public static void printPlaneWithMaxCarryingCapacity(PlaneList planeList) throws EmptyContainerException,
+            ContainerIndexOutOfBoundsException {
         if (!planeList.isEmpty()){
             System.out.println("Plane with max carrying capacity: "
                     + Airline.findPlaneWithMaxCarryingCapacity(planeList));
@@ -82,7 +91,8 @@ public class ConsoleWriter {
     }
 
     //print plane with min carrying capacity
-    public static void printPlaneWithMinCarryingCapacity(PlaneList planeList) throws Exception {
+    public static void printPlaneWithMinCarryingCapacity(PlaneList planeList) throws EmptyContainerException,
+            ContainerIndexOutOfBoundsException {
         if (!planeList.isEmpty()){
             System.out.println("Plane with min carrying capacity: "
                     + Airline.findPlaneWithMinCarryingCapacity(planeList));
