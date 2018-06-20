@@ -3,8 +3,8 @@ package by.epam.preTraining.ArthurLyup.tasks.task07.model.entity.plane.subclasse
 /**
  * PassengerPlane is the subclass of Plane with additional parameters:
  * int passengerCapacity
- * double prisePerBusinessClass
- * double prisePerEconomyClass
+ * double pricePerBusinessClass
+ * double pricePerEconomyClass
  *
  * 20 June 2018
  * @author Arthur Lyup
@@ -18,8 +18,8 @@ import java.util.Objects;
 public class PassengerPlane extends Plane {
     //fields
     private int passengerCapacity;
-    private double prisePerBusinessClass;
-    private double prisePerEconomyClass;
+    private double pricePerBusinessClass;
+    private double pricePerEconomyClass;
 
     //the empty constructor
     public PassengerPlane(){
@@ -28,19 +28,19 @@ public class PassengerPlane extends Plane {
 
     //constructor with args
     public PassengerPlane(String name, String countryOfProduction, boolean inWorkingCondition, int passengerCapacity,
-                          double prisePerBusinessClass, double prisePerEconomyClass) {
+                          double pricePerBusinessClass, double pricePerEconomyClass) {
         super(name, countryOfProduction, inWorkingCondition);
         this.passengerCapacity = passengerCapacity;
-        this.prisePerBusinessClass = prisePerBusinessClass;
-        this.prisePerEconomyClass = prisePerEconomyClass;
+        this.pricePerBusinessClass = pricePerBusinessClass;
+        this.pricePerEconomyClass = pricePerEconomyClass;
     }
 
     //copy constructor
     public PassengerPlane(PassengerPlane passengerPlane){
         super(passengerPlane.name, passengerPlane.countryOfProduction, passengerPlane.inWorkingCondition);
         passengerCapacity = passengerPlane.passengerCapacity;
-        prisePerBusinessClass = passengerPlane.prisePerBusinessClass;
-        prisePerEconomyClass = passengerPlane.prisePerEconomyClass;
+        pricePerBusinessClass = passengerPlane.pricePerBusinessClass;
+        pricePerEconomyClass = passengerPlane.pricePerEconomyClass;
     }
 
     //getters and setters///////////////////////////////////////////////////////////////////////////////////////////////
@@ -56,30 +56,31 @@ public class PassengerPlane extends Plane {
         this.passengerCapacity = passengerCapacity;
     }
 
-    public double getPrisePerBusinessClass() {
-        return prisePerBusinessClass;
+    public double getPricePerBusinessClass() {
+        return pricePerBusinessClass;
     }
 
-    public void setPrisePerBusinessClass(double prisePerBusinessClass) throws NegativeNumberException {
-        if (prisePerBusinessClass < 0){
-            throw new NegativeNumberException("Illegal prisePerBusinessClass! It can't be < 0: ",
-                    prisePerBusinessClass);
+    public void setPricePerBusinessClass(double pricePerBusinessClass) throws NegativeNumberException {
+        if (pricePerBusinessClass < 0){
+            throw new NegativeNumberException("Illegal pricePerBusinessClass! It can't be < 0: ",
+                    pricePerBusinessClass);
         }
-        this.prisePerBusinessClass = prisePerBusinessClass;
+        this.pricePerBusinessClass = pricePerBusinessClass;
     }
 
-    public double getPrisePerEconomyClass() {
-        return prisePerEconomyClass;
+    public double getPricePerEconomyClass() {
+        return pricePerEconomyClass;
     }
 
-    public void setPrisePerEconomyClass(double prisePerEconomyClass) throws NegativeNumberException {
-        if (prisePerEconomyClass < 0){
-            throw new NegativeNumberException("Illegal prisePerEconomyClass! It can't be < 0: ", prisePerEconomyClass);
+    public void setPricePerEconomyClass(double pricePerEconomyClass) throws NegativeNumberException {
+        if (pricePerEconomyClass < 0){
+            throw new NegativeNumberException("Illegal prisePerEconomyClass! It can't be < 0: ", pricePerEconomyClass);
         }
-        this.prisePerEconomyClass = prisePerEconomyClass;
+        this.pricePerEconomyClass = pricePerEconomyClass;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
     @Override
     public boolean equals(Object o) {
@@ -88,14 +89,14 @@ public class PassengerPlane extends Plane {
         if (!super.equals(o)) return false;
         PassengerPlane that = (PassengerPlane) o;
         return getPassengerCapacity() == that.getPassengerCapacity() &&
-                Double.compare(that.getPrisePerBusinessClass(), getPrisePerBusinessClass()) == 0 &&
-                Double.compare(that.getPrisePerEconomyClass(), getPrisePerEconomyClass()) == 0;
+                Double.compare(that.getPricePerBusinessClass(), getPricePerBusinessClass()) == 0 &&
+                Double.compare(that.getPricePerEconomyClass(), getPricePerEconomyClass()) == 0;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getPassengerCapacity(), getPrisePerBusinessClass(),
-                getPrisePerEconomyClass());
+        return Objects.hash(super.hashCode(), getPassengerCapacity(), getPricePerBusinessClass(),
+                getPricePerEconomyClass());
     }
 
     @Override
@@ -103,8 +104,8 @@ public class PassengerPlane extends Plane {
         return "PassengerPlane{" +
                 super.toString() +
                 ", passengerCapacity=" + passengerCapacity +
-                ", prisePerBusinessClass=" + prisePerBusinessClass +
-                ", prisePerEconomyClass=" + prisePerEconomyClass +
+                ", pricePerBusinessClass=" + pricePerBusinessClass +
+                ", pricePerEconomyClass=" + pricePerEconomyClass +
                 '}';
     }
 }

@@ -3,7 +3,7 @@ package by.epam.preTraining.ArthurLyup.tasks.task07.model.entity.plane.subclasse
 /**
  * CargoPlane is the subclass of Plane with additional parameters:
  * double carryingCapacity
- * double prisePerTone
+ * double pricePerTone
  *
  * 20 June 2018
  * @author Arthur Lyup
@@ -17,7 +17,7 @@ import java.util.Objects;
 public class CargoPlane extends Plane {
     //new fields
     private double carryingCapacity;
-    private double prisePerTone;
+    private double pricePerTone;
 
     //the empty constructor
     public CargoPlane(){
@@ -26,17 +26,17 @@ public class CargoPlane extends Plane {
 
     //constructor with args
     public CargoPlane(String name, String countryOfProduction, boolean inWorkingCondition, double carryingCapacity,
-                      double prisePerTone) {
+                      double pricePerTone) {
         super(name, countryOfProduction, inWorkingCondition);
         this.carryingCapacity = carryingCapacity;
-        this.prisePerTone = prisePerTone;
+        this.pricePerTone = pricePerTone;
     }
 
     //copy constructor
     public CargoPlane(CargoPlane cargoPlane){
         super(cargoPlane.name, cargoPlane.countryOfProduction, cargoPlane.inWorkingCondition);
         carryingCapacity = cargoPlane.carryingCapacity;
-        prisePerTone = cargoPlane.prisePerTone;
+        pricePerTone = cargoPlane.pricePerTone;
     }
 
     //getters and setters////////////////////////////////////////////////////////////////////////////////////////
@@ -51,17 +51,18 @@ public class CargoPlane extends Plane {
         this.carryingCapacity = carryingCapacity;
     }
 
-    public double getPrisePerTone() {
-        return prisePerTone;
+    public double getPricePerTone() {
+        return pricePerTone;
     }
 
-    public void setPrisePerTone(double prisePerTone) throws NegativeNumberException {
-        if (prisePerTone < 0){
-            throw new NegativeNumberException("Illegal prisePerTone! It can't be < 0: ", prisePerTone);
+    public void setPricePerTone(double pricePerTone) throws NegativeNumberException {
+        if (pricePerTone < 0){
+            throw new NegativeNumberException("Illegal pricePerTone! It can't be < 0: ", pricePerTone);
         }
-        this.prisePerTone = prisePerTone;
+        this.pricePerTone = pricePerTone;
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
     @Override
     public boolean equals(Object o) {
@@ -70,12 +71,12 @@ public class CargoPlane extends Plane {
         if (!super.equals(o)) return false;
         CargoPlane that = (CargoPlane) o;
         return Double.compare(that.getCarryingCapacity(), getCarryingCapacity()) == 0 &&
-                Double.compare(that.getPrisePerTone(), getPrisePerTone()) == 0;
+                Double.compare(that.getPricePerTone(), getPricePerTone()) == 0;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getCarryingCapacity(), getPrisePerTone());
+        return Objects.hash(super.hashCode(), getCarryingCapacity(), getPricePerTone());
     }
 
     @Override
@@ -83,7 +84,7 @@ public class CargoPlane extends Plane {
         return "CargoPlane{" +
                 super.toString() +
                 ", carryingCapacity=" + carryingCapacity +
-                ", prisePerTone=" + prisePerTone +
+                ", prisePerTone=" + pricePerTone +
                 '}';
     }
 }

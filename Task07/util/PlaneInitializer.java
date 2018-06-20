@@ -35,8 +35,8 @@ public class PlaneInitializer {
         PassengerPlane passengerPlane = new PassengerPlane();
         initCommonPart(passengerPlane);
         passengerPlane.setPassengerCapacity(getRandomInt(0, MAX_PASSENGER_CAPACITY));
-        passengerPlane.setPrisePerBusinessClass(getRandomDouble(0, MAX_PRIСE_PER_BUSINESS_CLASS));
-        passengerPlane.setPrisePerEconomyClass(getRandomDouble(0, MAX_PRIСE_PER_ECONOMY_CLASS));
+        passengerPlane.setPricePerBusinessClass(getRandomDouble(0, MAX_PRIСE_PER_BUSINESS_CLASS));
+        passengerPlane.setPricePerEconomyClass(getRandomDouble(0, MAX_PRIСE_PER_ECONOMY_CLASS));
         return passengerPlane;
     }
 
@@ -45,7 +45,7 @@ public class PlaneInitializer {
         CargoPlane cargoPlane = new CargoPlane();
         initCommonPart(cargoPlane);
         cargoPlane.setCarryingCapacity(getRandomDouble(0, MAX_CARRYING_CAPACITY));
-        cargoPlane.setPrisePerTone(getRandomDouble(0, MAX_PRICE_PER_TONE));
+        cargoPlane.setPricePerTone(getRandomDouble(0, MAX_PRICE_PER_TONE));
         return cargoPlane;
     }
 
