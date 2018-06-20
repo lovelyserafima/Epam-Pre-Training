@@ -1,8 +1,8 @@
 package by.epam.preTraining.ArthurLyup.tasks.task07.exception;
 
 /**
- * ContainerIndexOutOfBoundsException is the class-exception which throws exception when user tries to work with by
- * illegal index (this plane doesn't exist in planelist with entered indeex)
+ * ContainerIndexOutOfBoundsException is the class-exception which throws exception when user tries to work with plane
+ * by illegal index (this plane doesn't exist in planelist with entered index)
  *
  * 20 June 2018
  * @author Arthur Lyup
