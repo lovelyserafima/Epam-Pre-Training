@@ -1,11 +1,10 @@
 package by.epam.preTraining.ArthurLyup.tasks.task07.model.entity.containers;
 
 /**
- * PlaneListWithDynamicMemory is the class-container of planes builded on arrays with dynamic memory and implements
- * interface Editable. It is the child of the class PlaneList, so it has the same functional as PlaneList with some
- * changes: add planes and delete all planes.
+ * PlaneListWithDynamicMemory is the class-container of planes builded on arrays with dynamic memory. It is the child of
+ * the class PlaneList, so it has the same functional as PlaneList with some changes: add planes and delete all planes.
  *
- * 20 June 2018
+ * 21 June 2018
  * @author Arthur Lyup
  */
 
@@ -17,7 +16,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 
-public class PlaneListWithDynamicMemory extends PlaneList implements Editable {
+public class PlaneListWithDynamicMemory extends PlaneList {
     //new fields
     private int capacity = 10;
 
