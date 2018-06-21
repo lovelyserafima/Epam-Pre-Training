@@ -15,6 +15,20 @@ import by.epam.preTraining.ArthurLyup.tasks.task08.model.entity.containers.Plane
 public class SelectionSort {
     private static final int NEXT_OR_PREV = 1;
 
+    //start
+    public static void sort(PlaneList planeList) throws EmptyContainerException, ContainerIndexOutOfBoundsException {
+        sort(planeList, 0);
+    }
+
+    //main algorithm
+    private static void sort(PlaneList planeList, int left) throws EmptyContainerException,
+            ContainerIndexOutOfBoundsException {
+        if (left < planeList.getNumberOfPlanes() - NEXT_OR_PREV){
+            swap(planeList, left, findMin(planeList, left));
+            sort(planeList, left + NEXT_OR_PREV);
+        }
+    }
+
     //find index of min element by name (alphabet)
     private static int findMin(PlaneList planeList, int index) throws EmptyContainerException,
             ContainerIndexOutOfBoundsException {
@@ -26,20 +40,6 @@ public class SelectionSort {
             min = index;
         }
         return min;
-    }
-
-    //start
-    public static void sort(PlaneList planeList) throws EmptyContainerException, ContainerIndexOutOfBoundsException {
-        sort(planeList, 0);
-    }
-
-    //main algorithm
-    private static void sort(PlaneList planeList, int left) throws EmptyContainerException,
-            ContainerIndexOutOfBoundsException {
-        if (left < planeList.getNumberOfPlanes() - 1){
-            swap(planeList, left, findMin(planeList, left));
-            sort(planeList, left + 1);
-        }
     }
 
     //swap two elements
