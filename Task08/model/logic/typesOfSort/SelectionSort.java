@@ -11,6 +11,7 @@ package by.epam.preTraining.ArthurLyup.tasks.task08.model.logic.typesOfSort;
 import by.epam.preTraining.ArthurLyup.tasks.task08.exceptions.ContainerIndexOutOfBoundsException;
 import by.epam.preTraining.ArthurLyup.tasks.task08.exceptions.EmptyContainerException;
 import by.epam.preTraining.ArthurLyup.tasks.task08.model.entity.containers.PlaneList;
+import by.epam.preTraining.ArthurLyup.tasks.task08.model.entity.plane.Plane;
 
 public class SelectionSort {
     private static final int NEXT_OR_PREV = 1;
@@ -45,8 +46,8 @@ public class SelectionSort {
     //swap two elements
     private static void swap(PlaneList planeList, int index1, int index2) throws EmptyContainerException,
             ContainerIndexOutOfBoundsException {
-        String temp = planeList.getPlaneByIndex(index1).getName();
-        planeList.getPlaneByIndex(index1).setName(planeList.getPlaneByIndex(index2).getName());
-        planeList.getPlaneByIndex(index2).setName(temp);
+        Plane temp = planeList.getPlaneByIndex(index1);
+        planeList.setPlaneByIndex(index1, planeList.getPlaneByIndex(index2));
+        planeList.setPlaneByIndex(index2, temp);
     }
 }

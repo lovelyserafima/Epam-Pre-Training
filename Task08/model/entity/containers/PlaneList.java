@@ -21,8 +21,6 @@ import by.epam.preTraining.ArthurLyup.tasks.task08.exceptions.EmptyContainerExce
 import by.epam.preTraining.ArthurLyup.tasks.task08.exceptions.NegativeNumberException;
 import by.epam.preTraining.ArthurLyup.tasks.task08.exceptions.NoMemoryException;
 import by.epam.preTraining.ArthurLyup.tasks.task08.model.entity.plane.Plane;
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -105,6 +103,14 @@ public class PlaneList implements Editable {
         checkEmpty(this);
         checkContainerIndexOutOfBounds(this, index);//legal indexes
         return planes[index];
+    }
+
+    //set plane by index
+    public void setPlaneByIndex(int index, Plane plane) throws EmptyContainerException,
+            ContainerIndexOutOfBoundsException {
+        checkEmpty(this);
+        checkContainerIndexOutOfBounds(this, index);
+        planes[index] = plane;
     }
 
     //delete plane by index
