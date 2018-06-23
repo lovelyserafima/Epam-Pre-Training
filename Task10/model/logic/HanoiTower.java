@@ -36,7 +36,7 @@ public class HanoiTower {
     }
 
     //exception method (check whether number of rings > 0)
-    private static boolean isNumberOfRingsNaturalNumber(int numberOfRings) throws NotNaturalNumberException {
+    private static boolean isNumberOfRingsNaturalNumber(int numberOfRings) {
         return numberOfRings >= MIN_NATURAL_NUMBER;
     }
 }
