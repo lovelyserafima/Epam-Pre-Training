@@ -18,7 +18,9 @@ public class HanoiTower {
     //start
     public static void solveHanoiTower(int numberOfRings, char letter1, char letter2, char letter3)
             throws NotNaturalNumberException {
-        checkNumberOfRings(numberOfRings);
+        if (!isNumberOfRingsNaturalNumber(numberOfRings)){
+            throw new NotNaturalNumberException("Exception! Number of rings must be > 0: ", numberOfRings);
+        }
         mainAlgorithm(numberOfRings, letter1, letter2, letter3);
     }
 
@@ -34,10 +36,8 @@ public class HanoiTower {
     }
 
     //exception method (check whether number of rings > 0)
-    private static void checkNumberOfRings(int numberOfRings) throws NotNaturalNumberException {
-        if (numberOfRings < MIN_NATURAL_NUMBER){
-            throw new NotNaturalNumberException("Exception! Number of rings must be > 0: ", numberOfRings);
-        }
+    private static boolean isNumberOfRingsNaturalNumber(int numberOfRings) throws NotNaturalNumberException {
+        return numberOfRings >= MIN_NATURAL_NUMBER;
     }
 }
 
