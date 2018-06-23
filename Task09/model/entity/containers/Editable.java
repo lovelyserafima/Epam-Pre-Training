@@ -1,17 +1,17 @@
-package by.epam.preTraining.ArthurLyup.tasks.task08.model.entity.containers;
+package by.epam.preTraining.ArthurLyup.tasks.task09.model.entity.containers;
 
 /**
  * Editable is interface which has method for adding planes to different types of containers and clearing all
  * information in planelists. Also it has some constants for some events.
  *
- * 21 June 2018
+ * 23 June 2018
  * @author Arthur Lyup
  */
 
 //import statements
-import by.epam.preTraining.ArthurLyup.tasks.task08.exceptions.EmptyContainerException;
-import by.epam.preTraining.ArthurLyup.tasks.task08.exceptions.NoMemoryException;
-import by.epam.preTraining.ArthurLyup.tasks.task08.model.entity.plane.Plane;
+import by.epam.preTraining.ArthurLyup.tasks.task09.exceptions.EmptyContainerException;
+import by.epam.preTraining.ArthurLyup.tasks.task09.exceptions.NoMemoryException;
+import by.epam.preTraining.ArthurLyup.tasks.task09.model.entity.plane.Plane;
 
 public interface Editable {
     //constant values

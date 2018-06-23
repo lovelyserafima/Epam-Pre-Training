@@ -1,17 +1,17 @@
-package by.epam.preTraining.ArthurLyup.tasks.task08.model.entity.containers;
+package by.epam.preTraining.ArthurLyup.tasks.task09.model.entity.containers;
 
 /**
  * PlaneListWithDynamicMemory is the class-container of planes builded on arrays with dynamic memory. It is the child of
  * the class PlaneList, so it has the same functional as PlaneList with some changes: add planes and delete all planes.
  *
- * 21 June 2018
+ * 23 June 2018
  * @author Arthur Lyup
  */
 
 //import statements
-import by.epam.preTraining.ArthurLyup.tasks.task08.exceptions.EmptyContainerException;
-import by.epam.preTraining.ArthurLyup.tasks.task08.exceptions.NegativeNumberException;
-import by.epam.preTraining.ArthurLyup.tasks.task08.model.entity.plane.Plane;
+import by.epam.preTraining.ArthurLyup.tasks.task09.exceptions.EmptyContainerException;
+import by.epam.preTraining.ArthurLyup.tasks.task09.exceptions.NegativeNumberException;
+import by.epam.preTraining.ArthurLyup.tasks.task09.model.entity.plane.Plane;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -86,7 +86,9 @@ public class PlaneListWithDynamicMemory extends PlaneList {
     @Override
     //clears all planes
     public void clearAll() throws EmptyContainerException {
-        checkEmpty(this);
+        if (this.isEmpty()){
+            throw new EmptyContainerException("The container is empty!");
+        }
         planes = null;
         numberOfPlanes = 0;
         capacity = 0;

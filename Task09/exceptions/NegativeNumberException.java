@@ -1,22 +1,22 @@
 package by.epam.preTraining.ArthurLyup.tasks.task09.exceptions;
 
 /**
- * NegativeExponentException is the class-exception which throws the exception when user tries to raise to a negative
- * degree.
+ * NegativeNumberException is the class-exception which throws exceptions when user tries to set negative value to field
+ * which can't be negative theoretically.
  *
- * 21 June 2018
+ * 23 June 2018
  * @author Arthur Lyup
  */
 
-public class NegativeNumberException extends Exception {
-    private int negativeNumber;
+public class NegativeNumberException extends Exception{
+    private double number;
 
-    public NegativeNumberException(String msg, int negativeNumber){
-        super(msg);
-        this.negativeNumber = negativeNumber;
+    public double getNumber(){
+        return number;
     }
 
-    public int getNegativeNumber(){
-        return negativeNumber;
+    public NegativeNumberException(String msg, double number){
+        super(msg);
+        this.number = number;
     }
 }

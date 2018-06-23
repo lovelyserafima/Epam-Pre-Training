@@ -1,4 +1,4 @@
-package by.epam.preTraining.ArthurLyup.tasks.task08.model.entity.containers;
+package by.epam.preTraining.ArthurLyup.tasks.task09.model.entity.containers;
 
 /**
  * PlaneList is the class-container builded on arrays with fixed memory and implements interface Editable. It has
@@ -11,16 +11,16 @@ package by.epam.preTraining.ArthurLyup.tasks.task08.model.entity.containers;
  * 6)delete all planes
  * 7)find planes in planelist
  *
- * 20 June 2018
+ * 23 June 2018
  * @author Arthur Lyup
  */
 
 //import statements
-import by.epam.preTraining.ArthurLyup.tasks.task08.exceptions.ContainerIndexOutOfBoundsException;
-import by.epam.preTraining.ArthurLyup.tasks.task08.exceptions.EmptyContainerException;
-import by.epam.preTraining.ArthurLyup.tasks.task08.exceptions.NegativeNumberException;
-import by.epam.preTraining.ArthurLyup.tasks.task08.exceptions.NoMemoryException;
-import by.epam.preTraining.ArthurLyup.tasks.task08.model.entity.plane.Plane;
+import by.epam.preTraining.ArthurLyup.tasks.task09.exceptions.ContainerIndexOutOfBoundsException;
+import by.epam.preTraining.ArthurLyup.tasks.task09.exceptions.EmptyContainerException;
+import by.epam.preTraining.ArthurLyup.tasks.task09.exceptions.NegativeNumberException;
+import by.epam.preTraining.ArthurLyup.tasks.task09.exceptions.NoMemoryException;
+import by.epam.preTraining.ArthurLyup.tasks.task09.model.entity.plane.Plane;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -78,7 +78,10 @@ public class PlaneList implements Editable {
     @Override
     //add planes
     public void addPlanes(Plane... planes) throws NoMemoryException {
-        checkMemory(this, planes);//enough memory
+        if (!isEnoughMemory(this, planes)){
+            throw new NoMemoryException("Not enough memory to add planes! ", this.planes.length
+                    - this.numberOfPlanes, planes.length);
+        }
         for (int i = 0; i < planes.length; i++){
             this.planes[numberOfPlanes + i] = planes[i];
         }
@@ -86,11 +89,8 @@ public class PlaneList implements Editable {
     }
 
     //exception method: check whether is enough memory to add planes
-    private static void checkMemory(PlaneList planeList, Plane... planes) throws NoMemoryException {
-        if (planeList.planes.length - planeList.numberOfPlanes < planes.length){
-            throw new NoMemoryException("Not enough memory to add planes! ", planeList.planes.length
-                    - planeList.numberOfPlanes, planes.length);
-        }
+    private static boolean isEnoughMemory(PlaneList planeList, Plane... planes) {
+        return planeList.planes.length - planeList.numberOfPlanes >= planes.length;
     }
 
     //check whether the container is empty
@@ -100,23 +100,35 @@ public class PlaneList implements Editable {
 
     //get plane by index
     public Plane getPlaneByIndex(int index) throws EmptyContainerException, ContainerIndexOutOfBoundsException {
-        checkEmpty(this);
-        checkContainerIndexOutOfBounds(this, index);//legal indexes
+        if (this.isEmpty()){
+            throw new EmptyContainerException("The container is empty!");
+        }
+        if (this.isContainerIndexOutOfBounds(this, index)) {
+            throw new ContainerIndexOutOfBoundsException("Container index out of bounds!: ", index);
+        }
         return planes[index];
     }
 
     //set plane by index
     public void setPlaneByIndex(int index, Plane plane) throws EmptyContainerException,
             ContainerIndexOutOfBoundsException {
-        checkEmpty(this);
-        checkContainerIndexOutOfBounds(this, index);
+        if (this.isEmpty()){
+            throw new EmptyContainerException("The container is empty!");
+        }
+        if (this.isContainerIndexOutOfBounds(this, index)) {
+            throw new ContainerIndexOutOfBoundsException("Container index out of bounds!: ", index);
+        }
         planes[index] = plane;
     }
 
     //delete plane by index
     public void deletePlaneByIndex(int index) throws EmptyContainerException, ContainerIndexOutOfBoundsException {
-        checkEmpty(this);
-        checkContainerIndexOutOfBounds(this, index);//legal indexes
+        if (this.isEmpty()){
+            throw new EmptyContainerException("The container is empty!");
+        }
+        if (this.isContainerIndexOutOfBounds(this, index)) {
+            throw new ContainerIndexOutOfBoundsException("Container index out of bounds!: ", index);
+        }
         int length = numberOfPlanes - GET_NEXT_OR_PREVIOUS_PLANE;
         for (int i = index; i < length; i++){
             planes[i] = planes[i + GET_NEXT_OR_PREVIOUS_PLANE];
@@ -125,14 +137,18 @@ public class PlaneList implements Editable {
 
     //clears all planes
     public void clearAll() throws EmptyContainerException {
-        checkEmpty(this);
+        if (this.isEmpty()){
+            throw new EmptyContainerException("The container is empty!");
+        }
         planes = null;
         numberOfPlanes = 0;
     }
 
     //find whether planes entered are in planelist
     public String findPlanes(Plane... planes) throws EmptyContainerException {
-        checkEmpty(this);
+        if (this.isEmpty()){
+            throw new EmptyContainerException("The container is empty!");
+        }
         String indexesResultsOfSearching = "";
         for (int i = 0; i < planes.length; i++){
             String index = ERROR_CASE;
@@ -177,18 +193,8 @@ public class PlaneList implements Editable {
         return sb.toString();
     }
 
-    //exception method: check whether the container is empty
-    protected static void checkEmpty(PlaneList planeListWithFixedMemory) throws EmptyContainerException {
-        if (planeListWithFixedMemory.isEmpty()){
-            throw new EmptyContainerException("The container is empty!");
-        }
-    }
-
     //exception method: checks whether index out of bounds
-    protected static void checkContainerIndexOutOfBounds(PlaneList planeListWithFixedMemory, int index)
-            throws ContainerIndexOutOfBoundsException {
-        if (index < 0 || index > planeListWithFixedMemory.numberOfPlanes - GET_NEXT_OR_PREVIOUS_PLANE){
-            throw new ContainerIndexOutOfBoundsException("Container index out of bounds!: ", index);
-        }
+    protected boolean isContainerIndexOutOfBounds(PlaneList planeListWithFixedMemory, int index) {
+        return index < 0 || index > planeListWithFixedMemory.numberOfPlanes - GET_NEXT_OR_PREVIOUS_PLANE;
     }
 }

@@ -1,23 +1,26 @@
-package by.epam.preTraining.ArthurLyup.tasks.task08.model.logic.typesOfSort;
+package by.epam.preTraining.ArthurLyup.tasks.task09.model.logic.sorting.typesOfSort;
 
 /**
  * SelectionSort is the class which sorts planelist by name using selection sort.
  *
- * 21 June 2018
+ * 23 June 2018
  * @author Arthur Lyup
  */
 
 //import statements
-import by.epam.preTraining.ArthurLyup.tasks.task08.exceptions.ContainerIndexOutOfBoundsException;
-import by.epam.preTraining.ArthurLyup.tasks.task08.exceptions.EmptyContainerException;
-import by.epam.preTraining.ArthurLyup.tasks.task08.model.entity.containers.PlaneList;
-import by.epam.preTraining.ArthurLyup.tasks.task08.model.entity.plane.Plane;
+import by.epam.preTraining.ArthurLyup.tasks.task09.exceptions.ContainerIndexOutOfBoundsException;
+import by.epam.preTraining.ArthurLyup.tasks.task09.exceptions.EmptyContainerException;
+import by.epam.preTraining.ArthurLyup.tasks.task09.model.entity.containers.PlaneList;
+import by.epam.preTraining.ArthurLyup.tasks.task09.model.entity.plane.Plane;
 
 public class SelectionSort {
     private static final int NEXT_OR_PREV = 1;
 
     //start
     public static void sort(PlaneList planeList) throws EmptyContainerException, ContainerIndexOutOfBoundsException {
+        if (planeList.isEmpty()){
+            throw new EmptyContainerException("The planelist is empty! Nothing to sort!");
+        }
         sort(planeList, 0);
     }
 

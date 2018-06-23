@@ -1,10 +1,10 @@
-package by.epam.preTraining.ArthurLyup.tasks.task08.exceptions;
+package by.epam.preTraining.ArthurLyup.tasks.task09.exceptions;
 
 /**
  * NoMemoryException is the class-exception which throws the exception when user tries to add planes in container where
  * there aren't available memory for adding new planes.
  *
- * 21 June 2018
+ * 23 June 2018
  * @author Arthur Lyup
  */
 

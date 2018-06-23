@@ -1,17 +1,17 @@
-package by.epam.preTraining.ArthurLyup.tasks.task08.model.entity.plane.subclasses;
+package by.epam.preTraining.ArthurLyup.tasks.task09.model.entity.plane.subclasses;
 
 /**
  * CargoPlane is the subclass of Plane with additional parameters:
  * double carryingCapacity
  * double pricePerTone
  *
- * 21 June 2018
+ * 23 June 2018
  * @author Arthur Lyup
  */
 
 //import statements
-import by.epam.preTraining.ArthurLyup.tasks.task08.exceptions.NegativeNumberException;
-import by.epam.preTraining.ArthurLyup.tasks.task08.model.entity.plane.Plane;
+import by.epam.preTraining.ArthurLyup.tasks.task09.exceptions.NegativeNumberException;
+import by.epam.preTraining.ArthurLyup.tasks.task09.model.entity.plane.Plane;
 import java.util.Objects;
 
 public class CargoPlane extends Plane {
@@ -20,7 +20,7 @@ public class CargoPlane extends Plane {
     private double pricePerTone;
 
     //the empty constructor
-    public CargoPlane(){
+    public CargoPlane() {
         super();
     }
 
@@ -33,7 +33,7 @@ public class CargoPlane extends Plane {
     }
 
     //copy constructor
-    public CargoPlane(CargoPlane cargoPlane){
+    public CargoPlane(CargoPlane cargoPlane) {
         super(cargoPlane.name, cargoPlane.countryOfProduction, cargoPlane.inWorkingCondition);
         carryingCapacity = cargoPlane.carryingCapacity;
         pricePerTone = cargoPlane.pricePerTone;
@@ -45,7 +45,7 @@ public class CargoPlane extends Plane {
     }
 
     public void setCarryingCapacity(double carryingCapacity) throws NegativeNumberException {
-        if (carryingCapacity < 0){
+        if (carryingCapacity < 0) {
             throw new NegativeNumberException("Illegal carrying capacity! It can't be < 0: ", carryingCapacity);
         }
         this.carryingCapacity = carryingCapacity;
@@ -56,7 +56,7 @@ public class CargoPlane extends Plane {
     }
 
     public void setPricePerTone(double pricePerTone) throws NegativeNumberException {
-        if (pricePerTone < 0){
+        if (pricePerTone < 0) {
             throw new NegativeNumberException("Illegal pricePerTone! It can't be < 0: ", pricePerTone);
         }
         this.pricePerTone = pricePerTone;
@@ -80,7 +80,7 @@ public class CargoPlane extends Plane {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "CargoPlane{" +
                 super.toString() +
                 ", carryingCapacity=" + carryingCapacity +
@@ -88,3 +88,4 @@ public class CargoPlane extends Plane {
                 '}';
     }
 }
+

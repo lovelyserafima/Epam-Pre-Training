@@ -1,17 +1,17 @@
-package by.epam.preTraining.ArthurLyup.tasks.task08.util;
+package by.epam.preTraining.ArthurLyup.tasks.task09.util;
 
 /**
  * PlaneInitializer is the class which initialize objects of class Plane (PassengerPlane and CargoPlane)
  *
- * 21 June 2018
+ * 23 June 2018
  * @author Arthur Lyup
  */
 
 //import statements
-import by.epam.preTraining.ArthurLyup.tasks.task08.exceptions.NegativeNumberException;
-import by.epam.preTraining.ArthurLyup.tasks.task08.model.entity.plane.Plane;
-import by.epam.preTraining.ArthurLyup.tasks.task08.model.entity.plane.subclasses.CargoPlane;
-import by.epam.preTraining.ArthurLyup.tasks.task08.model.entity.plane.subclasses.PassengerPlane;
+import by.epam.preTraining.ArthurLyup.tasks.task09.exceptions.NegativeNumberException;
+import by.epam.preTraining.ArthurLyup.tasks.task09.model.entity.plane.Plane;
+import by.epam.preTraining.ArthurLyup.tasks.task09.model.entity.plane.subclasses.CargoPlane;
+import by.epam.preTraining.ArthurLyup.tasks.task09.model.entity.plane.subclasses.PassengerPlane;
 import java.util.Random;
 
 public class PlaneInitializer {

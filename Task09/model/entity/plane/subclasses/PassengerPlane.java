@@ -1,4 +1,4 @@
-package by.epam.preTraining.ArthurLyup.tasks.task08.model.entity.plane.subclasses;
+package by.epam.preTraining.ArthurLyup.tasks.task09.model.entity.plane.subclasses;
 
 /**
  * PassengerPlane is the subclass of Plane with additional parameters:
@@ -6,13 +6,13 @@ package by.epam.preTraining.ArthurLyup.tasks.task08.model.entity.plane.subclasse
  * double pricePerBusinessClass
  * double pricePerEconomyClass
  *
- * 21 June 2018
+ * 23 June 2018
  * @author Arthur Lyup
  */
 
 //import statements
-import by.epam.preTraining.ArthurLyup.tasks.task08.exceptions.NegativeNumberException;
-import by.epam.preTraining.ArthurLyup.tasks.task08.model.entity.plane.Plane;
+import by.epam.preTraining.ArthurLyup.tasks.task09.exceptions.NegativeNumberException;
+import by.epam.preTraining.ArthurLyup.tasks.task09.model.entity.plane.Plane;
 import java.util.Objects;
 
 public class PassengerPlane extends Plane {

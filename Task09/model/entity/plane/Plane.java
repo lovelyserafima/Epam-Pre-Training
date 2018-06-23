@@ -1,10 +1,10 @@
-package by.epam.preTraining.ArthurLyup.tasks.task08.model.entity.plane;
+package by.epam.preTraining.ArthurLyup.tasks.task09.model.entity.plane;
 
 /**
  * Plane is the class-entity which has information about plane. It is the superclass for it's children PassengerPlane
  * and CargoPlane.
  *
- * 21 June 2018
+ * 23 June 2018
  * @author Arthur Lyup
  */
 
