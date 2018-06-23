@@ -8,8 +8,11 @@ package by.epam.preTraining.ArthurLyup.tasks.task09.view;
  */
 
 //import statements
+import by.epam.preTraining.ArthurLyup.tasks.task09.exceptions.ContainerIndexOutOfBoundsException;
+import by.epam.preTraining.ArthurLyup.tasks.task09.exceptions.EmptyContainerException;
 import by.epam.preTraining.ArthurLyup.tasks.task09.model.entity.containers.PlaneList;
 import by.epam.preTraining.ArthurLyup.tasks.task09.model.entity.plane.Plane;
+import by.epam.preTraining.ArthurLyup.tasks.task09.model.logic.search.Searcher;
 
 public class ConsoleWriter {
     //fields
@@ -34,8 +37,21 @@ public class ConsoleWriter {
         }
     }
 
-    //check whether planelist is empty
-    private static boolean checkEmpty(PlaneList planeList){
-        return planeList.isEmpty();
+    //print result of searching plane in planelist using linear searching
+    public static void printResultOfSearchingPlaneUsingLinearSearching(PlaneList planeList, Plane plane)
+            throws EmptyContainerException {
+        printPlanes(plane);
+        System.out.println("is situated in");
+        printPlaneList(planeList);
+        System.out.println("\non the index = " + Searcher.findPlaneUsingLinearSearch(planeList, plane));
+    }
+
+    //print result of searching plane in planelist using binary search
+    public static void printResultOfSearchingPlaneUsingBinarySearching(PlaneList planeList, Plane plane)
+            throws EmptyContainerException, ContainerIndexOutOfBoundsException {
+        printPlanes(plane);
+        System.out.println("is situated in");
+        printPlaneList(planeList);
+        System.out.println("\non the index = " + Searcher.findPlaneUsingBinarySearch(planeList, plane));
     }
 }

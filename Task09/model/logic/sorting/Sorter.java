@@ -51,7 +51,7 @@ public class Sorter {
         return MergeSort.sort(planeList1, planeList2);
     }
 
-    //sort planes by name quick selection sort
+    //sort planes by name quick sort
     public static void sortPlanesByNameUsingQuickSort(PlaneList planeList) throws EmptyContainerException,
             ContainerIndexOutOfBoundsException {
         if (planeList.isEmpty()){

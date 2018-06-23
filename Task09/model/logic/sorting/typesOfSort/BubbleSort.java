@@ -13,7 +13,6 @@ import by.epam.preTraining.ArthurLyup.tasks.task09.exceptions.EmptyContainerExce
 import by.epam.preTraining.ArthurLyup.tasks.task09.model.entity.containers.PlaneList;
 import by.epam.preTraining.ArthurLyup.tasks.task09.model.entity.plane.Plane;
 
-
 public class BubbleSort {
     //sort planelist using bubble sort
     public static void sort(PlaneList planeList) throws EmptyContainerException, ContainerIndexOutOfBoundsException {

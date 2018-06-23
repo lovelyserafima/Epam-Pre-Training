@@ -10,6 +10,7 @@ package by.epam.preTraining.ArthurLyup.tasks.task09.model.entity.containers;
  * 5)delete plane by index
  * 6)delete all planes
  * 7)find planes in planelist
+ * 8)set plane by index
  *
  * 23 June 2018
  * @author Arthur Lyup

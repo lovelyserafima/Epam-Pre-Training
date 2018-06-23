@@ -14,10 +14,11 @@ import by.epam.preTraining.ArthurLyup.tasks.task09.model.entity.containers.Plane
 import by.epam.preTraining.ArthurLyup.tasks.task09.model.entity.plane.Plane;
 
 public class PlaneListEditer {
-    public static void makePlaneListReadyForSort(PlaneList planeList, int numberOfPlanes, Plane... planes) throws
+    public static PlaneList makePlaneListReadyForSort(PlaneList planeList, int numberOfPlanes, Plane... planes) throws
             EmptyContainerException, NoMemoryException {
         planeList.clearAll();
         planeList = new PlaneList(numberOfPlanes);
         planeList.addPlanes(planes);
+        return planeList;
     }
 }

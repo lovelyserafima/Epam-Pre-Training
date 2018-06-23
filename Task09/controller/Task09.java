@@ -36,17 +36,18 @@ public class Task09 {
             PlaneList planeList =  new PlaneList(numberOfPlanes);
             planeList.addPlanes(passengerPlane1, passengerPlane2, passengerPlane3, cargoPlane1, cargoPlane2,
                     cargoPlane3);
-            System.out.println("Plalelist before sort:");
+            System.out.println("Planelist before sort:");
             ConsoleWriter.printPlaneList(planeList);
 
+            //all sorts///////////////////////////////////////////////////////////////////////////////////////////////
             //sort using bubble sort
             System.out.println("\nPlanelist after bubble sort");
             Sorter.sortPlanesByNameUsingBubbleSort(planeList);
             ConsoleWriter.printPlaneList(planeList);
 
             //clearing and adding
-            PlaneListEditer.makePlaneListReadyForSort(planeList, numberOfPlanes, passengerPlane1, passengerPlane2,
-                    passengerPlane3, cargoPlane1, cargoPlane2, cargoPlane3);
+            planeList = PlaneListEditer.makePlaneListReadyForSort(planeList, numberOfPlanes, passengerPlane1,
+                    passengerPlane2, passengerPlane3, cargoPlane1, cargoPlane2, cargoPlane3);
 
             //sort using insertion sort
             Sorter.sortPlanesByNameUsingInsertionSort(planeList);
@@ -54,8 +55,8 @@ public class Task09 {
             ConsoleWriter.printPlaneList(planeList);
 
             //clearing and adding
-            PlaneListEditer.makePlaneListReadyForSort(planeList, numberOfPlanes, passengerPlane1, passengerPlane2,
-                    passengerPlane3, cargoPlane1, cargoPlane2, cargoPlane3);
+            planeList = PlaneListEditer.makePlaneListReadyForSort(planeList, numberOfPlanes, passengerPlane1,
+                    passengerPlane2, passengerPlane3, cargoPlane1, cargoPlane2, cargoPlane3);
 
             //sort using selection sort
             Sorter.sortPlanesByNameUsingSelectionSort(planeList);
@@ -64,9 +65,8 @@ public class Task09 {
 
             //clearing and adding
             numberOfPlanes = 3;
-            planeList.clearAll();
-            planeList = new PlaneList(numberOfPlanes);
-            planeList.addPlanes(passengerPlane1, passengerPlane2, passengerPlane3);
+            planeList = PlaneListEditer.makePlaneListReadyForSort(planeList, numberOfPlanes, passengerPlane1,
+                    cargoPlane1, passengerPlane2);
             PlaneList planeList2 = new PlaneList(numberOfPlanes);
             planeList2.addPlanes(cargoPlane1, cargoPlane2, cargoPlane3);
             System.out.println("\nFirst planelist before merge sort:");
@@ -78,14 +78,21 @@ public class Task09 {
 
             //clearing and adding
             numberOfPlanes = 6;
-            PlaneListEditer.makePlaneListReadyForSort(planeList, numberOfPlanes, passengerPlane1, passengerPlane2,
-                    passengerPlane3, cargoPlane1, cargoPlane2, cargoPlane3);
+            planeList = PlaneListEditer.makePlaneListReadyForSort(planeList, numberOfPlanes, passengerPlane1,
+                    passengerPlane2, passengerPlane3, cargoPlane1, cargoPlane2, cargoPlane3);
 
             //sort using quick sort
             Sorter.sortPlanesByNameUsingQuickSort(planeList);
             System.out.println("\nAfter quick sort:");
             ConsoleWriter.printPlaneList(planeList);
 
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            //searching///////////////////////////////////////////////////////////////////////////////////////////////
+            //linear search
+            ConsoleWriter.printResultOfSearchingPlaneUsingLinearSearching(planeList, passengerPlane1);
+            //binary search
+            ConsoleWriter.printResultOfSearchingPlaneUsingBinarySearching(planeList, passengerPlane1);
         } catch (NoMemoryException e) {
             System.out.println(e.getMessage() + "Available memory = " + e.getAvailableMemory()
                     + ", required memory = " + e.getRequiredMemory());
@@ -93,6 +100,8 @@ public class Task09 {
             System.out.println(e.getMessage() + e.getIndex());
         } catch (EmptyContainerException e) {
             System.out.println(e.getMessage());
+        } catch (NegativeNumberException e){
+            System.out.println(e.getMessage() + e.getNumber());
         } finally {
             System.out.println("\nThe application was stopped! Thank you for working with us:)");
         }
