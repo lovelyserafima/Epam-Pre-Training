@@ -12,7 +12,7 @@ public class FourDigitNumber {
     private static final int GET_LAST_DIGIT = 10;
 
     //check increase sequence
-    public static boolean checkIncSequnce(int number){
+    public static boolean isIncSequnce(int number){
         int a = number % GET_LAST_DIGIT;
         number /= GET_LAST_DIGIT;
         int b = number % GET_LAST_DIGIT;
@@ -24,7 +24,7 @@ public class FourDigitNumber {
     }
 
     //check decrease sequence
-    public static boolean checkDecSequnce(int number){
+    public static boolean isDecSequnce(int number){
         int a = number % GET_LAST_DIGIT;
         number /= GET_LAST_DIGIT;
         int b = number % GET_LAST_DIGIT;

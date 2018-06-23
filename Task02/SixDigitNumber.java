@@ -1,7 +1,7 @@
 package task_02;
 
 /**
- * FourDigitNumber is the class which solves following task:
+ * SixDigitNumber is the class which solves following task:
  * Finds average arithmetic and geometric of digits of the six-digit number.
  *
  * 4 June 2018
