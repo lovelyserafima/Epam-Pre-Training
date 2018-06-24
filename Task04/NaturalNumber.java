@@ -54,8 +54,8 @@ public class NaturalNumber {
         }
         String s = "" + number;
         boolean flag = true;
-        int middleOfNumber = s.length()/GET_MIDDLE;
         int length = s.length();
+        int middleOfNumber = length/GET_MIDDLE;
         for (int i = 0; i < middleOfNumber; i++){
             if (s.indexOf(i) != s.indexOf(length - i - FIRST_INDEX_OF_ARRAY)){
                 flag = false;
@@ -77,8 +77,8 @@ public class NaturalNumber {
         } else if (number % CHECK_PARITY == 0){//even numbers aren't simple except 2
             return false;
         } else {
-            int sqrrOfNumber = (int)Math.sqrt(number);
-            for (int i = FIRST_SIMPLE_ODD_NUMBER; i <= sqrrOfNumber; i+=CHECK_PARITY){
+            int sqrtOfNumber = (int)Math.sqrt(number);
+            for (int i = FIRST_SIMPLE_ODD_NUMBER; i <= sqrtOfNumber; i+=CHECK_PARITY){
                 if (number % i == 0){
                     return false;
                 }
