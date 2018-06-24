@@ -75,7 +75,7 @@ public class PlaneListWithDynamicMemory extends PlaneList {
     @Override
     //add planes
     public void addPlanes(Plane... planes){
-        if (planes.length > (capacity - numberOfPlanes)){
+        while (planes.length > (capacity - numberOfPlanes)){
             increaseCapacity();
             this.planes = Arrays.copyOf(planes, capacity);
         }
