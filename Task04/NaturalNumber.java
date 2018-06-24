@@ -26,7 +26,7 @@ public class NaturalNumber {
     private static final int FIRST_SIMPLE_ODD_NUMBER = 3;//3, 5, 7, 11, 13, ...
     private static final int MIN_PERFECT_NUMBER = 6;//6 - is the min perfect number
     private static final int GET_DIGIT = 10;//by /10 and %10 we get last number and reduce the number
-    private static final int MIN_DOUBLEVALUED_NUMBER = 10;//10, 11, 12, 13
+    private static final int MIN_DOUBLE_VALUED_NUMBER = 10;//10, 11, 12, 13
 
     //find max digit in the number
     public static int findMaxDigit(int number) throws Exception {
@@ -49,7 +49,7 @@ public class NaturalNumber {
         if (!isNaturalNumber(number)){
             throw new Exception("Wrong Input! " + number + " isn't a natural number");
         }
-        if (number < MIN_DOUBLEVALUED_NUMBER){//1,2,3...9 are palindromes
+        if (number < MIN_DOUBLE_VALUED_NUMBER){//1,2,3...9 are palindromes
             return true;
         }
         String s = "" + number;
@@ -142,11 +142,11 @@ public class NaturalNumber {
         if (!isNaturalNumber(number)){
             throw new Exception("Wrong Input! " + number + " isn't a natural number");
         }
-        if (number < MIN_DOUBLEVALUED_NUMBER){//if a single-valued number
+        if (number < MIN_DOUBLE_VALUED_NUMBER){//if a single-valued number
             return NUMBER_OF_DIFFERENT_DIGITS_IN_SINGLE_VALUED_NUMBER;//1,2,3,...,9 has 1 digit
         }
         int counterOfDifferentDigits = 0;
-        for (int i = 0; i < MIN_DOUBLEVALUED_NUMBER; i++){
+        for (int i = 0; i < MIN_DOUBLE_VALUED_NUMBER; i++){
             int memory = number;
             while(memory > 0){
                 if (memory % GET_DIGIT == i){
