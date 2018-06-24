@@ -16,6 +16,10 @@ import by.epam.preTraining.ArthurLyup.tasks.task09.model.entity.plane.Plane;
 public class LinearSearch {
     //search plane in planelist
     public static String findPlane(PlaneList planeList, Plane plane) throws EmptyContainerException {
-        return planeList.findPlanes(plane);//this realization is already situated in class PlaneList
+        //this realization is already situated in class PlaneList (necessary condition of container)
+        if (planeList.isEmpty()){
+            throw new EmptyContainerException("The container is empty! Nothing to search!");
+        }
+        return planeList.findPlanes(plane);
     }
 }

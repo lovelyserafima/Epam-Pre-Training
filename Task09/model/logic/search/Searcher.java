@@ -1,9 +1,9 @@
 package by.epam.preTraining.ArthurLyup.tasks.task09.model.logic.search;
 
 /**
- * LinearSearch is the class which searchs plane using different types of searching.
+ * Searcher is the class which searchs plane using different types of searching.
  *
- * 23 June 2018
+ * 24 June 2018
  * @author Arthur Lyup
  */
 

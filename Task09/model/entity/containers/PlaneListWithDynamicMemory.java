@@ -31,8 +31,10 @@ public class PlaneListWithDynamicMemory extends PlaneList {
     //constructor with size
     public PlaneListWithDynamicMemory(int size){
         if (size > capacity){
-            this.increaseCapacity();
-            this.planes = Arrays.copyOf(planes, capacity);
+            while (size > capacity) {
+                this.increaseCapacity();
+                this.planes = Arrays.copyOf(planes, capacity);
+            }
         } else {
             this.planes = Arrays.copyOf(planes, size);
         }
@@ -73,7 +75,7 @@ public class PlaneListWithDynamicMemory extends PlaneList {
     @Override
     //add planes
     public void addPlanes(Plane... planes){
-        while (planes.length > (capacity - numberOfPlanes)){
+        while (planes.length > capacity - numberOfPlanes){
             increaseCapacity();
             this.planes = Arrays.copyOf(planes, capacity);
         }
