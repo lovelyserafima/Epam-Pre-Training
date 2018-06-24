@@ -100,9 +100,4 @@ public class ConsoleWriter {
             System.out.println("Nothing to do! PlaneList is empty!");
         }
     }
-
-    //check whether planelist is empty
-    private static boolean checkEmpty(PlaneList planeList){
-        return planeList.isEmpty();
-    }
 }

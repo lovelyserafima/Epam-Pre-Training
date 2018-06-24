@@ -3,7 +3,7 @@ package by.epam.preTraining.ArthurLyup.tasks.task07.controller;
 /**
  * Task07 is the class-tester which tests class of business logic and different events.
  *
- * 20 June 2018
+ * 24 June 2018
  * @author Arthur Lyup
  */
 
@@ -33,7 +33,7 @@ public class Task07 {
 
             //testing planelist with fixed memory/////////////////////////////////////////////
 
-            int size = 5;
+            int size = 4;
             PlaneList planeList = new PlaneList(size);
 
             //trying to print empty planelist

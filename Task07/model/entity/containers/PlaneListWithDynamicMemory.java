@@ -4,7 +4,7 @@ package by.epam.preTraining.ArthurLyup.tasks.task07.model.entity.containers;
  * PlaneListWithDynamicMemory is the class-container of planes builded on arrays with dynamic memory. It is the child of
  * the class PlaneList, so it has the same functional as PlaneList with some changes: add planes and delete all planes.
  *
- * 21 June 2018
+ * 24 June 2018
  * @author Arthur Lyup
  */
 
@@ -31,8 +31,10 @@ public class PlaneListWithDynamicMemory extends PlaneList {
     //constructor with size
     public PlaneListWithDynamicMemory(int size){
         if (size > capacity){
-            this.increaseCapacity();
-            this.planes = Arrays.copyOf(planes, capacity);
+            while (size > capacity){
+                this.increaseCapacity();
+                this.planes = Arrays.copyOf(planes, capacity);
+            }
         } else {
             this.planes = Arrays.copyOf(planes, size);
         }
@@ -86,7 +88,9 @@ public class PlaneListWithDynamicMemory extends PlaneList {
     @Override
     //clears all planes
     public void clearAll() throws EmptyContainerException {
-        checkEmpty(this);
+        if (this.isEmpty()){
+            throw new EmptyContainerException("The container is empty!");
+        }
         planes = null;
         numberOfPlanes = 0;
         capacity = 0;

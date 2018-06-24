@@ -5,7 +5,7 @@ package by.epam.preTraining.ArthurLyup.tasks.task07.model.logic;
  * 1)count total passenger and carrying capacity
  * 2)find planes with max and min passenger and carrying capacities
  *
- * 20 June 2018
+ * 24 June 2018
  * @author Arthur Lyup
  */
 
@@ -22,7 +22,9 @@ public class Airline {
     //count total passenger capacity
     public static int countTotalPassengerCapacity(PlaneList planeList) throws EmptyContainerException,
             ContainerIndexOutOfBoundsException {
-        checkEmpty(planeList);
+        if (planeList.isEmpty()){
+            throw new EmptyContainerException("The container is empty!");
+        }
         int totalPassengerCapacity = 0;
         int numberOfPlanes = planeList.getNumberOfPlanes();
         for (int i = 0; i < numberOfPlanes; i++){
@@ -36,7 +38,9 @@ public class Airline {
     //count total carrying capacity
     public static double countTotalCarryingCapacity(PlaneList planeList) throws EmptyContainerException,
             ContainerIndexOutOfBoundsException {
-        checkEmpty(planeList);
+        if (planeList.isEmpty()){
+            throw new EmptyContainerException("The container is empty!");
+        }
         double totalCarryingCapacity = 0.0;
         int numberOfPlanes = planeList.getNumberOfPlanes();
         for (int i = 0; i < numberOfPlanes; i++){
@@ -50,7 +54,9 @@ public class Airline {
     //find plane with max passenger capacity
     public static PassengerPlane findPlaneWithMaxPassengerCapacity(PlaneList planeList) throws EmptyContainerException,
             ContainerIndexOutOfBoundsException {
-        checkEmpty(planeList);
+        if (planeList.isEmpty()){
+            throw new EmptyContainerException("The container is empty!");
+        }
         int indexOfPlaneWithMaxPassengerCapacity = ERROR_CASE;
         int maxPassengerCapacity = 0;
         int numberOfPlanes = planeList.getNumberOfPlanes();
@@ -72,7 +78,9 @@ public class Airline {
     //find plane with min passenger capacity
     public static PassengerPlane findPlaneWithMinPassengerCapacity(PlaneList planeList) throws EmptyContainerException,
             ContainerIndexOutOfBoundsException {
-        checkEmpty(planeList);
+        if (planeList.isEmpty()){
+            throw new EmptyContainerException("The container is empty!");
+        }
         int indexOfPlaneWithMinPassengerCapacity = ERROR_CASE;
         int minPassengerCapacity = Integer.MAX_VALUE;
         int numberOfPlanes = planeList.getNumberOfPlanes();
@@ -94,7 +102,9 @@ public class Airline {
     //find plane with max carrying capacity
     public static CargoPlane findPlaneWithMaxCarryingCapacity(PlaneList planeList) throws EmptyContainerException,
             ContainerIndexOutOfBoundsException {
-        checkEmpty(planeList);
+        if (planeList.isEmpty()){
+            throw new EmptyContainerException("The container is empty!");
+        }
         int indexOfPlaneWithMaxCarryingCapacity = ERROR_CASE;
         double maxCarryingCapacity = 0.0;
         int numberOfPlanes = planeList.getNumberOfPlanes();
@@ -116,7 +126,9 @@ public class Airline {
     //find plane with min passenger capacity
     public static CargoPlane findPlaneWithMinCarryingCapacity(PlaneList planeList) throws EmptyContainerException,
             ContainerIndexOutOfBoundsException {
-        checkEmpty(planeList);
+        if (planeList.isEmpty()){
+            throw new EmptyContainerException("The container is empty!");
+        }
         int indexOfPlaneWithMinCarryingCapacity = ERROR_CASE;
         double minCarryingCapacity = Double.MAX_VALUE;
         int numberOfPlanes = planeList.getNumberOfPlanes();
@@ -132,13 +144,6 @@ public class Airline {
             return (CargoPlane) planeList.getPlaneByIndex(indexOfPlaneWithMinCarryingCapacity);
         } else {
             return null;
-        }
-    }
-
-    //check whether container is empty
-    private static void checkEmpty(PlaneList planeList) throws EmptyContainerException {
-        if (planeList.isEmpty()){
-            throw new EmptyContainerException("Container is empty!");
         }
     }
 }
