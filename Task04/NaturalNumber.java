@@ -5,12 +5,12 @@ package task_04;
  * 1)find max digit in the natural number
  * 2)check whether the natural number is palindrome
  * 3)check whether the natural number is simple
- * 4)find all simple deviders of the natural number
+ * 4)find all simple dividers of the natural number
  * 5)find GCD and LCM of two natural numbers
  * 6)find the number of different digits in the natural number
  * 7)check whether the natural number is perfect
  *
- * 18 June 2018
+ * 24 June 2018
  * @author Arthur Lyup
  */
 
@@ -30,7 +30,9 @@ public class NaturalNumber {
 
     //find max digit in the number
     public static int findMaxDigit(int number) throws Exception {
-        checkNumber(number);//check input
+        if (!isNaturalNumber(number)){
+            throw new Exception("Wrong Input! " + number + " isn't a natural number");
+        }
         int max = number % GET_DIGIT;
         number /= GET_DIGIT;
         while (number > 0){
@@ -43,8 +45,10 @@ public class NaturalNumber {
     }
 
     //check whether the number is palindrome
-    public static boolean checkPalindrome(int number) throws Exception {
-        checkNumber(number);
+    public static boolean isPalindrome(int number) throws Exception {
+        if (!isNaturalNumber(number)){
+            throw new Exception("Wrong Input! " + number + " isn't a natural number");
+        }
         if (number < MIN_DOUBLEVALUED_NUMBER){//1,2,3...9 are palindromes
             return true;
         }
@@ -62,8 +66,10 @@ public class NaturalNumber {
     }
 
     //check whether the number is simple
-    public static boolean checkSimplicity(int number) throws Exception {
-        checkNumber(number);//check input
+    public static boolean isSimple(int number) throws Exception {
+        if (!isNaturalNumber(number)){
+            throw new Exception("Wrong Input! " + number + " isn't a natural number");
+        }
         if (number < UNIQUE_SIMPLE_EVEN_NUMBER){
             return false;
         } else if (number == UNIQUE_SIMPLE_EVEN_NUMBER){//2 is the only even simple number
@@ -83,12 +89,14 @@ public class NaturalNumber {
 
     //find simple dividers of number
     public static String findSimpleDividers(int number) throws Exception {
-        checkNumber(number);//check input
+        if (!isNaturalNumber(number)){
+            throw new Exception("Wrong Input! " + number + " isn't a natural number");
+        }
         String dividers = "";//our simple dividers
-        if (checkSimplicity(number) == false) {//if number isn't simple
+        if (!isSimple(number)) {//if number isn't simple
             for (int i = FIRST_INDEX_OF_ARRAY; i <= number / GET_MIDDLE; i++) {
                 if (number % i == 0) {
-                    if (checkSimplicity(i) == true) {
+                    if (isSimple(i)) {
                         dividers += i + " ";
                     }
                 }
@@ -101,8 +109,12 @@ public class NaturalNumber {
 
     //find GCD of two numbers
     public static int findGCD(int number1, int number2) throws Exception {
-        checkNumber(number1);//check input
-        checkNumber(number2);
+        if (!isNaturalNumber(number1)){
+            throw new Exception("Wrong Input! " + number1 + " isn't a natural number");
+        }
+        if (!isNaturalNumber(number2)){
+            throw new Exception("Wrong Input! " + number2 + " isn't a natural number");
+        }
         while (number1 != 0 && number2 != 0){
             if (number1 > number2){
                 number1 %= number2;
@@ -115,15 +127,21 @@ public class NaturalNumber {
 
     //find LCM of two numbers
     public static int findLCM(int number1, int number2) throws Exception {
-        checkNumber(number1);//check input
-        checkNumber(number2);
+        if (!isNaturalNumber(number1)){
+            throw new Exception("Wrong Input! " + number1 + " isn't a natural number");
+        }
+        if (!isNaturalNumber(number2)){
+            throw new Exception("Wrong Input! " + number2 + " isn't a natural number");
+        }
         //number1*number2/findGCD(number1, number2) is worse than this expression because of overflowing int
         return number1/findGCD(number1,number2) * number2;
     }
 
     //count number of different digits in the number
     public static int countNumberOfDifferentDigits(int number) throws Exception {
-        checkNumber(number);//check input
+        if (!isNaturalNumber(number)){
+            throw new Exception("Wrong Input! " + number + " isn't a natural number");
+        }
         if (number < MIN_DOUBLEVALUED_NUMBER){//if a single-valued number
             return NUMBER_OF_DIFFERENT_DIGITS_IN_SINGLE_VALUED_NUMBER;//1,2,3,...,9 has 1 digit
         }
@@ -142,9 +160,11 @@ public class NaturalNumber {
     }
 
     //check whether is the number if perfect
-    public static boolean checkPerfection(int number) throws Exception {
-        checkNumber(number);//check input
-        if (number < MIN_PERFECT_NUMBER || checkSimplicity(number) == true){
+    public static boolean isPerfect(int number) throws Exception {
+        if (!isNaturalNumber(number)){
+            throw new Exception("Wrong Input! " + number + " isn't a natural number");
+        }
+        if (number < MIN_PERFECT_NUMBER || isSimple(number)){
             return false;
         }
         int sum = FIRST_DIVIDER_OF_ALL_NUMBERS;
@@ -157,9 +177,7 @@ public class NaturalNumber {
     }
 
     //check input
-    private static void checkNumber(int number) throws Exception {
-        if (number < MIN_NATURAL_NUMBER){
-            throw new Exception("Wrong Input! " + number + " isn't a natural number");
-        }
+    private static boolean isNaturalNumber(int number) throws Exception {
+        return number >= MIN_NATURAL_NUMBER;
     }
 }
