@@ -31,20 +31,20 @@ public class Calendar {
     private static final int LAST_DAY_30_MONTH = 30;
 
     //checking leap year
-    private static final int CHECK1 = 4;
-    private static final int CHECK2 = 100;
-    private static final int CHECK3 = 400;
+    private static final int IS_LEAP_YEAR1 = 4;
+    private static final int IS_LEAP_YEAR2 = 100;
+    private static final int IS_LEAP_YEAR3 = 400;
 
     //the main method
     public static String identifyNextDay(int day, int month, int year) throws Exception {
-        checkDate(day, month, year);//check input
+        isValidDate(day, month, year);//check input
 
         //February
         if (month == FEBRUARY){
             if (day == LAST_DAY_OF_FEBRUARY_LEAP_YEAR){
                 return identifyNewMonth(day, month, year);
             } else if (day == LAST_DAY_OF_FEBRUARY){
-                if (checkLeapYear(year)){
+                if (isLeapYear(year)){
                     return identifyTypicalDay(day, month, year);
                 } else return identifyNewMonth(day, month, year);
             } else return identifyTypicalDay(day, month, year);
@@ -86,7 +86,7 @@ public class Calendar {
     }
 
     //check input
-    private static void checkDate(int day, int month, int year) throws Exception {
+    private static void isValidDate(int day, int month, int year) throws Exception {
         if (day < FIRST_DAY || day > LAST_DAY_31_MONTH){
             throw new Exception("Wrong input! Day belongs to [1, 31]");
         }
@@ -104,7 +104,7 @@ public class Calendar {
         }
 
         if (month == FEBRUARY && day == LAST_DAY_OF_FEBRUARY_LEAP_YEAR){
-            if (!checkLeapYear(year)){
+            if (!isLeapYear(year)){
                 throw new Exception("Wrong input! " + year + " isn't a leap year!");
             }
         }
@@ -127,7 +127,8 @@ public class Calendar {
     }
 
     //check whether the year is leap
-    private static boolean checkLeapYear(int year){
-        return year % CHECK1 == 0 && year % CHECK2 != 0 && year % CHECK3 != 0 || year % CHECK2 == 0 && year % CHECK3 == 0;
+    private static boolean isLeapYear(int year){
+        return year % IS_LEAP_YEAR1 == 0 && year % IS_LEAP_YEAR2 != 0 && year % IS_LEAP_YEAR3 != 0
+                || year % IS_LEAP_YEAR2 == 0 && year % IS_LEAP_YEAR3 == 0;
     }
 }
