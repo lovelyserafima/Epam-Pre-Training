@@ -94,7 +94,8 @@ public class NaturalNumber {
         }
         String dividers = "";//our simple dividers
         if (!isSimple(number)) {//if number isn't simple
-            for (int i = FIRST_INDEX_OF_ARRAY; i <= number / GET_MIDDLE; i++) {
+            int middleOfNumber = number/GET_MIDDLE;
+            for (int i = FIRST_INDEX_OF_ARRAY; i <= middleOfNumber; i++) {
                 if (number % i == 0) {
                     if (isSimple(i)) {
                         dividers += i + " ";
