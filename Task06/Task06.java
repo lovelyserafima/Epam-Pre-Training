@@ -3,7 +3,7 @@ package task_06;
 /**
  * Task06 is the class with the main method(String[] args).
  *
- * 9 June 2018
+ * 24 June 2018
  * @author Arthur Lyup
  */
 
@@ -14,11 +14,10 @@ public class Task06 {
         //standart tests without hardcode
         int n = 5;
         int m = 5;
-        MatrInitializer.checkSizeOfMatrix(n, m);
         double[][] matr = new double[n][m];
         double leftBorder = 0.0;
-        double rigthBorder = 10.0;
-        MatrInitializer.initializeMatrix(matr, leftBorder, rigthBorder);
+        double rightBorder = 10.0;
+        MatrInitializer.initializeMatrix(matr, leftBorder, rightBorder);
         System.out.println("Multidimensional array: " + n + "x" + m);
         for (int i = 0; i < n; i++) {
             System.out.println(Arrays.toString(matr[i]));
@@ -32,7 +31,7 @@ public class Task06 {
         System.out.println("5)Indexes of local min-> " + Matrix.findPositionOfLocalMin(matr));
         System.out.println("6)Indexes of local max-> " + Matrix.findPositionOfLocalMax(matr));
         System.out.println("7)Transponse matrix:");
-        if (Matrix.checkRectangularity(matr)){
+        if (Matrix.isRectangular(matr)){
             double [][] transMatr = Matrix.transponseRectangularMatrix(matr);
             for (int i = 0; i < transMatr.length; i++){
                 System.out.println(Arrays.toString(transMatr[i]));
@@ -55,7 +54,7 @@ public class Task06 {
             System.out.println(Arrays.toString(matr1[i]));
         }
         System.out.println("Matrix after transponsing:");
-        if (Matrix.checkRectangularity(matr1)){
+        if (Matrix.isRectangular(matr1)){
             double [][] transMatr = Matrix.transponseRectangularMatrix(matr1);
             for (int i = 0; i < transMatr.length; i++){
                 System.out.println(Arrays.toString(transMatr[i]));
