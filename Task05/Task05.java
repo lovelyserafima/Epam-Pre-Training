@@ -3,13 +3,13 @@ package task_05;
 /**
  * Task05 is the class with the method main(String[]args)
  *
- * 5 June 2018
+ * 24 June 2018
  * @author Arthur Lyup
  */
 
 public class Task05 {
     public static void main (String[] args) throws Exception {
-        int n = 10;//n elements in array
+        int n = 5;//n elements in array
         double[] array = new double[n];
         //our borders of randoming
         double leftBorder = -10.0;
@@ -26,8 +26,8 @@ public class Task05 {
         System.out.println("4)Average geometric = " + ArrayWorker.findAverageGeometric(array));
 
         //task3
-        System.out.println("5)Increase array -> " + ArrayWorker.checkIncArray(array));
-        System.out.println("6)Decrease array -> " + ArrayWorker.checkDecArray(array));
+        System.out.println("5)Increase array -> " + ArrayWorker.isIncArray(array));
+        System.out.println("6)Decrease array -> " + ArrayWorker.isDecArray(array));
 
         //task4
         System.out.println("7)Index of local minimum = " + ArrayWorker.findIndexOfLocalMin(array));

@@ -8,7 +8,7 @@ package task_05;
  * 4)find indexes of local min and max of array elements
  * 5)reverse array
  *
- * 18 June 2018
+ * 24 June 2018
  * @author Arthur Lyup
  */
 
@@ -22,7 +22,9 @@ public class ArrayWorker {
 
     //find max element in array
     public static double findMaxElement(double[] array) throws Exception {
-        checkArray(array);//check correct input
+        if (array.length == 0){
+            throw new Exception("Wrong Input! Array is empty!");
+        }
         double max = array[ZERO_INDEX_OF_ARRAY];//first element
         for (int i = FIRST_INDEX_OF_ARRAY; i < array.length; i++){
             if (array[i] > max){
@@ -34,7 +36,9 @@ public class ArrayWorker {
 
     //find min element in array
     public static double findMinElement(double[] array) throws Exception {
-        checkArray(array);//check correct input
+        if (array.length == 0){
+            throw new Exception("Wrong Input! Array is empty!");
+        }
         double min = array[ZERO_INDEX_OF_ARRAY];//first element
         for (int i = FIRST_INDEX_OF_ARRAY; i < array.length; i++){
             if (array[i] < min){
@@ -46,7 +50,9 @@ public class ArrayWorker {
 
     //find average arithmetic of elements of array
     public static double findAverageArithmetic(double[] array) throws Exception {
-        checkArray(array);//check correct input
+        if (array.length == 0){
+            throw new Exception("Wrong Input! Array is empty!");
+        }
         double sum = 0.0;
         for (double element : array){//find numerator
             sum += element;
@@ -56,8 +62,10 @@ public class ArrayWorker {
 
     //find average geometric of elements of array
     public static double findAverageGeometric(double[] array) throws Exception {
-        checkArray(array);//check correct input
-        if (checkPositiveElementsOfArray(array)) {//elements must be > 0
+        if (array.length == 0){
+            throw new Exception("Wrong Input! Array is empty!");
+        }
+        if (arePositiveElementsOfArray(array)) {//elements must be > 0
             double composition = PRIMARY_VALUE;//= 1 (default for start value)
             for (double element : array) {//multiplication
                 composition *= element;
@@ -69,7 +77,7 @@ public class ArrayWorker {
     }
 
     //elements for average geometric must be > 0
-    private static boolean checkPositiveElementsOfArray(double[] array) {
+    private static boolean arePositiveElementsOfArray(double[] array) {
         for (double element : array){
             if (element <= 0.0){
                 return false;
@@ -79,8 +87,10 @@ public class ArrayWorker {
     }
 
     //check whether elements of array are sorted in ascending order
-    public static boolean checkIncArray(double[] array) throws Exception {
-        checkArray(array);//check correct input
+    public static boolean isIncArray(double[] array) throws Exception {
+        if (array.length == 0){
+            throw new Exception("Wrong Input! Array is empty!");
+        }
         boolean flag = true;
         for (int i = FIRST_INDEX_OF_ARRAY; i < array.length; i++){
             if (array[i] < array[i - FIRST_INDEX_OF_ARRAY]){
@@ -92,8 +102,10 @@ public class ArrayWorker {
     }
 
     //check whether elements of array are sorted in descending order
-    public static boolean checkDecArray(double[] array) throws Exception {
-        checkArray(array);//check correct input
+    public static boolean isDecArray(double[] array) throws Exception {
+        if (array.length == 0){
+            throw new Exception("Wrong Input! Array is empty!");
+        }
         boolean flag = true;
         for (int i = FIRST_INDEX_OF_ARRAY; i < array.length; i++){
             if (array[i] > array[i - FIRST_INDEX_OF_ARRAY]){
@@ -106,7 +118,9 @@ public class ArrayWorker {
 
     //find local minimum of array
     public static int findIndexOfLocalMin(double[] array) throws Exception {
-        checkArray(array);//check correct input
+        if (array.length == 0){
+            throw new Exception("Wrong Input! Array is empty!");
+        }
         int index = ERROR_CASE;//if we won't find, we return -1
         int length = array.length - FIRST_INDEX_OF_ARRAY;
         for (int i = FIRST_INDEX_OF_ARRAY; i < length; i++){//searc local min
@@ -118,9 +132,11 @@ public class ArrayWorker {
         return index;
     }
 
-    //find local maximim of array
+    //find local maximum of array
     public static int findIndexOfLocalMax(double[] array) throws Exception {
-        checkArray(array);//check correct input
+        if (array.length == 0){
+            throw new Exception("Wrong Input! Array is empty!");
+        }
         int index = ERROR_CASE;//if we won't find, we return -1
         int length = array.length - FIRST_INDEX_OF_ARRAY;
         for (int i = FIRST_INDEX_OF_ARRAY; i < length; i++){//searc local max
@@ -134,19 +150,14 @@ public class ArrayWorker {
 
     //reverses array
     public static void reverseArray(double[] array) throws Exception {
-        checkArray(array);//check correct input
+        if (array.length == 0){
+            throw new Exception("Wrong Input! Array is empty!");
+        }
         int middleOfArray = array.length/GET_MIDDLE;
         for (int i = ZERO_INDEX_OF_ARRAY; i < middleOfArray; i++){
             double tmp = array[i];
             array[i] = array[array.length - i - FIRST_INDEX_OF_ARRAY];
             array[array.length - i - FIRST_INDEX_OF_ARRAY] = tmp;
-        }
-    }
-
-    //check input
-    private static void checkArray(double[] array) throws Exception {
-        if (array.length == 0){
-            throw new Exception("Wrong Input! Array is empty!");
         }
     }
 }
