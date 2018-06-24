@@ -10,13 +10,10 @@ import java.util.Random;
  */
 
 public class MatrInitializer {
-    private static final int ZERO_LINE = 0;
-    private static final int ZERO_COLUMN = 0;
-
     public static void initializeMatrix(double[][] matr, double leftBorder, double rightBorder){
         Random random = new Random();
-        for (int i = ZERO_LINE; i < matr.length; i++){
-            for (int j = ZERO_COLUMN; j < matr[i].length; j++){
+        for (int i = 0; i < matr.length; i++){
+            for (int j = 0; j < matr[i].length; j++){
                 matr[i][j] = random.nextDouble()*(rightBorder - leftBorder) + leftBorder;
             }
         }

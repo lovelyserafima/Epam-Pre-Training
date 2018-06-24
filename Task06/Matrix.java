@@ -82,18 +82,6 @@ public class Matrix {
         }
     }
 
-    //count number of elements in matrix
-    private static int countNumberOfElementsInMatrix(double[][] matr) throws Exception {
-        if (!areValidSizesOfArray(matr)){
-            throw new Exception("Wrong input! Irregular sizes of array");
-        }
-        int numberOfElementsInMatrix = 0;
-        for (int i = 0; i < matr.length; i++){
-            numberOfElementsInMatrix += matr[i].length;
-        }
-        return numberOfElementsInMatrix;
-    }
-
     //check whether all elements of matrix are positive
     private static boolean arePositiveElements(double[][] matr) throws Exception {
         for (double[] line : matr){
@@ -104,6 +92,18 @@ public class Matrix {
             }
         }
         return true;
+    }
+
+    //count number of elements in matrix
+    private static int countNumberOfElementsInMatrix(double[][] matr) throws Exception {
+        if (!areValidSizesOfArray(matr)){
+            throw new Exception("Wrong input! Irregular sizes of array");
+        }
+        int numberOfElementsInMatrix = 0;
+        for (int i = 0; i < matr.length; i++){
+            numberOfElementsInMatrix += matr[i].length;
+        }
+        return numberOfElementsInMatrix;
     }
 
     //find local min of matrix
