@@ -134,6 +134,7 @@ public class Matrix {
         int lengthOfLines = matr.length - FIRST_INDEX_OF_ARRAY;
         for (i = FIRST_INDEX_OF_ARRAY; i < lengthOfLines; i++) {
             //if matr[1...n-2][0]
+            j = 0;
             if (checkUpLess(matr, i, j) && checkRightLess(matr, i, j) && checkDownLess(matr, i, j)) {
                 return makeAnswer(i, j);
             }
@@ -152,15 +153,15 @@ public class Matrix {
         }
 
         //if matr[n-1]
-
+        j = 0;
         //if matr[n-1][0]
         if (checkUpLess(matr, i, j) && checkRightLess(matr, i, j)){
             return makeAnswer(i, j);
         }
         //if matr[n-1][1...m-2]
         lengthOfColumns = matr[i].length - FIRST_INDEX_OF_ARRAY;
-        if (checkUpLess(matr, i, j) && checkRightLess(matr, i, j) && checkLeftLess(matr, i, j)) {
-            for (j = FIRST_INDEX_OF_ARRAY; j < lengthOfColumns; j++) {
+        for (j = FIRST_INDEX_OF_ARRAY; j < lengthOfColumns; j++) {
+            if (checkUpLess(matr, i, j) && checkRightLess(matr, i, j) && checkLeftLess(matr, i, j)) {
                 return makeAnswer(i, j);
             }
         }
@@ -203,6 +204,7 @@ public class Matrix {
         //if matr[1...n-2]
         int lengthOfLines = matr.length - FIRST_INDEX_OF_ARRAY;
         for (i = FIRST_INDEX_OF_ARRAY; i < lengthOfLines; i++) {
+            j = 0;
             //if matr[1...n-2][0]
             if (checkUpMore(matr, i, j) && checkRightMore(matr, i, j) && checkDownMore(matr, i, j)) {
                 return makeAnswer(i, j);
@@ -222,15 +224,15 @@ public class Matrix {
         }
 
         //if matr[n-1]
-
+        j = 0;
         //if matr[n-1][0]
         if (checkUpMore(matr, i, j) && checkRightMore(matr, i, j)){
             return makeAnswer(i, j);
         }
         //if matr[n-1][1...m-2]
         lengthOfColumns = matr[i].length - FIRST_INDEX_OF_ARRAY;
-        if (checkUpMore(matr, i, j) && checkRightMore(matr, i, j) && checkLeftMore(matr, i, j)) {
-            for (j = FIRST_INDEX_OF_ARRAY; j < lengthOfColumns; j++) {
+        for (j = FIRST_INDEX_OF_ARRAY; j < lengthOfColumns; j++) {
+            if (checkUpMore(matr, i, j) && checkRightMore(matr, i, j) && checkLeftMore(matr, i, j)) {
                 return makeAnswer(i, j);
             }
         }
