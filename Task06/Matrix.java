@@ -8,7 +8,7 @@ package task_06;
  * 4)transponse matrix
  * 5)check whether matrix is rectangular or not
  *
- * 19 June 2018
+ * 24 June 2018
  * @author Arthur Lyup
  */
 
@@ -20,7 +20,9 @@ public class Matrix {
 
     //max element in matrix
     public static double findMaxElement(double[][] matr) throws Exception {
-        checkSizesOfArray(matr);//check input
+        if (!areValidSizesOfArray(matr)){
+            throw new Exception("Wrong input! Irregular sizes of array");
+        }
         double max = matr[0][0];
         for (double[] line : matr){
             for (double element : line){
@@ -34,7 +36,9 @@ public class Matrix {
 
     //min element in matrix
     public static double findMinElement(double[][] matr) throws Exception {
-        checkSizesOfArray(matr);//check input
+        if (!areValidSizesOfArray(matr)){
+            throw new Exception("Wrong input! Irregular sizes of array");
+        }
         double min = matr[0][0];
         for (double[] line : matr){
             for (double element : line){
@@ -48,19 +52,23 @@ public class Matrix {
 
     //calculate average arithmetic
     public static double findAverageArithmetic(double[][] matr) throws Exception {
-        checkSizesOfArray(matr);//check input
+        if (!areValidSizesOfArray(matr)){
+            throw new Exception("Wrong input! Irregular sizes of array");
+        }
         double sum = 0.0;//start value
         for (double[] line : matr){
             for (double element : line){
                 sum += element;
             }
         }
-        return sum/(countNumberOfElemtsInMatrix(matr));
+        return sum/(countNumberOfElementsInMatrix(matr));
     }
 
     //calculate average geometric
     public static double findAverageGeometric(double[][] matr) throws Exception {
-        checkSizesOfArray(matr);//check input
+        if (!areValidSizesOfArray(matr)){
+            throw new Exception("Wrong input! Irregular sizes of array");
+        }
         if (checkPositiveElements(matr)){//if all elements are positive
             double composition = DEFAULT_FOR_COMPOSITION;
             for (double[] line : matr){
@@ -68,15 +76,17 @@ public class Matrix {
                     composition *= element;
                 }
             }
-            return Math.pow(composition, DEFAULT_FOR_COMPOSITION/(countNumberOfElemtsInMatrix(matr)));
+            return Math.pow(composition, DEFAULT_FOR_COMPOSITION/(countNumberOfElementsInMatrix(matr)));
         } else {
             return ERROR_CASE;//if there are any negative elements
         }
     }
 
     //count number of elements in matrix
-    private static int countNumberOfElemtsInMatrix(double[][] matr) throws Exception {
-        checkSizesOfArray(matr);
+    private static int countNumberOfElementsInMatrix(double[][] matr) throws Exception {
+        if (!areValidSizesOfArray(matr)){
+            throw new Exception("Wrong input! Irregular sizes of array");
+        }
         int numberOfElementsInMatrix = 0;
         for (int i = 0; i < matr.length; i++){
             numberOfElementsInMatrix += matr[i].length;
@@ -98,7 +108,9 @@ public class Matrix {
 
     //find local min of matrix
     public static String findPositionOfLocalMin(double[][] matr) throws Exception {
-        checkSizesOfArray(matr);//check input
+        if (!areValidSizesOfArray(matr)){
+            throw new Exception("Wrong input! Irregular sizes of array");
+        }
         int i = 0;//our moving on the column
         int j = 0;//our moving on the line
 
@@ -166,7 +178,9 @@ public class Matrix {
 
     //find local max of matrix
     public static String findPositionOfLocalMax(double[][] matr) throws Exception {
-        checkSizesOfArray(matr);//check input
+        if (!areValidSizesOfArray(matr)){
+            throw new Exception("Wrong input! Irregular sizes of array");
+        }
         int i = 0;//our moving on the column
         int j = 0;//our moving on the line
 
@@ -269,7 +283,9 @@ public class Matrix {
 
     //transponse square matrix
     public static void transponseSquareMatrix(double [][] matr) throws Exception {
-        checkSizesOfArray(matr);//check input
+        if (!areValidSizesOfArray(matr)){
+            throw new Exception("Wrong input! Irregular sizes of array");
+        }
         for (int i = 0; i < matr.length; i++) {
             for (int j = i + FIRST_INDEX_OF_ARRAY; j < matr[i].length; j++) {
                 double tmp = matr[i][j];
@@ -281,7 +297,9 @@ public class Matrix {
 
     //transponing rectangular matrix
     public static double[][] transponseRectangularMatrix(double[][] matr) throws Exception {
-        checkSizesOfArray(matr);//check input
+        if (!areValidSizesOfArray(matr)){
+            throw new Exception("Wrong input! Irregular sizes of array");
+        }
         double [][] transMatr = new double[matr[0].length][matr.length];
         for (int i = 0; i < matr[0].length; i++){
             for (int j = 0; j < matr.length; j++){
@@ -297,15 +315,16 @@ public class Matrix {
     }
 
     //check input
-    private static void checkSizesOfArray(double[][] matr) throws Exception {
-        if (matr.length == 0){
-            throw new Exception("Wrong input! Irregular size of array");
+    private static boolean areValidSizesOfArray(double[][] matr) {
+        if (matr.length == 0) {
+            return false;
         } else {
             for (int i = 0; i < matr.length; i++){
                 if (matr[i].length == 0){
-                    throw new Exception("Wrong input! Irregular size of array");
+                    return false;
                 }
             }
         }
+        return true;
     }
 }
